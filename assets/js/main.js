@@ -244,6 +244,31 @@
     });
   }
 
+  /* Big CTA: the giant word slides through its endings, forever */
+  const slot = $('[data-slot]');
+  if (slot && !reduceMotion) {
+    const endings = $$('.big-word', slot);
+    endings.forEach((w) => {
+      w.innerHTML = [...w.textContent].map((ch, k) => `<span style="--k:${k}">${ch}</span>`).join('');
+    });
+    slot.classList.add('is-ready');
+    let index = 0;
+    setInterval(() => {
+      if (document.hidden) return;
+      const current = endings[index];
+      index = (index + 1) % endings.length;
+      current.classList.replace('is-active', 'is-leaving');
+      endings[index].classList.add('is-active');
+      setTimeout(() => {
+        // jump back below the line without animating through it
+        current.classList.add('is-reset');
+        current.classList.remove('is-leaving');
+        void current.offsetWidth;
+        current.classList.remove('is-reset');
+      }, 1300);
+    }, 2600);
+  }
+
   /* Sunburst lines (big CTA) */
   const sunburst = $('[data-sunburst]');
   if (sunburst) {

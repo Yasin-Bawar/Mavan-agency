@@ -1623,11 +1623,20 @@ html.js .svc:not(.is-in) .cal-grid i.on { transform: scale(0.6); opacity: 0; }
   font-size: clamp(30px, 4.4vw, 62px); line-height: 1.02; letter-spacing: -0.045em; text-wrap: balance;
 }
 .big-word-wrap { position: relative; isolation: isolate; display: block; margin-top: clamp(4px, 1vw, 14px); }
-.big-word {
-  display: block; padding-right: 0.06em;
-  font-size: clamp(80px, 21.5vw, 320px); line-height: 0.86; letter-spacing: -0.075em;
-  color: var(--accent); white-space: nowrap;
+/* Giant word slot: endings slide up letter by letter, clipped to their own line */
+.big-slot {
+  display: grid; justify-items: center; overflow: hidden; margin: -0.02em 0 -0.2em;
+  font-size: clamp(80px, 21.5vw, 320px); line-height: 0.86; letter-spacing: -0.075em; color: var(--accent);
 }
+.big-word { grid-area: 1 / 1; padding: 0.02em 0.06em 0.2em 0; white-space: nowrap; }
+.big-slot:not(.is-ready) .big-word:not(:first-child) { display: none; }
+.big-slot.is-ready .big-word > span {
+  display: inline-block; transform: translateY(1.3em);
+  transition: transform 0.9s var(--ease) calc(var(--k) * 0.045s);
+}
+.big-slot.is-ready .big-word.is-active > span { transform: none; }
+.big-slot.is-ready .big-word.is-leaving > span { transform: translateY(-1.3em); }
+.big-slot.is-ready .big-word.is-reset > span { transition: none; }
 .big-cta-content p {
   display: inline-block; margin-top: clamp(26px, 3.4vw, 44px); padding: 8px 16px; border-radius: 99px;
   background: rgba(255, 255, 255, 0.88); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);

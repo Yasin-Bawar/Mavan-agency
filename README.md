@@ -31,7 +31,7 @@ Any static host works:
 
 ## Sections
 
-Sticky glass nav · hero with animated fluted-glass stripes and a rotating industry word · scroll-tilt product showcase · client marquee · intro statement that lights up on scroll · services (dark bento) · interactive industries tabs, each with its own app design (food ordering, barber booking, spa menu, gym member app, patient app, florist store) · case studies · process timeline · stats & testimonials · pricing · FAQ accordion · big "booked" CTA · contact form · footer.
+Sticky glass nav · hero with animated fluted-glass stripes and a rotating industry word · scroll-tilt product showcase · client marquee · intro statement that lights up on scroll · services (dark bento) · interactive industries tabs, each with its own app design (food ordering, barber booking, spa menu, gym member app, patient app, florist store) · case studies · process timeline · stats & testimonials · pricing · FAQ accordion · big CTA whose giant word keeps sliding through "booked. / online. / packed. / digital." · contact form · footer.
 
 The website and app examples are built as real HTML/CSS layouts filled with **real photography** (food, barbershop, salon, gym, dental and florist photos) stored in `assets/img/photos/`. Photos are from Unsplash (free for commercial use under the Unsplash License); photographers are credited in `assets/img/photos/CREDITS.md`. Swap in photos of your real clients' work whenever you have them; just keep the same file names.
 
