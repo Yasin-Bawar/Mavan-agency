@@ -244,17 +244,6 @@
     });
   }
 
-  const bigWord = $('.big-word');
-  if (bigWord && !reduceMotion) {
-    scrollHandlers.push(() => {
-      const r = bigWord.parentElement.getBoundingClientRect();
-      const vh = window.innerHeight;
-      if (r.bottom < -vh || r.top > vh * 2) return;
-      const p = clamp((r.top + r.height / 2 - vh / 2) / vh, -1, 1);
-      bigWord.style.setProperty('--shift', `${(p * Math.min(140, window.innerWidth * 0.08)).toFixed(1)}px`);
-    });
-  }
-
   /* Sunburst lines (big CTA) */
   const sunburst = $('[data-sunburst]');
   if (sunburst) {
