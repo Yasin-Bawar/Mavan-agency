@@ -30,7 +30,7 @@ Any static host works:
 
 ## Sections
 
-Sticky glass nav · hero with rotating industry word and live-booking cards · scroll-tilt product showcase · client marquee · intro statement that lights up on scroll · services (dark bento) · interactive industries tabs with tailored app previews · case studies · process timeline · stats & testimonials · pricing · FAQ accordion · big "booked" CTA · contact form · footer.
+Sticky glass nav · hero with animated fluted-glass stripes and a rotating industry word · scroll-tilt product showcase · client marquee · intro statement that lights up on scroll · services (dark bento) · interactive industries tabs with tailored app previews · case studies · process timeline · stats & testimonials · pricing · FAQ accordion · big "booked" CTA · contact form · footer.
 
 All mockups (browser, phones, pizza!) are built in CSS, so there are no image files to manage, and they scale crisply at every size.
 

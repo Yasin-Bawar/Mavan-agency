@@ -89,19 +89,18 @@
     const tones = [
       ['#ff5a1f', '#ff7a45'],
       ['#ff4a0e', '#ff8a5c'],
-      ['#ff6a30', '#ffb08c'],
-      ['#ff7b47', '#ffc2a6'],
+      ['#ff6a30', '#ffa47c'],
+      ['#ff7b47', '#ffbb9c'],
     ];
-    const count = window.innerWidth < 760 ? 18 : 30;
+    const count = window.innerWidth < 760 ? 16 : 30;
     const frag = document.createDocumentFragment();
     for (let k = 0; k < count; k++) {
       const t = k / (count - 1);
       const s = document.createElement('span');
       const [c1, c2] = tones[Math.floor(rand() * tones.length)];
-      s.style.setProperty('--h', `${clamp(26 + t * 62 + (rand() * 28 - 12), 18, 100).toFixed(1)}%`);
-      s.style.setProperty('--o', (0.55 + rand() * 0.45).toFixed(2));
-      s.style.setProperty('--d', `${(-rand() * 8).toFixed(2)}s`);
-      s.style.setProperty('--dur', `${(5 + rand() * 5).toFixed(2)}s`);
+      s.style.setProperty('--k', k);
+      s.style.setProperty('--h', `${clamp(30 + t * 60 + (rand() * 26 - 12), 22, 100).toFixed(1)}%`);
+      s.style.setProperty('--o', (0.62 + rand() * 0.38).toFixed(2));
       s.style.setProperty('--c1', c1);
       s.style.setProperty('--c2', c2);
       frag.appendChild(s);
@@ -110,6 +109,16 @@
 
     const hero = $('.hero');
     new IntersectionObserver(([entry]) => hero.classList.toggle('is-paused', !entry.isIntersecting)).observe(hero);
+
+    // Gentle parallax: the stripes drift a little with the pointer
+    if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+      hero.addEventListener('pointermove', (e) => {
+        const x = e.clientX / window.innerWidth - 0.5;
+        const y = e.clientY / window.innerHeight - 0.5;
+        curtain.style.transform = `translate3d(${(x * -18).toFixed(1)}px, ${(y * -10).toFixed(1)}px, 0)`;
+      });
+      hero.addEventListener('pointerleave', () => (curtain.style.transform = ''));
+    }
   }
 
   /* ------------------------------------------------------------------

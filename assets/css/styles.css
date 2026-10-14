@@ -306,19 +306,36 @@ html.js .reveal.is-in { animation: reveal-up 1s var(--ease) backwards; animation
 }
 .hero-curtain {
   position: absolute; top: -40px; right: -2%;
-  width: min(66vw, 980px); height: min(76vh, 700px);
-  display: flex; filter: blur(7px);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 34%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 34%);
+  width: min(66vw, 980px); height: min(78vh, 720px);
+  display: flex;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 32%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 32%);
+  transition: transform 1.2s var(--ease);
 }
+/* Each stripe is a fluted-glass rib: brand colour, lens-like shading, soft fade at the bottom */
 .hero-curtain span {
-  flex: 1 1 0; height: var(--h); opacity: var(--o);
-  background: linear-gradient(180deg, var(--c1, #ff5a1f) 0%, var(--c2, #ff7a45) 48%, rgba(255, 122, 69, 0) 100%);
+  position: relative; flex: 1 1 0; height: var(--h); opacity: var(--o);
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.34) 30%, rgba(255, 255, 255, 0.06) 56%, rgba(150, 30, 0, 0.14) 100%),
+    linear-gradient(180deg, var(--c1, #ff5a1f) 0%, var(--c2, #ff7a45) 78%);
+  -webkit-mask-image: linear-gradient(180deg, #000 28%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 28%, transparent 100%);
   transform-origin: 50% 0;
-  animation: curtain var(--dur, 7s) var(--ease-io) var(--d, 0s) infinite alternate;
+  animation: curtain-wave 7.5s var(--ease-io) infinite alternate;
+  animation-delay: calc(var(--k, 0) * -0.24s);
+  will-change: transform;
 }
-.hero.is-paused .hero-curtain span { animation-play-state: paused; }
-@keyframes curtain { from { transform: scaleY(0.84); } to { transform: scaleY(1.06); } }
+/* A soft light glint that sweeps across the ribs */
+.hero-curtain span::after {
+  content: ""; position: absolute; inset: 0; opacity: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%);
+  animation: curtain-glint 7s ease-in-out infinite;
+  animation-delay: calc(var(--k, 0) * 0.06s);
+}
+.hero.is-paused .hero-curtain span,
+.hero.is-paused .hero-curtain span::after { animation-play-state: paused; }
+@keyframes curtain-wave { from { transform: scaleY(0.8); } to { transform: scaleY(1.05); } }
+@keyframes curtain-glint { 0%, 56%, 100% { opacity: 0; } 66% { opacity: 1; } 86% { opacity: 0; } }
 
 .hero-inner { position: relative; }
 
@@ -352,11 +369,13 @@ html.js .ht-in { animation: blur-in 1.2s var(--ease) backwards; animation-delay:
   position: relative; display: inline-block; vertical-align: middle;
   width: 1.5em; height: 0.78em; margin: 0 0.02em; top: -0.06em;
   border-radius: 0.2em; overflow: hidden;
-  box-shadow: 0 0.08em 0.24em -0.06em rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0.1em 0.26em -0.08em rgba(0, 0, 0, 0.32);
+  -webkit-backface-visibility: hidden; backface-visibility: hidden;
+  outline: 1px solid transparent;
   transition: transform 0.6s var(--ease);
 }
 .ipill--web { background: #1f3a2e; transform: rotate(-4deg); }
-.ipill--book { background: var(--accent); transform: rotate(3deg); }
+.ipill--book { background: linear-gradient(155deg, #ff7444 0%, var(--accent) 55%, #f04a10 100%); transform: rotate(3deg); }
 .ipill:hover { transform: rotate(0deg) scale(1.06); }
 
 .ipw-bars { position: absolute; left: 0.15em; top: 0.19em; display: flex; flex-direction: column; gap: 0.06em; }
@@ -366,19 +385,19 @@ html.js .ht-in { animation: blur-in 1.2s var(--ease) backwards; animation-delay:
 .ipw-pizza { position: absolute !important; right: -0.12em; top: 50%; width: 0.74em; height: 0.74em; transform: translateY(-50%); }
 
 .ipb-card {
-  position: absolute; inset: 0.15em 0.15em;
-  display: flex; align-items: center; gap: 0.5em; padding: 0 0.55em;
-  background: #fff; border-radius: 0.6em;
-  font-size: 0.17em; letter-spacing: -0.01em; white-space: nowrap;
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center; gap: 0.6em;
+  font-size: 0.17em; letter-spacing: -0.01em; white-space: nowrap; color: #fff;
 }
 .ipb-check {
   display: grid; place-items: center; flex-shrink: 0;
-  width: 1.7em; height: 1.7em; border-radius: 50%; background: var(--ink); color: #fff;
+  width: 1.9em; height: 1.9em; border-radius: 50%; background: #fff; color: var(--accent);
+  box-shadow: 0 0.2em 0.5em rgba(120, 30, 0, 0.25);
 }
 .ipb-check .i { width: 1em; height: 1em; stroke-width: 3; }
-.ipb-txt { display: flex; flex-direction: column; line-height: 1.05; }
-.ipb-txt b { font-size: 1.05em; font-weight: 600; color: var(--ink); }
-.ipb-txt small { font-size: 0.78em; color: var(--muted); font-family: var(--font-body); letter-spacing: 0; }
+.ipb-txt { display: flex; flex-direction: column; line-height: 1.08; }
+.ipb-txt b { font-size: 1.12em; font-weight: 600; color: #fff; }
+.ipb-txt small { font-size: 0.8em; color: rgba(255, 255, 255, 0.85); font-family: var(--font-body); letter-spacing: 0; }
 
 /* Rotating word */
 .rotator {
@@ -398,44 +417,6 @@ html.js .ht-in { animation: blur-in 1.2s var(--ease) backwards; animation-delay:
 .rotator.is-ready .rotator-word.is-active { opacity: 1; transform: none; filter: blur(0); }
 .rotator.is-ready .rotator-word.is-leaving { opacity: 0; transform: translateY(-55%); filter: blur(10px); }
 
-/* Floating notifications */
-.hero-float {
-  position: absolute; right: 0; top: calc(clamp(44px, 7.6vw, 108px) * 1.14); width: 300px;
-  font-size: 14px;
-}
-html.js .hero-float { animation: float-in 1.2s var(--ease) 0.7s backwards; }
-@keyframes float-in { from { opacity: 0; transform: translateY(30px) scale(0.96); filter: blur(10px); } }
-.hf-card {
-  position: relative; z-index: 2;
-  padding: 16px; border-radius: 20px;
-  background: rgba(255, 255, 255, 0.92);
-  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
-  border: 1px solid var(--line); box-shadow: var(--shadow-l);
-  animation: bob 6s ease-in-out infinite;
-}
-.hf-top { display: flex; align-items: center; gap: 10px; }
-.hf-app {
-  display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px;
-  background: var(--ink); color: #fff; font-size: 16px;
-}
-.hf-app--accent { background: var(--accent); }
-.hf-who { display: flex; flex-direction: column; line-height: 1.25; }
-.hf-who b { font-size: 13px; font-weight: 600; }
-.hf-who small { font-size: 12px; color: var(--muted); }
-.hf-live { margin-left: auto; width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
-.hf-title { display: block; margin-top: 14px; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
-.hf-sub { display: block; font-size: 13px; color: var(--muted); }
-.hf-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-.hf-tags span {
-  padding: 3px 8px; border-radius: 6px; background: var(--bg-soft);
-  font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-2);
-}
-.hf-tags span:last-child { background: var(--accent-soft); color: var(--accent-ink); }
-.hf-card--mini {
-  z-index: 1; display: flex; align-items: center; gap: 10px;
-  margin: -6px 14px 0; padding: 18px 14px 12px; border-radius: 0 0 18px 18px;
-  box-shadow: var(--shadow); animation-delay: -1.5s;
-}
 @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
 .hero-bottom {
@@ -1520,17 +1501,11 @@ html.js .svc:not(.is-in) .cal-grid i.on { transform: scale(0.6); opacity: 0; }
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */
-@media (max-width: 1320px) {
-  .hf-card--mini { display: none; }
-}
-
 @media (max-width: 1180px) {
   .nav-status { display: none; }
-  .hero-float { width: 270px; }
 }
 
 @media (max-width: 1080px) {
-  .hero-float { display: none; }
   .hero-bottom { grid-template-columns: 1fr auto; }
   .hero-stats { grid-column: 2; }
   .intro-grid { grid-template-columns: 1fr 1fr; }
@@ -1571,7 +1546,7 @@ html.js .svc:not(.is-in) .cal-grid i.on { transform: scale(0.6); opacity: 0; }
   .hero-bottom { grid-template-columns: 1fr; gap: 36px; }
   .hero-stats { grid-column: 1; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 22px 0 0; border-left: 0; border-top: 1px solid var(--line-2); }
   .hero-stat dt { font-size: 28px; }
-  .hero-curtain { width: 110vw; height: 46vh; right: -20%; opacity: 0.8; }
+  .hero-curtain { width: 120vw; height: 56vh; right: -24%; }
   .ipill { width: 1.3em; height: 0.72em; }
   .showcase-inner { aspect-ratio: 4 / 4.6; border-radius: var(--radius-l); }
   .sc-browser { left: 5%; top: 6%; width: 118%; }
