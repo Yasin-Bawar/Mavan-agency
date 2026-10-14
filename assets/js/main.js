@@ -1,4 +1,4 @@
-/* ZipTech — site interactions (no dependencies) */
+/* Mavan — site interactions (no dependencies) */
 (() => {
   'use strict';
 
