@@ -1,0 +1,57 @@
+# ZipTech — Agency Website
+
+A premium, white-themed, Framer-style website for **ZipTech**, a studio that builds websites, booking systems, online ordering and mobile apps for local businesses (restaurants, barbershops, salons, gyms, clinics, retail).
+
+Plain HTML, CSS and JavaScript with no build step and no dependencies.
+
+```
+index.html              → all page content
+assets/css/styles.css   → design system, layout, device mockups
+assets/js/main.js       → animations, industries tabs, FAQ, contact form
+assets/img/             → favicon + social share image
+```
+
+## Run locally
+
+Open `index.html` in a browser, or serve the folder:
+
+```bash
+npx serve .
+# or
+python3 -m http.server 8000
+```
+
+## Deploy
+
+Any static host works:
+
+- **GitHub Pages:** Settings → Pages → Deploy from branch → `main` / root.
+- **Netlify / Vercel / Cloudflare Pages:** import the repo; no build command, publish directory `/`.
+
+## Sections
+
+Sticky glass nav · hero with rotating industry word and live-booking cards · scroll-tilt product showcase · client marquee · intro statement that lights up on scroll · services (dark bento) · interactive industries tabs with tailored app previews · case studies · process timeline · stats & testimonials · pricing · FAQ accordion · big "booked" CTA · contact form · footer.
+
+All mockups (browser, phones, pizza!) are built in CSS, so there are no image files to manage, and they scale crisply at every size.
+
+## Before going live: replace the placeholders
+
+The content is written to be realistic, but it is **sample content**. Swap it for your own:
+
+| What | Where |
+| --- | --- |
+| Contact email (`hello@ziptech.studio`) | `index.html`: search for `ziptech.studio` (form `data-email` and the mailto link) |
+| Form delivery | `index.html`: `data-endpoint=""` on `#contact-form`. Paste a [Formspree](https://formspree.io) (or similar) endpoint to receive messages directly. Left empty, the form opens the visitor's email app with the message pre-filled. |
+| Prices ($990 / $2,490 / from $5,900, care plans from $49/mo) | `index.html`: Pricing section |
+| Case studies, client logos, testimonials, ratings & stats (Bella Napoli, Fade Factory, Glow Studio, Iron Temple, "120+ launched", "4.9/5"…) | `index.html`: these are illustrative examples; replace them with real clients and numbers |
+| Industry copy & app previews | `assets/js/main.js` → `INDUSTRIES` array |
+| Social links | `index.html` footer (`href="#"`) |
+| Share image URL | `index.html` `og:image`: use the full absolute URL once you have a domain |
+
+The "Booking projects for …" badge always shows next month automatically.
+
+## Accessibility & performance
+
+- Semantic landmarks, skip link, keyboard-navigable tabs (arrow keys), accessible accordion and form errors.
+- Respects `prefers-reduced-motion`.
+- No frameworks: one CSS file, one small JS file and Google Fonts (Inter, Inter Tight, Instrument Serif).
