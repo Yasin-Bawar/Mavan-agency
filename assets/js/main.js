@@ -7,6 +7,8 @@
   const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const icon = (id) => `<svg class="i" aria-hidden="true"><use href="#${id}"/></svg>`;
+  const photo = (name, cls, w, h) =>
+    `<img class="${cls}" src="assets/img/photos/${name}.jpg" alt="" width="${w}" height="${h}" loading="lazy" decoding="async">`;
 
   /* ------------------------------------------------------------------
      Scroll loop — every scroll-driven effect registers here
@@ -337,9 +339,9 @@
       cta: 'Get a restaurant site',
       app: {
         brand: 'Bella Napoli', initials: 'BN', sub: 'Open · until 11 PM',
-        color: '#1f3a2e', ink: '#f4ecdf', soft: '#f4ecdf', glow: 'rgba(214, 64, 42, 0.22)',
+        color: '#1f3a2e', ink: '#f4ecdf', soft: '#f4ecdf', glow: 'rgba(214, 64, 42, 0.22)', photo: 'restaurant-interior',
         kicker: 'Tonight', banner: 'Book a table in 2 taps', btn: 'Reserve',
-        list: 'Popular', items: [['Margherita', 'Wood-fired · 12"', '$14'], ['Truffle tagliatelle', 'Fresh pasta', '$19'], ['Tiramisù', 'House dessert', '$8']],
+        list: 'Popular', items: [['Margherita', 'Wood-fired · 12"', '$14', 'pizza-margherita'], ['Pasta al pesto', 'Fresh pasta', '$16', 'pasta-pesto'], ['Tiramisù', 'House dessert', '$8', 'tiramisu']],
         cta: 'Order online', pill: ['i-bag', 'New order · $52.00', 'Pickup at 7:15 PM'],
       },
     },
@@ -357,9 +359,9 @@
       cta: 'Get a barbershop app',
       app: {
         brand: 'Fade Factory', initials: 'FF', sub: 'Downtown · 6 chairs',
-        color: '#0d0d0d', ink: '#ffffff', soft: '#f2f1ee', glow: 'rgba(13, 13, 13, 0.14)', art: 'rgba(255, 90, 31, 0.7)',
+        color: '#0d0d0d', ink: '#ffffff', soft: '#f2f1ee', glow: 'rgba(13, 13, 13, 0.14)', photo: 'barber-tools',
         kicker: 'Next available', banner: 'Your next fade, today 3:30', btn: 'Book now',
-        list: 'Services', items: [['Skin fade', '45 min · with Marco', '$35'], ['Beard sculpt', '20 min · with Leo', '$18'], ['Cut & beard', '60 min · any barber', '$45']],
+        list: 'Services', items: [['Skin fade', '45 min · with Marco', '$35', 'barber-fade'], ['Beard sculpt', '20 min · with Leo', '$18', 'barber-beard'], ['Cut & style', '60 min · any barber', '$45', 'barber-cut']],
         cta: 'Book appointment', pill: ['i-check', 'Booked · Marco', 'Wed 3:30 PM · $10 paid'],
       },
     },
@@ -377,9 +379,9 @@
       cta: 'Get a salon website',
       app: {
         brand: 'Glow Studio', initials: 'GS', sub: 'Skin · Nails · Massage',
-        color: '#b65f63', ink: '#ffffff', soft: '#fbf0ec', glow: 'rgba(196, 107, 107, 0.25)',
+        color: '#b65f63', ink: '#ffffff', soft: '#fbf0ec', glow: 'rgba(196, 107, 107, 0.25)', photo: 'salon-interior',
         kicker: 'This week', banner: 'Treat yourself, you\'ve earned it', btn: 'Book a treatment',
-        list: 'Treatments', items: [['Signature facial', '60 min', '$85'], ['Gel manicure', '45 min', '$40'], ['Hot stone massage', '90 min', '$120']],
+        list: 'Treatments', items: [['Signature facial', '60 min', '$85', 'salon-facial'], ['Gel manicure', '45 min', '$40', 'salon-nails'], ['Hot stone massage', '90 min', '$120', 'salon-massage']],
         cta: 'Buy a gift card', pill: ['i-gift', 'Gift card sold', '$150 · Signature package'],
       },
     },
@@ -397,9 +399,9 @@
       cta: 'Get a member app',
       app: {
         brand: 'Iron Temple', initials: 'IT', sub: 'Strength & conditioning',
-        color: '#111111', ink: '#d7f45b', soft: '#f1f3e8', glow: 'rgba(170, 210, 40, 0.3)', art: 'rgba(215, 244, 91, 0.55)',
+        color: '#111111', ink: '#d7f45b', soft: '#f1f3e8', glow: 'rgba(170, 210, 40, 0.3)', photo: 'gym-interior',
         kicker: 'Today', banner: 'HIIT Burn starts at 7:00', btn: 'Join class',
-        list: 'Classes', items: [['HIIT Burn', '7:00 AM · 4 spots left', 'Join'], ['Power yoga', '12:30 PM · full', 'Waitlist'], ['Boxing', '6:00 PM · 8 spots', 'Join']],
+        list: 'Classes', items: [['HIIT Burn', '7:00 AM · 4 spots left', 'Join', 'gym-hiit'], ['Power yoga', '12:30 PM · full', 'Waitlist', 'gym-yoga'], ['Boxing', '6:00 PM · 8 spots', 'Join', 'gym-boxing']],
         cta: 'Start free trial', pill: ['i-users', 'New member', 'Unlimited plan · $59/mo'],
       },
     },
@@ -417,9 +419,9 @@
       cta: 'Get a clinic website',
       app: {
         brand: 'SmileCare Dental', initials: 'SC', sub: 'Family & cosmetic dentistry',
-        color: '#1f5eff', ink: '#ffffff', soft: '#eef3ff', glow: 'rgba(31, 94, 255, 0.2)',
+        color: '#1f5eff', ink: '#ffffff', soft: '#eef3ff', glow: 'rgba(31, 94, 255, 0.2)', photo: 'dental-office',
         kicker: 'Same-week availability', banner: 'Book your check-up online', btn: 'See times',
-        list: 'Appointments', items: [['Check-up & clean', '30 min · Dr. Patel', 'Book'], ['Teeth whitening', '60 min', '$199'], ['Emergency visit', 'Same day', 'Call']],
+        list: 'Appointments', items: [['Check-up & clean', '30 min · Dr. Patel', 'Book', 'dental-checkup'], ['Teeth whitening', '60 min', '$199', 'dental-smile'], ['Emergency visit', 'Same day', 'Call', 'dental-team']],
         cta: 'Request appointment', pill: ['i-calendar', 'New patient booked', 'Thu 9:30 AM · Dr. Patel'],
       },
     },
@@ -437,9 +439,9 @@
       cta: 'Get an online store',
       app: {
         brand: 'Petal & Stem', initials: 'PS', sub: 'Florist · same-day delivery',
-        color: '#3d5a40', ink: '#ffffff', soft: '#f1f5ee', glow: 'rgba(61, 90, 64, 0.22)',
+        color: '#3d5a40', ink: '#ffffff', soft: '#f1f5ee', glow: 'rgba(61, 90, 64, 0.22)', photo: 'florist-shop',
         kicker: 'Order by 2 PM', banner: 'Fresh flowers, delivered today', btn: 'Shop now',
-        list: 'Best sellers', items: [['Spring bouquet', 'Same-day delivery', '$45'], ['Peony box', 'Best seller', '$65'], ['Flower club', 'Monthly plan', '$39']],
+        list: 'Best sellers', items: [['Spring bouquet', 'Same-day delivery', '$45', 'florist-bouquet'], ['Peony box', 'Best seller', '$65', 'florist-peony'], ['Flower club', 'Monthly plan', '$39', 'florist-bucket']],
         cta: 'Shop the collection', pill: ['i-bag', 'Order shipped', 'Peony box · local delivery'],
       },
     },
@@ -472,18 +474,18 @@
                 <span class="app-ico">${icon('i-bell')}</span>
               </div>
               <div class="app-banner">
+                ${photo(a.photo, 'app-banner-img', 1000, 667)}
                 <small>${a.kicker}</small>
                 <strong>${a.banner}</strong>
                 <span class="app-banner-btn">${a.btn}</span>
-                <span class="app-banner-art"></span>
               </div>
               <div class="app-label"><span>${a.list}</span><span>See all</span></div>
               <div class="app-list">
                 ${a.items
                   .map(
-                    ([title, meta, price]) => `
+                    ([title, meta, price, img]) => `
                   <div class="app-item">
-                    <span class="app-thumb">${icon(d.icon)}</span>
+                    ${photo(img, 'app-thumb', 96, 96)}
                     <span class="app-meta"><strong>${title}</strong><small>${meta}</small></span>
                     <span class="app-price">${price}</span>
                   </div>`
@@ -515,7 +517,7 @@
             <a href="#contact" class="btn btn-dark btn-sm">${d.cta}<span class="btn-icon">${icon('i-arrow')}</span></a>
           </div>
         </div>
-        <div class="ind-visual" style="--b:${a.color};--bt:${a.ink};--bs:${a.soft};--glow:${a.glow};${a.art ? `--ba:${a.art};` : ''}" aria-hidden="true">
+        <div class="ind-visual" style="--b:${a.color};--bt:${a.ink};--bs:${a.soft};--glow:${a.glow};" aria-hidden="true">
           ${appScreen(d)}
           <div class="float-pill">
             <span class="fp-ico">${icon(a.pill[0])}</span>
