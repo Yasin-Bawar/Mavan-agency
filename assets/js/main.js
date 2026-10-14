@@ -338,11 +338,8 @@
       metricLabel: 'more direct online orders, on average',
       cta: 'Get a restaurant site',
       app: {
-        brand: 'Bella Napoli', initials: 'BN', sub: 'Open · until 11 PM',
-        color: '#1f3a2e', ink: '#f4ecdf', soft: '#f4ecdf', glow: 'rgba(214, 64, 42, 0.22)', photo: 'restaurant-interior',
-        kicker: 'Tonight', banner: 'Book a table in 2 taps', btn: 'Reserve',
-        list: 'Popular', items: [['Margherita', 'Wood-fired · 12"', '$14', 'pizza-margherita'], ['Pasta al pesto', 'Fresh pasta', '$16', 'pasta-pesto'], ['Tiramisù', 'House dessert', '$8', 'tiramisu']],
-        cta: 'Order online', pill: ['i-bag', 'New order · $52.00', 'Pickup at 7:15 PM'],
+        color: '#1f3a2e', ink: '#f4ecdf', glow: 'rgba(214, 64, 42, 0.22)',
+        pill: ['i-bag', 'New order · $52.00', 'Pickup at 7:15 PM'],
       },
     },
     {
@@ -358,11 +355,8 @@
       metricLabel: 'fewer no-shows with deposits & reminders',
       cta: 'Get a barbershop app',
       app: {
-        brand: 'Fade Factory', initials: 'FF', sub: 'Downtown · 6 chairs',
-        color: '#0d0d0d', ink: '#ffffff', soft: '#f2f1ee', glow: 'rgba(13, 13, 13, 0.14)', photo: 'barber-tools',
-        kicker: 'Next available', banner: 'Your next fade, today 3:30', btn: 'Book now',
-        list: 'Services', items: [['Skin fade', '45 min · with Marco', '$35', 'barber-fade'], ['Beard sculpt', '20 min · with Leo', '$18', 'barber-beard'], ['Cut & style', '60 min · any barber', '$45', 'barber-cut']],
-        cta: 'Book appointment', pill: ['i-check', 'Booked · Marco', 'Wed 3:30 PM · $10 paid'],
+        color: '#0d0d0d', ink: '#e0b25c', glow: 'rgba(196, 150, 70, 0.26)',
+        pill: ['i-check', 'Booked · Marco', 'Wed 3:30 PM · $10 paid'],
       },
     },
     {
@@ -378,11 +372,8 @@
       metricLabel: 'more bookings made online',
       cta: 'Get a salon website',
       app: {
-        brand: 'Glow Studio', initials: 'GS', sub: 'Skin · Nails · Massage',
-        color: '#b65f63', ink: '#ffffff', soft: '#fbf0ec', glow: 'rgba(196, 107, 107, 0.25)', photo: 'salon-interior',
-        kicker: 'This week', banner: 'Treat yourself, you\'ve earned it', btn: 'Book a treatment',
-        list: 'Treatments', items: [['Signature facial', '60 min', '$85', 'salon-facial'], ['Gel manicure', '45 min', '$40', 'salon-nails'], ['Hot stone massage', '90 min', '$120', 'salon-massage']],
-        cta: 'Buy a gift card', pill: ['i-gift', 'Gift card sold', '$150 · Signature package'],
+        color: '#b65f63', ink: '#ffffff', glow: 'rgba(196, 107, 107, 0.25)',
+        pill: ['i-gift', 'Gift card sold', '$150 · Signature package'],
       },
     },
     {
@@ -398,11 +389,8 @@
       metricLabel: 'new members in 6 months',
       cta: 'Get a member app',
       app: {
-        brand: 'Iron Temple', initials: 'IT', sub: 'Strength & conditioning',
-        color: '#111111', ink: '#d7f45b', soft: '#f1f3e8', glow: 'rgba(170, 210, 40, 0.3)', photo: 'gym-interior',
-        kicker: 'Today', banner: 'HIIT Burn starts at 7:00', btn: 'Join class',
-        list: 'Classes', items: [['HIIT Burn', '7:00 AM · 4 spots left', 'Join', 'gym-hiit'], ['Power yoga', '12:30 PM · full', 'Waitlist', 'gym-yoga'], ['Boxing', '6:00 PM · 8 spots', 'Join', 'gym-boxing']],
-        cta: 'Start free trial', pill: ['i-users', 'New member', 'Unlimited plan · $59/mo'],
+        color: '#111111', ink: '#d7f45b', glow: 'rgba(170, 210, 40, 0.3)',
+        pill: ['i-users', 'New member', 'Unlimited plan · $59/mo'],
       },
     },
     {
@@ -418,11 +406,8 @@
       metricLabel: 'more new-patient bookings',
       cta: 'Get a clinic website',
       app: {
-        brand: 'SmileCare Dental', initials: 'SC', sub: 'Family & cosmetic dentistry',
-        color: '#1f5eff', ink: '#ffffff', soft: '#eef3ff', glow: 'rgba(31, 94, 255, 0.2)', photo: 'dental-office',
-        kicker: 'Same-week availability', banner: 'Book your check-up online', btn: 'See times',
-        list: 'Appointments', items: [['Check-up & clean', '30 min · Dr. Patel', 'Book', 'dental-checkup'], ['Teeth whitening', '60 min', '$199', 'dental-smile'], ['Emergency visit', 'Same day', 'Call', 'dental-team']],
-        cta: 'Request appointment', pill: ['i-calendar', 'New patient booked', 'Thu 9:30 AM · Dr. Patel'],
+        color: '#1f5eff', ink: '#ffffff', glow: 'rgba(31, 94, 255, 0.2)',
+        pill: ['i-calendar', 'New patient booked', 'Thu 9:30 AM · Dr. Patel'],
       },
     },
     {
@@ -438,11 +423,8 @@
       metricLabel: 'growth in online revenue',
       cta: 'Get an online store',
       app: {
-        brand: 'Petal & Stem', initials: 'PS', sub: 'Florist · same-day delivery',
-        color: '#3d5a40', ink: '#ffffff', soft: '#f1f5ee', glow: 'rgba(61, 90, 64, 0.22)', photo: 'florist-shop',
-        kicker: 'Order by 2 PM', banner: 'Fresh flowers, delivered today', btn: 'Shop now',
-        list: 'Best sellers', items: [['Spring bouquet', 'Same-day delivery', '$45', 'florist-bouquet'], ['Peony box', 'Best seller', '$65', 'florist-peony'], ['Flower club', 'Monthly plan', '$39', 'florist-bucket']],
-        cta: 'Shop the collection', pill: ['i-bag', 'Order shipped', 'Peony box · local delivery'],
+        color: '#3d5a40', ink: '#ffffff', glow: 'rgba(61, 90, 64, 0.22)',
+        pill: ['i-bag', 'Order on its way', 'Peony stems · local delivery'],
       },
     },
   ];
@@ -461,45 +443,178 @@
       </button>`
     ).join('');
 
-    const appScreen = (d) => {
-      const a = d.app;
-      return `
-        <div class="phone">
-          <div class="phone-body">
-            <div class="phone-screen app">
-              <div class="ph-status"><span>9:41</span><span class="ph-island"></span><span class="ph-sig"><i></i><i></i><i></i></span></div>
-              <div class="app-head">
-                <span class="app-logo">${a.initials}</span>
-                <span class="app-id"><strong>${a.brand}</strong><small>${a.sub}</small></span>
-                <span class="app-ico">${icon('i-bell')}</span>
-              </div>
-              <div class="app-banner">
-                ${photo(a.photo, 'app-banner-img', 1000, 667)}
-                <small>${a.kicker}</small>
-                <strong>${a.banner}</strong>
-                <span class="app-banner-btn">${a.btn}</span>
-              </div>
-              <div class="app-label"><span>${a.list}</span><span>See all</span></div>
-              <div class="app-list">
-                ${a.items
-                  .map(
-                    ([title, meta, price, img]) => `
-                  <div class="app-item">
-                    ${photo(img, 'app-thumb', 96, 96)}
-                    <span class="app-meta"><strong>${title}</strong><small>${meta}</small></span>
-                    <span class="app-price">${price}</span>
-                  </div>`
-                  )
-                  .join('')}
-              </div>
-              <div class="app-cta">${a.cta}</div>
-              <div class="app-tabbar">
-                <span class="is-on">${icon('i-home')}</span><span>${icon('i-calendar')}</span><span>${icon('i-bag')}</span><span>${icon('i-user')}</span>
-              </div>
-            </div>
+    // Each industry gets its own app, laid out the way that kind of business actually works
+    const statusBar = (cls = '') =>
+      `<div class="ph-status ${cls}"><span>9:41</span><span class="ph-island"></span><span class="ph-sig"><i></i><i></i><i></i></span></div>`;
+    const stars = (n) => `${icon('i-star')}${n}`;
+
+    const APP_SCREENS = {
+      // Food ordering: location, categories, a featured dish and a live cart
+      restaurants: () => `
+        ${statusBar()}
+        <div class="rest-top">
+          <span class="rest-loc"><small>Deliver to</small><b>${icon('i-pin')}Via Roma 21${icon('i-chev-d')}</b></span>
+          <span class="rest-cart">${icon('i-bag')}<i>2</i></span>
+        </div>
+        <p class="rest-hello"><small>Buonasera, Sara</small>What are you <em>craving</em> tonight?</p>
+        <div class="rest-chips"><span class="is-on">Pizza</span><span>Pasta</span><span>Antipasti</span><span>Dolci</span></div>
+        <div class="rest-feature">
+          <div class="rest-feature-media">${photo('napoli-pizza', '', 900, 900)}<span>Chef's pick</span></div>
+          <div class="rest-feature-info">
+            <span><b>Margherita DOP</b><small>Wood-fired · 12" · ${stars('4.9')}</small></span>
+            <span class="rest-add">$14<i>${icon('i-plus')}</i></span>
           </div>
-        </div>`;
+        </div>
+        <div class="rest-label"><b>Popular</b><small>See all</small></div>
+        <div class="rest-row">
+          ${[['pizza-diavola', 'Diavola', '$16'], ['pasta-pesto', 'Pesto Genovese', '$15'], ['tiramisu', 'Tiramisù', '$8']]
+            .map(([img, name, price]) => `<div class="rest-dish">${photo(img, '', 480, 480)}<b>${name}</b><small>${price}</small></div>`)
+            .join('')}
+        </div>
+        <div class="rest-bar"><i>2</i><span>View cart</span><b>$30.00</b></div>`,
+
+      // Booking flow: pick a barber, a service, a day and a time
+      barbershops: () => `
+        ${statusBar()}
+        <div class="barb-nav"><span class="barb-back">${icon('i-chev-l')}</span><b>Book appointment</b><small>Step 2/3</small></div>
+        <div class="barb-steps"><i class="is-on"></i><i class="is-on"></i><i></i></div>
+        <div class="barb-label"><b>Choose your barber</b></div>
+        <div class="barb-team">
+          ${[['barber-marco', 'Marco', '4.9', true], ['barber-leo', 'Leo', '4.8'], ['barber-andre', 'Andre', '4.9']]
+            .map(([img, name, rating, on]) => `<span class="${on ? 'is-on' : ''}"><span class="barb-face">${photo(img, '', 360, 360)}${on ? `<i>${icon('i-check')}</i>` : ''}</span><b>${name}</b><small>${stars(rating)}</small></span>`)
+            .join('')}
+          <span><span class="barb-face barb-any">${icon('i-users')}</span><b>Any</b><small>First free</small></span>
+        </div>
+        <div class="barb-service">${photo('barber-fade', '', 480, 480)}<span><b>Skin fade</b><small>45 min · $35</small></span><em>Change</em></div>
+        <div class="barb-label"><b>October</b><small>${icon('i-chev-l')}${icon('i-chev-r')}</small></div>
+        <div class="barb-days">
+          ${[['Mon', 12], ['Tue', 13], ['Wed', 14], ['Thu', 15], ['Fri', 16]]
+            .map(([day, n]) => `<span class="${n === 14 ? 'is-on' : ''}"><small>${day}</small><b>${n}</b></span>`)
+            .join('')}
+        </div>
+        <div class="barb-label"><b>Afternoon</b><small>4 free</small></div>
+        <div class="barb-times"><span>1:00</span><span class="is-off">2:15</span><span class="is-on">3:30</span><span>4:00</span><span class="is-off">4:45</span><span>5:30</span></div>
+        <div class="barb-label"><b>Evening</b><small>2 free</small></div>
+        <div class="barb-times"><span class="is-off">6:00</span><span>6:45</span><span>7:30</span></div>
+        <div class="barb-cta"><b>Confirm · Wed 3:30 PM</b><small>$10 deposit today · free cancellation up to 24h</small></div>`,
+
+      // Spa menu: full-bleed photo, treatment list, sticky booking bar
+      salons: () => `
+        <div class="spa-hero">${photo('salon-facial-hero', '', 1100, 917)}</div>
+        ${statusBar('ph-status--over')}
+        <div class="spa-actions"><span>${icon('i-chev-l')}</span><span>${icon('i-heart-o')}</span></div>
+        <div class="spa-sheet">
+          <div class="spa-head">
+            <span><strong>Glow Studio</strong><small>Skin · Nails · Massage · 0.8 km</small></span>
+            <span class="spa-rate">${stars('4.9')}</span>
+          </div>
+          <div class="spa-tabs"><span class="is-on">All</span><span>Face</span><span>Nails</span><span>Body</span></div>
+          <div class="spa-list">
+            ${[['salon-facial', 'Signature facial', '60 min · with Mia', '$85'], ['salon-nails', 'Gel manicure', '45 min · with Sofia', '$40', true], ['salon-massage', 'Hot stone massage', '90 min · with Ava', '$120']]
+              .map(([img, name, meta, price, on]) => `
+              <div class="spa-item${on ? ' is-on' : ''}">
+                ${photo(img, '', 480, 480)}
+                <span><b>${name}</b><small>${meta}</small><em>${price}</em></span>
+                <i>${icon(on ? 'i-check' : 'i-plus')}</i>
+              </div>`)
+              .join('')}
+          </div>
+        </div>
+        <div class="spa-bar"><span><small>1 treatment</small><b>$40</b></span><em>Choose a time${icon('i-arrow')}</em></div>`,
+
+      // Member app: weekly goal, today's classes, scan-to-check-in
+      fitness: () => `
+        ${statusBar()}
+        <div class="gym-top">
+          <span><small>Good morning</small><b>Hi, Alex</b></span>
+          <span class="gym-bell">${icon('i-bell')}<i></i></span>
+        </div>
+        <div class="gym-goal">
+          <span class="gym-ring">
+            <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16"/><circle class="on" cx="20" cy="20" r="16" pathLength="100" stroke-dasharray="75 100"/></svg>
+            <b>3/4</b>
+          </span>
+          <span class="gym-goal-txt">
+            <small>Weekly goal</small><b>3 of 4 workouts</b>
+            <span class="gym-stats"><span><b>1,840</b> kcal</span><span><b>3h 20m</b> active</span></span>
+          </span>
+        </div>
+        <div class="gym-label"><b>Today's classes</b><small>Schedule</small></div>
+        <div class="gym-feature">
+          ${photo('gym-hiit', '', 480, 480)}
+          <span class="gym-when">${icon('i-clock')}7:00 AM</span>
+          <div class="gym-feature-info"><span><b>HIIT Burn</b><small>45 min · Coach Dana · 4 spots left</small></span><em>Join</em></div>
+        </div>
+        <div class="gym-list">
+          <div class="gym-row">${photo('gym-yoga', '', 480, 480)}<span><b>Power yoga</b><small>12:30 PM · Studio 2</small></span><em class="is-off">Waitlist</em></div>
+          <div class="gym-row">${photo('gym-boxing', '', 480, 480)}<span><b>Boxing</b><small>6:00 PM · 8 spots</small></span><em>Book</em></div>
+          <div class="gym-row">${photo('gym-interior', '', 1000, 667)}<span><b>Open gym</b><small>Until 11 PM · 32 here now</small></span><em class="is-live"><i></i>Live</em></div>
+        </div>
+        <div class="gym-tabbar"><span class="is-on">${icon('i-home')}</span><span>${icon('i-calendar')}</span><span class="gym-scan">${icon('i-qr')}</span><span>${icon('i-trend')}</span><span>${icon('i-user')}</span></div>`,
+
+      // Patient app: confirmed visit with the dentist, availability, services
+      clinics: () => `
+        ${statusBar()}
+        <div class="dent-top">
+          <span><small>Good morning,</small><b>Emma Wilson</b></span>
+          <span class="dent-bell">${icon('i-bell')}<i></i></span>
+        </div>
+        <div class="dent-next">
+          <div class="dent-next-head"><small>Upcoming visit</small><span>${icon('i-check')}Confirmed</span></div>
+          <strong>Check-up &amp; clean</strong>
+          <div class="dent-doc">${photo('dentist-patel', '', 240, 240)}<span><b>Dr. James Patel</b><small>General dentist · Room 2</small></span></div>
+          <div class="dent-when"><span>${icon('i-calendar')}Thu, Oct 15</span><span>${icon('i-clock')}9:30 AM</span></div>
+        </div>
+        <div class="dent-form">
+          <span class="dent-form-ico">${icon('i-pen')}</span>
+          <span><b>Intake form</b><small>2 of 3 sections done</small><span class="dent-prog"><i></i></span></span>
+          <em>Finish</em>
+        </div>
+        <div class="dent-label"><b>Book a visit</b><small>October</small></div>
+        <div class="dent-week">
+          ${[['M', 12, 1], ['T', 13, 1], ['W', 14, 0], ['T', 15, 1], ['F', 16, 1], ['S', 17, 0], ['S', 18, 0]]
+            .map(([day, n, open]) => `<span class="${n === 16 ? 'is-on' : open ? 'is-open' : ''}"><small>${day}</small><b>${n}</b></span>`)
+            .join('')}
+        </div>
+        <div class="dent-label"><b>Services</b><small>See all</small></div>
+        <div class="dent-list">
+          <div class="dent-item">${photo('dental-smile', '', 480, 480)}<span><b>Teeth whitening</b><small>60 min · from $199</small></span><em>Book</em></div>
+          <div class="dent-item">${photo('dental-checkup', '', 480, 480)}<span><b>Hygiene clean</b><small>30 min · insurance accepted</small></span><em>Book</em></div>
+        </div>
+        <div class="dent-tabbar"><span class="is-on">${icon('i-home')}</span><span>${icon('i-calendar')}</span><span>${icon('i-chat')}</span><span>${icon('i-user')}</span></div>`,
+
+      // Online store: search, delivery promo, product grid
+      retail: () => `
+        ${statusBar()}
+        <div class="shop-top">
+          <span class="shop-btn">${icon('i-menu')}</span>
+          <strong>Petal <em>&amp;</em> Stem</strong>
+          <span class="shop-btn">${icon('i-bag')}<i>1</i></span>
+        </div>
+        <div class="shop-search">${icon('i-search')}<span>Search bouquets, plants…</span><i>${icon('i-sliders')}</i></div>
+        <div class="shop-promo">
+          <span class="shop-promo-txt"><small>Same-day delivery</small><strong>Fresh flowers, <em>at your door today</em></strong><span>Order by 2 PM</span></span>
+          ${photo('florist-shop', '', 1000, 667)}
+        </div>
+        <div class="shop-chips"><span class="is-on">All</span><span>Bouquets</span><span>Plants</span><span>Dried</span></div>
+        <div class="shop-grid">
+          ${[['florist-peony', 'Peony stems', '$65', true], ['florist-tulips', 'Pink tulips', '$38'], ['florist-dried', 'Dried posy', '$42'], ['florist-bouquet', 'Spring bouquet', '$45']]
+            .map(([img, name, price, saved]) => `
+            <div class="shop-item">
+              <span class="shop-media">${photo(img, '', 480, 480)}<i class="${saved ? 'is-on' : ''}">${icon('i-heart-o')}</i></span>
+              <b>${name}</b><small>${price}</small>
+            </div>`)
+            .join('')}
+        </div>
+        <div class="shop-tabbar"><span class="is-on">${icon('i-home')}Shop</span><span>${icon('i-search')}Search</span><span>${icon('i-heart-o')}Saved</span><span>${icon('i-user')}Account</span></div>`,
     };
+
+    const appScreen = (d) => `
+      <div class="phone">
+        <div class="phone-body">
+          <div class="phone-screen ap ap--${d.id}">${APP_SCREENS[d.id]()}</div>
+        </div>
+      </div>`;
 
     const render = (d) => {
       const a = d.app;
@@ -517,7 +632,7 @@
             <a href="#contact" class="btn btn-dark btn-sm">${d.cta}<span class="btn-icon">${icon('i-arrow')}</span></a>
           </div>
         </div>
-        <div class="ind-visual" style="--b:${a.color};--bt:${a.ink};--bs:${a.soft};--glow:${a.glow};" aria-hidden="true">
+        <div class="ind-visual" style="--b:${a.color};--bt:${a.ink};--glow:${a.glow};" aria-hidden="true">
           ${appScreen(d)}
           <div class="float-pill">
             <span class="fp-ico">${icon(a.pill[0])}</span>
