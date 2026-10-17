@@ -31,7 +31,7 @@ Any static host works:
 
 ## Sections
 
-Sticky glass nav · hero with animated fluted-glass stripes and a rotating industry word · scroll-tilt product showcase · client marquee · intro statement that lights up on scroll · services (dark bento) · interactive industries tabs, each with its own app design (food ordering, barber booking, spa menu, gym member app, patient app, florist store) · case studies · process timeline · stats & testimonials · pricing · FAQ accordion · big CTA whose giant word keeps sliding through "booked. / online. / packed. / digital." · contact form · footer.
+Sticky glass nav · hero with animated fluted-glass stripes and a rotating industry word · scroll-tilt product showcase · "built for" industry marquee · intro statement that lights up on scroll · services (dark bento) · interactive industries tabs, each with its own app design (food ordering, barber booking, spa menu, gym member app, patient app, florist store) · six concept example designs · process timeline · "Why Mavan" promises · pricing · FAQ accordion · big CTA whose giant word keeps sliding through "booked. / online. / packed. / digital." · contact form · footer.
 
 The website and app examples are built as real HTML/CSS layouts filled with **real photography** (food, barbershop, salon, gym, dental and florist photos) stored in `assets/img/photos/`. Photos are from Unsplash (free for commercial use under the Unsplash License); photographers are credited in `assets/img/photos/CREDITS.md`. Swap in photos of your real clients' work whenever you have them; just keep the same file names.
 
@@ -48,7 +48,7 @@ The content is written to be realistic, but it is **sample content**. Swap it fo
 | Contact email (`hello@mavan.studio`) | `index.html`: search for `mavan.studio` (form `data-email` and the mailto link) |
 | Form delivery | `index.html`: `data-endpoint=""` on `#contact-form`. Paste a [Formspree](https://formspree.io) (or similar) endpoint to receive messages directly. Left empty, the form opens the visitor's email app with the message pre-filled. |
 | Prices ($990 / $2,490 / from $5,900, care plans from $49/mo) | `index.html`: Pricing section |
-| Case studies, client logos, testimonials, ratings & stats (Bella Napoli, Fade Factory, Glow Studio, Iron Temple, "120+ launched", "4.9/5"…) | `index.html`: these are illustrative examples; replace them with real clients and numbers |
+| Example designs (Bella Napoli, Fade Factory, Glow Studio, Iron Temple, SmileCare, Petal & Stem) | `index.html` → Example designs. These are clearly labelled **concepts**, not clients. When you launch real projects, swap a concept for the real one (with the client's permission) and you can add genuine results and testimonials then. The site deliberately shows no reviews, ratings or client logos until they are real. |
 | Industry copy & app previews | `assets/js/main.js` → `INDUSTRIES` (copy) and `APP_SCREENS` (one app layout per industry) |
 | Social links | `index.html` footer (`href="#"`) |
 | Share image URL | `index.html` `og:image`: use the full absolute URL once you have a domain |
