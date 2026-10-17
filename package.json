@@ -1,0 +1,9 @@
+{
+  "name": "mavan-website",
+  "private": true,
+  "description": "Mavan agency website: static pages plus one serverless contact endpoint (api/contact.js).",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  }
+}

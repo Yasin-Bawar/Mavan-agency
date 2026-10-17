@@ -2,7 +2,7 @@
 
 A premium, white-themed, Framer-style website for **Mavan**, a studio that builds websites, booking systems, online ordering and mobile apps for local businesses (restaurants, barbershops, salons, gyms, clinics, retail).
 
-Plain HTML, CSS and JavaScript with no build step and no dependencies.
+Live at **https://mavan.app**. Plain HTML, CSS and JavaScript with no build step and no dependencies, plus one serverless function that emails contact-form enquiries through [Resend](https://resend.com).
 
 ```
 index.html              → all page content
@@ -10,24 +10,34 @@ assets/css/styles.css   → design system, layout, device mockups
 assets/js/main.js       → animations, industries tabs, FAQ, contact form
 assets/img/             → favicon + social share image
 assets/img/photos/      → real photos used in the website & app examples
+api/contact.js          → contact form endpoint (Vercel function → Resend)
 ```
 
 ## Run locally
 
-Open `index.html` in a browser, or serve the folder:
-
 ```bash
+npx vercel dev      # full site including the contact form (needs RESEND_API_KEY, see below)
+# or, pages only (the form will show its "couldn't send" fallback):
 npx serve .
-# or
-python3 -m http.server 8000
 ```
 
-## Deploy
+## Deploy (Vercel)
 
-Any static host works:
+The contact form needs a server-side function so the Resend API key is never exposed in the browser, so host on **Vercel** (free plan is fine). GitHub Pages can't run the function.
 
-- **GitHub Pages:** Settings → Pages → Deploy from branch → `main` / root.
-- **Netlify / Vercel / Cloudflare Pages:** import the repo; no build command, publish directory `/`.
+1. **Import the repo** at [vercel.com/new](https://vercel.com/new). Framework preset: *Other*. No build command, no output directory.
+2. **Add environment variables** (Project → Settings → Environment Variables), then redeploy:
+
+   | Name | Value |
+   | --- | --- |
+   | `RESEND_API_KEY` | A Resend API key with *Sending access* ([resend.com/api-keys](https://resend.com/api-keys)) |
+   | `CONTACT_TO` | *(optional)* where enquiries arrive. Default `hello@mavan.app` |
+   | `CONTACT_FROM` | *(optional)* sender. Default `Mavan Website <website@mavan.app>` |
+
+3. **Connect the domain:** Project → Settings → Domains → add `mavan.app` (and `www.mavan.app`), then set the DNS records Vercel shows at your registrar.
+4. **Resend:** the `mavan.app` domain must be verified in Resend (Domains) so it can send from `@mavan.app`.
+
+**How the form works:** the browser posts JSON to `/api/contact`. The function checks every field, drops spam (a hidden honeypot field and a minimum time on the page), refuses posts from other websites, and sends one email to `CONTACT_TO` with **Reply-To set to the visitor**, so you can answer by just hitting reply. If sending fails, visitors see a friendly error with a clickable `hello@mavan.app` link and keep what they typed.
 
 ## Sections
 
@@ -45,13 +55,13 @@ The content is written to be realistic, but it is **sample content**. Swap it fo
 
 | What | Where |
 | --- | --- |
-| Contact email (`hello@mavan.studio`) | `index.html`: search for `mavan.studio` (form `data-email` and the mailto link) |
-| Form delivery | `index.html`: `data-endpoint=""` on `#contact-form`. Paste a [Formspree](https://formspree.io) (or similar) endpoint to receive messages directly. Left empty, the form opens the visitor's email app with the message pre-filled. |
-| Prices ($990 / $2,490 / from $5,900, care plans from $49/mo) | `index.html`: Pricing section |
+| Contact email (`hello@mavan.app`) | `index.html`: search for `hello@mavan.app` (shown address, mailto link and form fallback). Where form emails go is set by `CONTACT_TO` on Vercel. |
+| Form delivery | Handled by `api/contact.js` + Resend (see *Deploy*). `data-endpoint="/api/contact"` on `#contact-form`; clear it to make the form open the visitor's email app instead. |
+| Prices ($250 Starter / $500 Growth / $1,000+ Custom App, care plans from $49/mo) | `index.html`: Pricing section, the "from $…" line under each example design, and the Budget chips in the contact form |
 | Example designs (Bella Napoli, Fade Factory, Glow Studio, Iron Temple, SmileCare, Petal & Stem) | `index.html` → Example designs. These are clearly labelled **concepts**, not clients. When you launch real projects, swap a concept for the real one (with the client's permission) and you can add genuine results and testimonials then. The site deliberately shows no reviews, ratings or client logos until they are real. |
 | Industry copy & app previews | `assets/js/main.js` → `INDUSTRIES` (copy) and `APP_SCREENS` (one app layout per industry) |
 | Social links | `index.html` footer (`href="#"`) |
-| Share image URL | `index.html` `og:image`: use the full absolute URL once you have a domain |
+| Domain | `https://mavan.app` is set in `index.html` (canonical link, `og:url`, `og:image`, `twitter:image`) |
 
 The "Booking projects for …" badge always shows next month automatically.
 

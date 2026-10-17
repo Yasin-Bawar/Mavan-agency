@@ -1593,8 +1593,7 @@ html.js .svc:not(.is-in) .cal-grid i.on { transform: scale(0.6); opacity: 0; }
   display: flex; align-items: baseline; gap: 8px; margin-top: 26px;
   font-family: var(--font-display); font-size: clamp(44px, 4.4vw, 58px); font-weight: 500; line-height: 1; letter-spacing: -0.05em;
 }
-.plan-price small, .plan-from { font-family: var(--font-body); font-size: 14px; font-weight: 400; letter-spacing: 0; color: var(--muted); }
-.plan-from { order: -1; }
+.plan-price small { font-family: var(--font-body); font-size: 14px; font-weight: 400; letter-spacing: 0; color: var(--muted); }
 .plan-desc { margin-top: 14px; font-size: 15px; color: var(--muted); min-height: 3.2em; }
 .plan .btn { margin-top: 26px; }
 .plan-features { display: grid; gap: 13px; margin-top: 28px; padding-top: 26px; border-top: 1px solid var(--line); font-size: 15px; }
@@ -1745,6 +1744,7 @@ html.js .svc:not(.is-in) .cal-grid i.on { transform: scale(0.6); opacity: 0; }
   background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-l);
 }
 .contact-form { display: grid; gap: 20px; }
+.contact-form .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .contact-form[hidden] { display: none; }
 .chips { border: 0; margin: 0; padding: 0; min-width: 0; }
 .chips legend, .field label { display: block; padding: 0; margin-bottom: 10px; font-size: 14px; font-weight: 500; }

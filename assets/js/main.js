@@ -719,7 +719,7 @@
 
   /* ------------------------------------------------------------------
      Contact form
-     - With data-endpoint set (e.g. a Formspree URL) it POSTs JSON.
+     - With data-endpoint set (/api/contact) it POSTs JSON, which api/contact.js emails via Resend.
      - Otherwise it opens the visitor's email app with everything filled in.
      ------------------------------------------------------------------ */
   const form = $('#contact-form');
@@ -730,6 +730,9 @@
     const note = $('[data-form-note]', form);
     const noteDefault = note.textContent;
     const submitBtn = $('button[type="submit"]', form);
+    const submitLabel = submitBtn.firstChild;
+    const submitText = submitLabel.textContent;
+    const openedAt = performance.now();
 
     const rules = {
       name: [(v) => v.trim().length >= 2, 'Please tell us your name.'],
@@ -783,6 +786,15 @@
       success.focus();
     };
 
+    // Error note with a working email link, so a failed send never loses the lead
+    const showSendError = (email, message) => {
+      const link = document.createElement('a');
+      link.href = `mailto:${email}`;
+      link.textContent = email;
+      note.replaceChildren(`${message} Please try again, or email us at `, link, '.');
+      note.classList.add('is-error');
+    };
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       note.textContent = noteDefault;
@@ -795,7 +807,7 @@
         email: data.get('email').trim(),
         business: (data.get('business') || '').trim(),
         type: data.get('type') || '',
-        services: data.getAll('services').join(', '),
+        services: data.getAll('services'),
         budget: data.get('budget') || '',
         message: (data.get('message') || '').trim(),
       };
@@ -803,15 +815,23 @@
       const email = form.dataset.email;
 
       submitBtn.disabled = true;
+      if (endpoint) submitLabel.textContent = 'Sending…';
       try {
         if (endpoint) {
           const res = await fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-            body: JSON.stringify(payload),
+            body: JSON.stringify({ ...payload, website: data.get('website') || '', elapsed: Math.round(performance.now() - openedAt) }),
           });
-          if (!res.ok) throw new Error(`Request failed with ${res.status}`);
-          showSuccess("We'll get back to you within 24 hours with ideas and next steps.");
+          const result = await res.json().catch(() => ({}));
+          if (res.ok && result.ok) {
+            showSuccess("We'll get back to you within 24 hours with ideas and next steps.");
+          } else if (res.status === 400 && result.field && form.elements[result.field]) {
+            setError(form.elements[result.field], result.error);
+            form.elements[result.field].focus();
+          } else {
+            showSendError(email, result.error || 'Something went wrong sending your message.');
+          }
         } else {
           const subject = `New project enquiry: ${payload.business || payload.name}`;
           const body = [
@@ -819,7 +839,7 @@
             `Email: ${payload.email}`,
             `Business: ${payload.business || '-'}`,
             `Business type: ${payload.type || '-'}`,
-            `Looking for: ${payload.services || '-'}`,
+            `Looking for: ${payload.services.join(', ') || '-'}`,
             `Budget: ${payload.budget || '-'}`,
             '',
             payload.message || '',
@@ -828,10 +848,10 @@
           showSuccess(`Your email app should open with your message ready to send. If it didn't, email us at ${email}.`);
         }
       } catch (err) {
-        note.textContent = `Something went wrong sending your message. Please email us at ${email}.`;
-        note.classList.add('is-error');
+        showSendError(email, 'Something went wrong sending your message.');
       } finally {
         submitBtn.disabled = false;
+        submitLabel.textContent = submitText;
       }
     });
 
