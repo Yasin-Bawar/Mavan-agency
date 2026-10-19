@@ -10,32 +10,37 @@ assets/css/styles.css   → design system, layout, device mockups
 assets/js/main.js       → animations, industries tabs, FAQ, contact form
 assets/img/             → favicon + social share image
 assets/img/photos/      → real photos used in the website & app examples
-api/contact.js          → contact form endpoint (Vercel function → Resend)
+lib/contact.js          → contact form logic (validates, then emails via Resend)
+netlify/functions/      → contact form endpoint on Netlify (POST /api/contact)
+api/contact.js          → same endpoint for Vercel, if you ever move hosts
+netlify.toml            → Netlify build: publishes only index.html + assets/
 ```
 
 ## Run locally
 
 ```bash
-npx vercel dev      # full site including the contact form (needs RESEND_API_KEY, see below)
+npx netlify dev     # full site including the contact form (reads RESEND_API_KEY from Netlify or a local .env)
 # or, pages only (the form will show its "couldn't send" fallback):
 npx serve .
 ```
 
-## Deploy (Vercel)
+## Deploy (Netlify)
 
-The contact form needs a server-side function so the Resend API key is never exposed in the browser, so host on **Vercel** (free plan is fine). GitHub Pages can't run the function.
+The site is hosted on **Netlify**. `netlify.toml` already tells Netlify what to publish and where the contact function lives, so there are no build settings to type in.
 
-1. **Import the repo** at [vercel.com/new](https://vercel.com/new). Framework preset: *Other*. No build command, no output directory.
-2. **Add environment variables** (Project → Settings → Environment Variables), then redeploy:
+1. **Connect the repo** (Site configuration → Build & deploy → Link repository) so Netlify deploys on every push. A drag-and-drop deploy can't run the contact function.
+2. **Add environment variables** (Site configuration → Environment variables → Add a variable), then redeploy (Deploys → Trigger deploy):
 
-   | Name | Value |
+   | Key | Value |
    | --- | --- |
-   | `RESEND_API_KEY` | A Resend API key with *Sending access* ([resend.com/api-keys](https://resend.com/api-keys)) |
+   | `RESEND_API_KEY` | A Resend API key with *Sending access* ([resend.com/api-keys](https://resend.com/api-keys)). Scope: at least *Functions*. |
    | `CONTACT_TO` | *(optional)* where enquiries arrive. Default `hello@mavan.app` |
    | `CONTACT_FROM` | *(optional)* sender. Default `Mavan Website <website@mavan.app>` |
 
-3. **Connect the domain:** Project → Settings → Domains → add `mavan.app` (and `www.mavan.app`), then set the DNS records Vercel shows at your registrar.
+3. **Domain:** Domain management → add `mavan.app`, then set the DNS records Netlify shows.
 4. **Resend:** the `mavan.app` domain must be verified in Resend (Domains) so it can send from `@mavan.app`.
+
+*Vercel also works:* import the repo and add the same variables; `api/contact.js` serves the same endpoint.
 
 **How the form works:** the browser posts JSON to `/api/contact`. The function checks every field, drops spam (a hidden honeypot field and a minimum time on the page), refuses posts from other websites, and sends one email to `CONTACT_TO` with **Reply-To set to the visitor**, so you can answer by just hitting reply. If sending fails, visitors see a friendly error with a clickable `hello@mavan.app` link and keep what they typed.
 
@@ -55,7 +60,7 @@ The content is written to be realistic, but it is **sample content**. Swap it fo
 
 | What | Where |
 | --- | --- |
-| Contact email (`hello@mavan.app`) | `index.html`: search for `hello@mavan.app` (shown address, mailto link and form fallback). Where form emails go is set by `CONTACT_TO` on Vercel. |
+| Contact email (`hello@mavan.app`) | `index.html`: search for `hello@mavan.app` (shown address, mailto link and form fallback). Where form emails go is set by `CONTACT_TO` on Netlify. |
 | Form delivery | Handled by `api/contact.js` + Resend (see *Deploy*). `data-endpoint="/api/contact"` on `#contact-form`; clear it to make the form open the visitor's email app instead. |
 | Prices ($250 Starter / $500 Growth / $1,000+ Custom App, care plans from $49/mo) | `index.html`: Pricing section, the "from $…" line under each example design, and the Budget chips in the contact form |
 | Example designs (Bella Napoli, Fade Factory, Glow Studio, Iron Temple, SmileCare, Petal & Stem) | `index.html` → Example designs. These are clearly labelled **concepts**, not clients. When you launch real projects, swap a concept for the real one (with the client's permission) and you can add genuine results and testimonials then. The site deliberately shows no reviews, ratings or client logos until they are real. |
