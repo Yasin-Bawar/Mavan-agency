@@ -2,6 +2,5 @@ node_modules/
 dist/
 .netlify/
 
-# Outreach prospect data and rendered proposals stay local (this repo is public)
-outreach/prospects.json
-outreach/out/
+# Email outreach work stays local, not on GitHub
+outreach/
