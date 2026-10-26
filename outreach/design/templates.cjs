@@ -47,6 +47,12 @@ const seeded = (seed) => {
   return () => ((h = Math.imul(h ^ (h >>> 15), 2246822507) ^ Math.imul(h ^ (h >>> 13), 3266489909)) >>> 0) / 4294967296;
 };
 
+// Dates in the app screens: the coming Friday, and a catering party two weeks after it
+const DAY = 864e5;
+const friday = new Date(Date.now() + (((5 - new Date().getDay() + 7) % 7) || 7) * DAY);
+const FRIDAY_LABEL = friday.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+const PARTY_LABEL = new Date(friday.getTime() + 15 * DAY).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
 const FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@600&display=swap" rel="stylesheet">`;
 
 const icon = {
@@ -122,7 +128,7 @@ h1{margin-top:-6px;font-size:50px;line-height:1.0;letter-spacing:-.01em}
 .tbl .meta span{display:flex;align-items:center;gap:5px}
 `)}
 <nav>
-  <span class="logo serif"><i>${icon.star(p.gold)}</i>${esc(d.name)}</span>
+  <span class="logo serif"><i>${icon.star(p.gold)}</i>${esc(d.brand || d.name)}</span>
   <span class="links"><span>Menu</span><span>Catering</span><span>Visit us</span><span class="btn btn-gold">Book a table</span></span>
 </nav>
 <div class="copy">
@@ -174,7 +180,7 @@ function phoneToday(d, r) {
   const n = { b: 8 + Math.floor(r() * 9), p: 12 + Math.floor(r() * 12), c: 1 + Math.floor(r() * 3) };
   return `<div class="scr"><div class="island"></div><div class="sb"><span>6:12</span><span class="ic"><i></i><i></i></span></div>
   <div class="pad">
-    <div class="hd"><div><small>Friday, October 16</small><h2>Good evening</h2></div><div style="display:flex;gap:8px"><span class="roundbtn">${icon.bell}</span><span class="av">${esc(d.initials)}</span></div></div>
+    <div class="hd"><div><small>${FRIDAY_LABEL}</small><h2>Good evening</h2></div><div style="display:flex;gap:8px"><span class="roundbtn">${icon.bell}</span><span class="av">${esc(d.initials)}</span></div></div>
     <div style="margin-top:12px;padding:13px 14px 12px;border-radius:16px;background:var(--bg);color:var(--cream);position:relative;overflow:hidden">
       <div style="display:flex;justify-content:space-between;font-size:10.5px;color:rgba(251,243,228,.7)"><span>Tonight's sales</span><span style="padding:2px 7px;border-radius:99px;background:rgba(251,243,228,.12);color:var(--cream);font-weight:600">+${pct}%</span></div>
       <div class="serif" style="font-size:30px;margin-top:2px">$${sales.toLocaleString('en-US')}</div>
@@ -271,7 +277,7 @@ function overview(d) {
   <div class="ph" style="left:712px;top:40px;transform:scale(1.02)"><div class="phone" style="position:relative">${phoneOrders(e)}</div></div>
   <div style="position:absolute;left:744px;top:520px;width:250px;display:flex;gap:10px;align-items:center;padding:11px 12px;border-radius:14px;background:#FBF6EE;color:#2A1E22;box-shadow:0 20px 40px -12px rgba(0,0,0,.55)">
     <span style="flex-shrink:0;width:34px;height:34px;border-radius:9px;background:var(--bg);display:grid;place-items:center"><span style="width:18px;height:18px;display:block">${icon.star(p.gold)}</span></span>
-    <span style="min-width:0"><small style="display:flex;justify-content:space-between;font-size:9px;color:#8B7D76"><span>${esc(d.name)}</span><span>now</span></small><b style="display:block;font-size:11.5px">New catering request</b><small style="display:block;font-size:9.5px;color:#5C4A44">Engagement party, 120 guests on Oct 24</small></span>
+    <span style="min-width:0"><small style="display:flex;justify-content:space-between;font-size:9px;color:#8B7D76"><span>${esc(d.brand || d.name)}</span><span>now</span></small><b style="display:block;font-size:11.5px">New catering request</b><small style="display:block;font-size:9.5px;color:#5C4A44">Engagement party, 120 guests on ${PARTY_LABEL}</small></span>
   </div></body></html>`;
 }
 
