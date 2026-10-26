@@ -5,15 +5,17 @@ A premium, white-themed, Framer-style website for **Mavan**, a studio that build
 Live at **https://mavan.app**. Plain HTML, CSS and JavaScript with no build step and no dependencies, plus one serverless function that emails contact-form enquiries through [Resend](https://resend.com).
 
 ```
-index.html              → all page content
+index.html              → all page content (English)
+afg/index.html          → the same site in Dari, right-to-left (mavan.app/afg/)
 assets/css/styles.css   → design system, layout, device mockups
+assets/css/afg.css      → Dari page only: Vazirmatn font, RTL mirroring, Dastarkhan mockup
 assets/js/main.js       → animations, industries tabs, FAQ, contact form
 assets/img/             → favicon + social share image
 assets/img/photos/      → real photos used in the website & app examples
 lib/contact.js          → contact form logic (validates, then emails via Resend)
 netlify/functions/      → contact form endpoint on Netlify (POST /api/contact)
 api/contact.js          → same endpoint for Vercel, if you ever move hosts
-netlify.toml            → Netlify build: publishes only index.html + assets/
+netlify.toml            → Netlify build: publishes only index.html, afg/ and assets/
 ```
 
 ## Run locally
@@ -50,6 +52,16 @@ Sticky glass nav · hero with animated fluted-glass stripes and a rotating indus
 
 The website and app examples are built as real HTML/CSS layouts filled with **real photography** (food, barbershop, salon, gym, dental and florist photos) stored in `assets/img/photos/`. Photos are from Unsplash (free for commercial use under the Unsplash License); photographers are credited in `assets/img/photos/CREDITS.md`. Swap in photos of your real clients' work whenever you have them; just keep the same file names.
 
+## Dari page (`/afg/`)
+
+`afg/index.html` is the full website rebuilt in **Dari** for Afghan businesses: right-to-left layout, the Vazirmatn font, Persian digits and Afghan wording (کاروبار، دوکان، تیلفون، مشوره). It is the link to send Afghan prospects: **https://mavan.app/afg/**.
+
+- The hero shows its own concept, *Dastarkhan* (دسترخوان), an Afghan restaurant website and ordering app written in Dari. The example designs and industry apps below it stay in English on purpose, so prospects see we build in both languages.
+- It shares `styles.css` and `main.js` with the English page; `afg.css` only adds the font and mirrors left/right. `main.js` switches to Dari automatically when `<html lang="fa-…">` (industry copy in `INDUSTRIES_FA`, form messages, Persian month names and digits).
+- The contact form posts to the same `/api/contact`. Enquiries from this page are marked **Page: Dari page (/afg)** in the email, so you know to reply in Dari.
+- The English page links to it from the nav («دری») and the footer; the Dari page links back with "English".
+- Change prices or the email in **both** `index.html` and `afg/index.html`.
+
 ## Brand
 
 **Mavan** uses a lowercase wordmark (`mavan`, Inter Tight 600) next to an app-icon mark: a geometric "m" with the orange notification badge, the "new booking" moment the studio sells. The mark is inline SVG in `index.html` (dark version in the nav, light version in the footer) and in `assets/img/favicon.svg`. The giant footer wordmark repeats the orange badge.
@@ -60,13 +72,13 @@ The content is written to be realistic, but it is **sample content**. Swap it fo
 
 | What | Where |
 | --- | --- |
-| Contact email (`hello@mavan.app`) | `index.html`: search for `hello@mavan.app` (shown address, mailto link and form fallback). Where form emails go is set by `CONTACT_TO` on Netlify. |
+| Contact email (`hello@mavan.app`) | `index.html` and `afg/index.html`: search for `hello@mavan.app` (shown address, mailto link and form fallback). Where form emails go is set by `CONTACT_TO` on Netlify. |
 | Form delivery | Handled by `api/contact.js` + Resend (see *Deploy*). `data-endpoint="/api/contact"` on `#contact-form`; clear it to make the form open the visitor's email app instead. |
-| Prices ($250 Starter / $500 Growth / $1,000+ Custom App, care plans from $49/mo) | `index.html`: Pricing section, the "from $…" line under each example design, and the Budget chips in the contact form |
+| Prices ($250 Starter / $500 Growth / $1,000+ Custom App, care plans from $49/mo) | `index.html` and `afg/index.html`: Pricing section, the "from $…" line under each example design, and the Budget chips in the contact form |
 | Example designs (Bella Napoli, Fade Factory, Glow Studio, Iron Temple, SmileCare, Petal & Stem) | `index.html` → Example designs. These are clearly labelled **concepts**, not clients. When you launch real projects, swap a concept for the real one (with the client's permission) and you can add genuine results and testimonials then. The site deliberately shows no reviews, ratings or client logos until they are real. |
-| Industry copy & app previews | `assets/js/main.js` → `INDUSTRIES` (copy) and `APP_SCREENS` (one app layout per industry) |
+| Industry copy & app previews | `assets/js/main.js` → `INDUSTRIES` (copy), `INDUSTRIES_FA` (Dari copy) and `APP_SCREENS` (one app layout per industry) |
 | Social links | `index.html` footer (`href="#"`) |
-| Domain | `https://mavan.app` is set in `index.html` (canonical link, `og:url`, `og:image`, `twitter:image`) |
+| Domain | `https://mavan.app` is set in `index.html` and `afg/index.html` (canonical and language links, `og:url`, `og:image`, `twitter:image`) |
 
 The "Booking projects for …" badge always shows next month automatically.
 

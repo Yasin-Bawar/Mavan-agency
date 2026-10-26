@@ -6,9 +6,15 @@
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
   const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // The Dari page (/afg/) sets <html lang="fa-AF" dir="rtl" data-base="../">
+  const root = document.documentElement;
+  const isFa = root.lang.startsWith('fa');
+  const isRtl = root.dir === 'rtl';
+  const locale = isFa ? 'fa-AF' : 'en-US';
+  const base = root.dataset.base || '';
   const icon = (id) => `<svg class="i" aria-hidden="true"><use href="#${id}"/></svg>`;
   const photo = (name, cls, w, h) =>
-    `<img class="${cls}" src="assets/img/photos/${name}.jpg" alt="" width="${w}" height="${h}" loading="lazy" decoding="async">`;
+    `<img class="${cls}" src="${base}assets/img/photos/${name}.jpg" alt="" width="${w}" height="${h}" loading="lazy" decoding="async">`;
 
   /* ------------------------------------------------------------------
      Scroll loop — every scroll-driven effect registers here
@@ -78,8 +84,8 @@
      ------------------------------------------------------------------ */
   const now = new Date();
   const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-  $$('[data-next-month]').forEach((el) => (el.textContent = nextMonth.toLocaleString('en-US', { month: 'long' })));
-  $$('[data-year]').forEach((el) => (el.textContent = String(now.getFullYear())));
+  $$('[data-next-month]').forEach((el) => (el.textContent = nextMonth.toLocaleString(locale, { month: 'long', calendar: 'gregory' })));
+  $$('[data-year]').forEach((el) => (el.textContent = now.getFullYear().toLocaleString(locale, { useGrouping: false })));
 
   /* ------------------------------------------------------------------
      Hero: orange "curtain" stripes
@@ -249,7 +255,9 @@
   if (slot && !reduceMotion) {
     const endings = $$('.big-word', slot);
     endings.forEach((w) => {
-      w.innerHTML = [...w.textContent].map((ch, k) => `<span style="--k:${k}">${ch}</span>`).join('');
+      // Dari letters join up, so the word slides as one piece instead of letter by letter
+      const parts = isFa ? [w.textContent] : [...w.textContent];
+      w.innerHTML = parts.map((ch, k) => `<span style="--k:${k}">${ch}</span>`).join('');
     });
     slot.classList.add('is-ready');
     let index = 0;
@@ -289,7 +297,7 @@
      ------------------------------------------------------------------ */
   const counters = $$('[data-count]');
   const formatCount = (value, decimals) =>
-    value.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+    value.toLocaleString(locale, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
   const runCounter = (el) => {
     const target = parseFloat(el.dataset.count);
     const decimals = Number(el.dataset.decimals || 0);
@@ -442,6 +450,77 @@
       },
     },
   ];
+
+  // Dari copy for the industry tabs on /afg/ (the app mockups stay as designed)
+  const INDUSTRIES_FA = {
+    restaurants: {
+      name: 'رستورانت و کافه',
+      short: 'رستورانت',
+      count: 'سفارش، رزرو، منوی QR',
+      headline: 'سفارش بیشتر، میزهای پُر، <em>بدون کمیشن.</em>',
+      desc: 'وب‌سایتی اشتهاآور با سفارش آنلاین و رزرو میز، تا مشتریان مستقیم از خودتان سفارش بدهند، نه از اپ‌های واسطه.',
+      features: ['سفارش آنلاین برای بردن', 'رزرو میز', 'منوی QR', 'نظرات و نقشهٔ گوگل'],
+      metric: '۰٪',
+      metricLabel: 'کمیشن از سفارش‌های سایت خودتان',
+      cta: 'وب‌سایت رستورانت می‌خواهم',
+    },
+    barbershops: {
+      name: 'سلمانی',
+      short: 'سلمانی',
+      count: 'رزرو، پیش‌پرداخت، یادآوری',
+      headline: 'چوکی‌ای که <em>هیچ‌وقت خالی نمی‌ماند.</em>',
+      desc: 'مشتریان شبانه‌روز سلمان، خدمت و وقت دلخواه خود را انتخاب می‌کنند. پیش‌پرداخت و یادآوری خودکار یعنی نیامدن کمتر و کار بیشتر در هر روز.',
+      features: ['رزرو آنلاین شبانه‌روزی', 'پروفایل و تقویم هر سلمان', 'پیش‌پرداخت برای جلوگیری از نیامدن', 'یادآوری با پیامک'],
+      metric: '۲۴/۷',
+      metricLabel: 'رزرو، حتی بعد از بسته شدن دوکان',
+      cta: 'اپ سلمانی می‌خواهم',
+    },
+    salons: {
+      name: 'آرایشگاه و سپا',
+      short: 'آرایشگاه',
+      count: 'خدمات، کارت تحفه، رزرو دوباره',
+      headline: 'آرامش برای مشتری، <em>آسانی برای شما.</em>',
+      desc: 'وب‌سایتی شیک با فهرست کامل خدمات، کارت تحفه و بسته‌ها، و سیستم رزروی که سلیقهٔ هر مشتری را به یاد دارد.',
+      features: ['فهرست خدمات و افزودنی‌ها', 'کارت تحفه و بسته‌ها', 'یادداشت و سابقهٔ مشتری', 'رزرو دوبارهٔ خودکار'],
+      metric: '۱ دقیقه',
+      metricLabel: 'تا مشتری آنلاین وقت بگیرد',
+      cta: 'وب‌سایت آرایشگاه می‌خواهم',
+    },
+    fitness: {
+      name: 'جم و کلپ ورزشی',
+      short: 'جم',
+      count: 'کلاس‌ها، عضویت، اپ اعضا',
+      headline: 'کلاس‌ها پُر، <em>اعضا همیشگی.</em>',
+      desc: 'تقسیم اوقات کلاس‌ها، عضویت و پرداخت در یک اپ با نام خودتان؛ اعضا بدون زنگ زدن به پذیرش، رزرو، ورود و تمدید می‌کنند.',
+      features: ['تقسیم اوقات و لیست انتظار', 'عضویت و کارت ورود', 'اپ اعضا با نام شما', 'ورود دیجیتال'],
+      metric: '۱ اپ',
+      metricLabel: 'برای کلاس، عضویت و ورود',
+      cta: 'اپ اعضا می‌خواهم',
+    },
+    clinics: {
+      name: 'کلینیک و داکتر دندان',
+      short: 'کلینیک',
+      count: 'نوبت، فورم‌ها، یادآوری',
+      headline: 'تماس تیلفونی کمتر، <em>مریض بیشتر.</em>',
+      desc: 'وب‌سایتی آرام و قابل اعتماد که مریضان در آن نوبت می‌گیرند، فورم‌ها را قبل از آمدن پُر می‌کنند و وقت معاینهٔ بعدی به یادشان آورده می‌شود.',
+      features: ['نوبت‌گیری آنلاین', 'فورم‌های دیجیتال', 'ایمیل یادآوری', 'فورم‌های امن و محرمانه'],
+      metric: '۳ کلیک',
+      metricLabel: 'برای گرفتن نوبت از هر موبایل',
+      cta: 'وب‌سایت کلینیک می‌خواهم',
+    },
+    retail: {
+      name: 'دوکان و فروشگاه',
+      short: 'دوکان',
+      count: 'فروشگاه آنلاین، رساندن',
+      headline: 'دوکان شما، <em>شبانه‌روز باز.</em>',
+      desc: 'فروشگاه آنلاینی مثل دوکان خودتان، با سفارش و تحویل از دوکان، رساندن محلی و امتیاز وفاداری که مشتری را دوباره برمی‌گرداند.',
+      features: ['فروشگاه آنلاین و موجودی', 'سفارش و تحویل از دوکان', 'رساندن محلی', 'امتیاز وفاداری و کارت تحفه'],
+      metric: 'همان روز',
+      metricLabel: 'رساندن محلی و تحویل از دوکان',
+      cta: 'فروشگاه آنلاین می‌خواهم',
+    },
+  };
+  if (isFa) INDUSTRIES.forEach((d) => Object.assign(d, INDUSTRIES_FA[d.id]));
 
   const indRoot = $('[data-industries]');
   if (indRoot) {
@@ -646,7 +725,7 @@
             <a href="#contact" class="btn btn-dark btn-sm">${d.cta}<span class="btn-icon">${icon('i-arrow')}</span></a>
           </div>
         </div>
-        <div class="ind-visual" style="--b:${a.color};--bt:${a.ink};--glow:${a.glow};" aria-hidden="true">
+        <div class="ind-visual" dir="ltr" style="--b:${a.color};--bt:${a.ink};--glow:${a.glow};" aria-hidden="true">
           ${appScreen(d)}
           <div class="float-pill">
             <span class="fp-ico">${icon(a.pill[0])}</span>
@@ -679,7 +758,7 @@
     tabs.forEach((tab, k) => {
       tab.addEventListener('click', () => select(tab.dataset.id));
       tab.addEventListener('keydown', (e) => {
-        const keys = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
+        const keys = { ArrowDown: 1, ArrowRight: isRtl ? -1 : 1, ArrowUp: -1, ArrowLeft: isRtl ? 1 : -1 };
         if (e.key in keys) {
           e.preventDefault();
           const next = tabs[(k + keys[e.key] + tabs.length) % tabs.length];
@@ -734,9 +813,29 @@
     const submitText = submitLabel.textContent;
     const openedAt = performance.now();
 
+    const T = isFa
+      ? {
+          name: 'لطفاً نام خود را بنویسید.',
+          email: 'لطفاً یک ایمیل درست بنویسید.',
+          sending: 'در حال ارسال…',
+          sent: 'در ۲۴ ساعت با ایده‌ها و قدم‌های بعدی با شما تماس می‌گیریم.',
+          mailto: (e) => `برنامهٔ ایمیل شما باید با پیام آماده باز شود. اگر باز نشد، به ${e} ایمیل بفرستید.`,
+          failed: 'ارسال پیام شما ممکن نشد.',
+          retry: 'لطفاً دوباره کوشش کنید یا به این آدرس ایمیل بفرستید: ',
+        }
+      : {
+          name: 'Please tell us your name.',
+          email: 'Please enter a valid email address.',
+          sending: 'Sending…',
+          sent: "We'll get back to you within 24 hours with ideas and next steps.",
+          mailto: (e) => `Your email app should open with your message ready to send. If it didn't, email us at ${e}.`,
+          failed: 'Something went wrong sending your message.',
+          retry: 'Please try again, or email us at ',
+        };
+
     const rules = {
-      name: [(v) => v.trim().length >= 2, 'Please tell us your name.'],
-      email: [(v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()), 'Please enter a valid email address.'],
+      name: [(v) => v.trim().length >= 2, T.name],
+      email: [(v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()), T.email],
     };
 
     const setError = (input, message) => {
@@ -791,7 +890,7 @@
       const link = document.createElement('a');
       link.href = `mailto:${email}`;
       link.textContent = email;
-      note.replaceChildren(`${message} Please try again, or email us at `, link, '.');
+      note.replaceChildren(`${message} ${T.retry}`, link, '.');
       note.classList.add('is-error');
     };
 
@@ -815,22 +914,22 @@
       const email = form.dataset.email;
 
       submitBtn.disabled = true;
-      if (endpoint) submitLabel.textContent = 'Sending…';
+      if (endpoint) submitLabel.textContent = T.sending;
       try {
         if (endpoint) {
           const res = await fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-            body: JSON.stringify({ ...payload, website: data.get('website') || '', elapsed: Math.round(performance.now() - openedAt) }),
+            body: JSON.stringify({ ...payload, page: form.dataset.page || '', website: data.get('website') || '', elapsed: Math.round(performance.now() - openedAt) }),
           });
           const result = await res.json().catch(() => ({}));
           if (res.ok && result.ok) {
-            showSuccess("We'll get back to you within 24 hours with ideas and next steps.");
+            showSuccess(T.sent);
           } else if (res.status === 400 && result.field && form.elements[result.field]) {
-            setError(form.elements[result.field], result.error);
+            setError(form.elements[result.field], isFa ? T[result.field] || result.error : result.error);
             form.elements[result.field].focus();
           } else {
-            showSendError(email, result.error || 'Something went wrong sending your message.');
+            showSendError(email, (!isFa && result.error) || T.failed);
           }
         } else {
           const subject = `New project enquiry: ${payload.business || payload.name}`;
@@ -845,10 +944,10 @@
             payload.message || '',
           ].join('\n');
           window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-          showSuccess(`Your email app should open with your message ready to send. If it didn't, email us at ${email}.`);
+          showSuccess(T.mailto(email));
         }
       } catch (err) {
-        showSendError(email, 'Something went wrong sending your message.');
+        showSendError(email, T.failed);
       } finally {
         submitBtn.disabled = false;
         submitLabel.textContent = submitText;

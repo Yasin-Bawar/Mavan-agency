@@ -1,0 +1,215 @@
+/* ==========================================================================
+   Mavan — Dari (right-to-left) page at /afg/.
+   Loaded after styles.css; only adjusts typography, direction and the Dari mockups.
+   ========================================================================== */
+
+:root {
+  --font-display: "Vazirmatn", "Inter Tight", system-ui, sans-serif;
+  --font-body: "Vazirmatn", "Inter", system-ui, sans-serif;
+}
+/* Product mockups that stay in English keep the original fonts */
+[dir="ltr"] {
+  --font-display: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+[dir="ltr"] [dir="rtl"] {
+  --font-display: "Vazirmatn", "Inter Tight", system-ui, sans-serif;
+  --font-body: "Vazirmatn", "Inter", system-ui, sans-serif;
+  font-family: var(--font-body);
+}
+
+/* Dari letters join up: any letter-spacing pulls words apart */
+html[dir="rtl"] body :not(.brand-name):not(.footer-word):not([dir="ltr"]):not([dir="ltr"] *) { letter-spacing: 0 !important; }
+html[dir="rtl"] body { line-height: 1.8; }
+html[dir="rtl"] em { font-style: normal; }
+.brand-name, .footer-word { font-family: "Inter Tight", "Inter", sans-serif; }
+
+/* ---------- Headings ---------- */
+html[dir="rtl"] .hero-title { font-weight: 800; font-size: clamp(38px, 6.4vw, 92px); line-height: 1.24; }
+html[dir="rtl"] .h2, html[dir="rtl"] .ind-copy h3 { font-weight: 700; line-height: 1.38; }
+html[dir="rtl"] .h2 em, html[dir="rtl"] .ind-copy h3 em {
+  font-family: var(--font-display); font-style: normal; font-weight: 800; font-size: 1em; color: var(--accent);
+}
+html[dir="rtl"] .statement { font-weight: 600; line-height: 1.55; max-width: 26ch; }
+html[dir="rtl"] .svc h3, html[dir="rtl"] .step-card h3, html[dir="rtl"] .t-card--why h3, html[dir="rtl"] .case-info h3 { font-weight: 700; }
+html[dir="rtl"] .faq-q { text-align: right; font-weight: 600; line-height: 1.6; }
+html[dir="rtl"] .ind-tab { text-align: right; }
+html[dir="rtl"] .t-card--feature .t-quote { font-weight: 600; line-height: 1.6; max-width: 34ch; }
+html[dir="rtl"] .plan-price, html[dir="rtl"] .stat-num, html[dir="rtl"] .hero-stat dt, html[dir="rtl"] .t-rating-num, html[dir="rtl"] .ind-metric b { font-weight: 700; }
+html[dir="rtl"] .stat-num .unit--word { margin-left: 0; margin-right: 0.28em; }
+/* Vazirmatn's tabular digits are very wide: keep its natural spacing */
+html[dir="rtl"] .stat-num, html[dir="rtl"] .plan-price, html[dir="rtl"] .hero-stat dt { font-variant-numeric: normal; }
+html[dir="rtl"] .t-rating-num { font-weight: 800; line-height: 1.2; }
+
+/* Rotating word in the hero */
+html[dir="rtl"] .rotator { font-family: var(--font-display); font-style: normal; font-weight: 800; font-size: 1em; line-height: 1.3; }
+html[dir="rtl"] .rotator.is-ready { height: 1.3em; }
+html[dir="rtl"] .rotator-word { padding-right: 0; padding-left: 0.06em; }
+html[dir="rtl"] .rotator.is-ready .rotator-word { left: auto; right: 0; }
+
+/* Giant word in the closing call to action: tall Dari letters need a taller window */
+html[dir="rtl"] .big-lead { line-height: 1.45; }
+html[dir="rtl"] .big-slot { font-weight: 800; font-size: clamp(64px, 15vw, 220px); line-height: 1.3; margin: -0.12em 0 -0.32em; letter-spacing: 0 !important; }
+html[dir="rtl"] .big-word { padding: 0.12em 0 0.32em 0.06em; }
+html[dir="rtl"] .big-slot.is-ready .big-word > span { transform: translateY(1.9em); }
+html[dir="rtl"] .big-slot.is-ready .big-word.is-active > span { transform: none; }
+html[dir="rtl"] .big-slot.is-ready .big-word.is-leaving > span { transform: translateY(-1.9em); }
+
+/* ---------- Mirrored spacing and positions ---------- */
+html[dir="rtl"] .scroll-progress { transform-origin: 100% 50%; }
+html[dir="rtl"] .nav-inner { padding: 0 12px 0 8px; }
+html[dir="rtl"] .nav-links { margin-left: auto; margin-right: 8px; }
+html[dir="rtl"] .nav-right { margin-left: 0; }
+html[dir="rtl"] .eyebrow { padding: 5px 5px 5px 14px; }
+html[dir="rtl"] .section-label { padding: 5px 5px 5px 14px; }
+html[dir="rtl"] .btn { padding: 0 22px 0 6px; }
+html[dir="rtl"] .btn-ghost { padding: 0 22px; }
+html[dir="rtl"] .btn-sm { padding-left: 6px; padding-right: 18px; }
+html[dir="rtl"] .btn-ghost.btn-sm { padding: 0 18px; }
+html[dir="rtl"] .btn > .i { margin-right: 0; margin-left: 16px; }
+html[dir="rtl"] .hero-stats { padding-left: 0; padding-right: 28px; border-left: 0; border-right: 1px solid var(--line-2); }
+html[dir="rtl"] .stat { border-left: 0; border-right: 1px solid var(--line-2); }
+html[dir="rtl"] .stat:first-child { border-right: 0; padding-right: 0; padding-left: clamp(16px, 2.4vw, 32px); }
+html[dir="rtl"] .field select { padding-right: 16px; padding-left: 42px; background-position: left 16px center; }
+html[dir="rtl"] .sc-chip { padding: 10px 10px 10px 14px; }
+html[dir="rtl"] .sc-chip--concept { padding: 10px 14px; align-items: flex-end; }
+/* Showcase: mirror the stage so the phone covers the photo, not the menu text */
+html[dir="rtl"] .showcase-inner {
+  background:
+    radial-gradient(60% 70% at 15% 10%, rgba(255, 90, 31, 0.16), transparent 70%),
+    radial-gradient(120% 90% at 50% 0%, #ffffff 0%, #f1f0ec 62%, #e9e7e2 100%);
+}
+html[dir="rtl"] .sc-browser { left: auto; right: 6%; }
+html[dir="rtl"] .sc-phone { right: auto; left: 8%; }
+html[dir="rtl"] .sc-chip--orders { left: auto; right: 2.5%; }
+html[dir="rtl"] .sc-chip--table { left: auto; right: 43%; }
+html[dir="rtl"] .sc-chip--concept { right: auto; left: 3%; }
+html[dir="rtl"] .case-badge { left: auto; right: 16px; }
+html[dir="rtl"] .process-line { left: auto; right: 28px; }
+html[dir="rtl"] .step-num { left: auto; right: 0; }
+html[dir="rtl"] .process-line i { transform-origin: 100% 50%; }
+html[dir="rtl"] .ind-tab .ind-go { margin-left: 0; margin-right: auto; transform: translateX(6px); }
+html[dir="rtl"] .ind-tab[aria-selected="true"] .ind-go { transform: none; }
+html[dir="rtl"] .contact-mail { background-position: 100% 100%; }
+
+/* The hero's fluted stripes sit on the left, opposite the headline */
+html[dir="rtl"] .hero-curtain {
+  right: auto; left: -2%;
+  -webkit-mask-image: linear-gradient(270deg, transparent 0%, #000 32%);
+  mask-image: linear-gradient(270deg, transparent 0%, #000 32%);
+}
+
+/* Arrows point the way you read: right to left */
+html[dir="rtl"] .btn .i, html[dir="rtl"] .link-arrow .i, html[dir="rtl"] .mm-link .i,
+html[dir="rtl"] .svc-arrow .i, html[dir="rtl"] .ind-go .i { transform: scaleX(-1); }
+html[dir="rtl"] .btn:hover > .i { transform: scaleX(-1) translateX(3px); }
+html[dir="rtl"] .btn:hover .btn-icon .i { animation: arrow-loop-rtl 0.55s var(--ease); }
+html[dir="rtl"] .svc:hover .svc-arrow { transform: rotate(-45deg); }
+@keyframes arrow-loop-rtl {
+  0% { transform: scaleX(-1) translateX(0); }
+  45% { transform: scaleX(-1) translateX(160%); }
+  46% { transform: scaleX(-1) translateX(-160%); }
+  100% { transform: scaleX(-1) translateX(0); }
+}
+
+/* ==========================================================================
+   Dastarkhan: the Afghan restaurant concept in the hero (Dari, RTL)
+   ========================================================================== */
+.dk {
+  aspect-ratio: 16 / 10.2; padding: 2.2cqw 3.4cqw 2.6cqw;
+  display: flex; flex-direction: column;
+  background: #3b1f2b; color: #fbf3e4; line-height: 1.5;
+  background-image: radial-gradient(circle at 50% 50%, transparent 0 1.2cqw, rgba(251, 243, 228, 0.05) 1.25cqw 1.35cqw, transparent 1.4cqw);
+  background-size: 5cqw 5cqw;
+}
+.dk-nav { display: flex; align-items: center; justify-content: space-between; font-size: 1.3cqw; }
+.dk-logo { display: inline-flex; align-items: center; gap: 0.8cqw; font-size: 2.2cqw; font-weight: 800; }
+.dk-logo i {
+  width: 2.2cqw; height: 2.2cqw; border-radius: 0.6cqw; background: #e3a72f;
+  clip-path: polygon(50% 0, 61% 35%, 100% 50%, 61% 65%, 50% 100%, 39% 65%, 0 50%, 39% 35%);
+}
+.dk-links { display: flex; gap: 2.4cqw; opacity: 0.8; }
+.dk-links i { font-style: normal; }
+.dk-btn {
+  display: inline-flex; align-items: center; height: 3.3cqw; padding: 0 1.7cqw;
+  border-radius: 99px; background: #e3a72f; color: #2a1e22; font-size: 1.25cqw; font-weight: 700;
+}
+.dk-hero { flex: 1; display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 2.4cqw; }
+.dk-copy { display: flex; flex-direction: column; align-items: flex-start; }
+.dk-kicker { font-size: 1.15cqw; color: #e3a72f; }
+.dk-title { margin: 1cqw 0 1.4cqw; font-size: 4.4cqw; font-weight: 800; line-height: 1.3; }
+.dk-title em { color: #e3a72f; }
+.dk-p { max-width: 30cqw; font-size: 1.35cqw; line-height: 1.75; color: rgba(251, 243, 228, 0.78); }
+.dk-ctas { display: flex; gap: 1cqw; margin-top: 2.2cqw; }
+.dk-btn--ghost { background: transparent; color: #fbf3e4; box-shadow: inset 0 0 0 1px rgba(251, 243, 228, 0.35); }
+.dk-visual { position: relative; aspect-ratio: 1; width: 90%; justify-self: center; }
+.dk-photo {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 55% 60%;
+  border-radius: 2cqw; box-shadow: 0 2.4cqw 4cqw -1.6cqw rgba(0, 0, 0, 0.5);
+}
+.dk-badge {
+  position: absolute; right: -4%; bottom: 8%;
+  display: flex; align-items: center; gap: 0.7cqw;
+  padding: 1cqw 1.4cqw; border-radius: 1.4cqw; background: #fbf3e4; color: #2a1e22;
+  font-size: 1.15cqw; box-shadow: 0 1.4cqw 3cqw -1cqw rgba(0, 0, 0, 0.4);
+}
+.dk-badge b { font-size: 1.45cqw; }
+.dk-badge .i { color: #2f9e5b; font-size: 1.4cqw; }
+.dk-badge small { color: #8b7d76; }
+.dk-strip { display: flex; gap: 1.4cqw; }
+.dk-item {
+  flex: 1; display: flex; align-items: center; gap: 1.1cqw;
+  padding: 0.9cqw; border-radius: 1.4cqw; background: rgba(251, 243, 228, 0.08);
+  font-size: 1.2cqw; box-shadow: inset 0 0 0 1px rgba(251, 243, 228, 0.1);
+}
+.dk-item img { width: 4.2cqw; height: 4.2cqw; flex-shrink: 0; border-radius: 0.9cqw; object-fit: cover; }
+.dk-item > span { display: flex; flex-direction: column; line-height: 1.5; }
+.dk-item b { font-weight: 700; }
+.dk-item small { opacity: 0.7; }
+.dk-item i {
+  margin-right: auto; display: grid; place-items: center; width: 2.6cqw; height: 2.6cqw;
+  border-radius: 50%; background: #e3a72f; color: #2a1e22; font-style: normal; font-size: 1.5cqw;
+}
+
+/* The ordering app on the phone */
+.dkp { flex: 1; display: flex; flex-direction: column; gap: 2.6cqw; padding: 1cqw 5cqw 5cqw; line-height: 1.5; }
+.dkp-cover { position: relative; height: 34cqw; margin: 0 -1cqw 0.6cqw; border-radius: 5cqw; overflow: hidden; flex-shrink: 0; }
+.dkp-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.dkp-cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.75)); }
+.dkp-cover-info { position: absolute; left: 3.5cqw; right: 3.5cqw; bottom: 3cqw; z-index: 1; display: flex; align-items: center; gap: 2.6cqw; color: #fff; }
+.dkp-logo {
+  display: grid; place-items: center; flex-shrink: 0; width: 10cqw; height: 10cqw; border-radius: 3cqw;
+  background: #e3a72f; color: #2a1e22; font-weight: 800; font-size: 5cqw;
+}
+.dkp-cover-info strong { display: block; font-size: 4.6cqw; font-weight: 800; }
+.dkp-cover-info small { display: block; font-size: 3cqw; color: rgba(255, 255, 255, 0.8); }
+.dkp-chips { display: flex; gap: 1.6cqw; }
+.dkp-chips span { padding: 1.2cqw 3.2cqw; border-radius: 99px; background: #f1ebe2; font-size: 3.2cqw; font-weight: 600; color: #5c4a44; }
+.dkp-chips .is-on { background: #3b1f2b; color: #fbf3e4; }
+.dkp-item {
+  display: flex; align-items: center; gap: 3cqw; padding: 2cqw 2.2cqw 2cqw 3.4cqw;
+  border-radius: 4cqw; background: #fff; box-shadow: inset 0 0 0 1px var(--line); font-size: 3.4cqw;
+}
+.dkp-item img { width: 11cqw; height: 11cqw; flex-shrink: 0; border-radius: 3cqw; object-fit: cover; }
+.dkp-item strong { display: block; font-weight: 700; }
+.dkp-item small { display: block; font-size: 2.9cqw; color: var(--muted); }
+.dkp-item b { margin-right: auto; font-weight: 700; white-space: nowrap; }
+.dkp-bar {
+  margin-top: auto; display: flex; align-items: center; gap: 2.4cqw; height: 12cqw; padding: 0 2.2cqw 0 4cqw;
+  border-radius: 99px; background: #3b1f2b; color: #fbf3e4; font-size: 3.4cqw; font-weight: 600;
+}
+.dkp-bar i {
+  display: grid; place-items: center; width: 7.6cqw; height: 7.6cqw; border-radius: 50%;
+  background: #e3a72f; color: #2a1e22; font-style: normal; font-weight: 800;
+}
+.dkp-bar b { margin-right: auto; }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 760px) {
+  html[dir="rtl"] .hero-stats { padding-right: 0; border-right: 0; }
+  html[dir="rtl"] .hero-curtain { left: -24%; right: auto; }
+  html[dir="rtl"] .sc-chip--table { right: 4%; }
+}
+@media (max-width: 960px) {
+  html[dir="rtl"] .stat:nth-child(3) { border-right: 0; padding-right: 0; padding-left: clamp(16px, 2.4vw, 32px); }
+}

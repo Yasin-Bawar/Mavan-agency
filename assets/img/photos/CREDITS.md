@@ -37,3 +37,6 @@ All photos are from [Unsplash](https://unsplash.com) and used under the [Unsplas
 | `dentist-patel.jpg` | Dentist portrait (crop) | Jonathan Borba | [Unsplash](https://unsplash.com/photos/dentists-performing-procedure-in-clinic-hl6uG9cHW5A) |
 | `florist-tulips.jpg` | Tulips in a vase | Uljana Borodina | [Unsplash](https://unsplash.com/photos/pink-petaled-flower-centerpiece-in-clear-glass-vase-NFj6pEUdmpY) |
 | `florist-dried.jpg` | Dried flower bouquet | insung yoon | [Unsplash](https://unsplash.com/photos/dried-flowers-bouquet-in-peach-paper-Vxm213warDA) |
+| `afghan-palaw.jpg` | Kabuli palaw with lamb (cropped) | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1677599083247-9be34fdca346) |
+| `afghan-kabob.jpg` | Kabob platter with naan | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1672477179695-7276b0602fa9) |
+| `afghan-feast.jpg` | Afghan feast, top-down | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1661994215679-cde7c2c5c060) |
