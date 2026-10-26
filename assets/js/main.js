@@ -16,6 +16,17 @@
   const photo = (name, cls, w, h) =>
     `<img class="${cls}" src="${base}assets/img/photos/${name}.jpg" alt="" width="${w}" height="${h}" loading="lazy" decoding="async">`;
 
+  // Language switch: remember the choice, so mavan.app opens the Dari page for people who picked Dari
+  $$('[data-lang]').forEach((link) =>
+    link.addEventListener('click', () => {
+      try {
+        localStorage.setItem('mavan-lang', link.dataset.lang);
+      } catch {
+        /* storage blocked: the link still goes to the other language */
+      }
+    })
+  );
+
   /* ------------------------------------------------------------------
      Scroll loop — every scroll-driven effect registers here
      ------------------------------------------------------------------ */

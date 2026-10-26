@@ -59,7 +59,7 @@ The website and app examples are built as real HTML/CSS layouts filled with **re
 - The hero shows its own concept, *Dastarkhan* (دسترخوان), an Afghan restaurant website and ordering app written in Dari. The example designs and industry apps below it stay in English on purpose, so prospects see we build in both languages.
 - It shares `styles.css` and `main.js` with the English page; `afg.css` only adds the font and mirrors left/right. `main.js` switches to Dari automatically when `<html lang="fa-…">` (industry copy in `INDUSTRIES_FA`, form messages, Persian month names and digits).
 - The contact form posts to the same `/api/contact`. Enquiries from this page are marked **Page: Dari page (/afg)** in the email, so you know to reply in Dari.
-- The English page links to it from the nav («دری») and the footer; the Dari page links back with "English".
+- The **EN | دری** switch in the nav (on every screen size) moves between the two pages. The choice is remembered in the browser: someone who picked Dari is sent straight to `/afg/` the next time they open mavan.app, until they switch back to EN.
 - Change prices or the email in **both** `index.html` and `afg/index.html`.
 
 ## Brand

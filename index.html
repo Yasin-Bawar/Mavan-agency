@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Visitors who switched to Dari go straight to the Dari page -->
+  <script>try { if (localStorage.getItem('mavan-lang') === 'fa') location.replace('afg/' + location.hash); } catch (e) {}</script>
   <title>Mavan — Websites, Booking &amp; Apps for Local Businesses</title>
   <meta name="description" content="Mavan is a web &amp; app studio that designs and builds fast websites, online booking, ordering systems and mobile apps for restaurants, barbershops, salons, gyms and local businesses." />
   <meta name="theme-color" content="#ffffff" />
@@ -110,7 +112,7 @@
 
       <div class="nav-right">
         <span class="nav-status"><span class="pulse-dot" aria-hidden="true"></span><span>Booking projects for <span data-next-month>November</span></span></span>
-        <a class="nav-lang" href="afg/" hreflang="fa-AF" lang="fa-AF" dir="rtl" title="Mavan in Dari">دری</a>
+        <div class="lang-switch" role="group" aria-label="Language" dir="ltr"><span aria-current="true" lang="en">EN</span><a href="afg/" hreflang="fa-AF" lang="fa-AF" data-lang="fa" title="Mavan in Dari">دری</a></div>
         <a href="#contact" class="btn btn-dark btn-sm nav-cta">Book a free call<span class="btn-icon"><svg class="i"><use href="#i-arrow"/></svg></span></a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><span></span><span></span></button>
       </div>
@@ -128,7 +130,6 @@
     </nav>
     <div class="mm-foot">
       <span class="nav-status"><span class="pulse-dot" aria-hidden="true"></span><span>Booking projects for <span data-next-month>November</span></span></span>
-      <a class="nav-lang" href="afg/" hreflang="fa-AF" lang="fa-AF" dir="rtl" title="Mavan in Dari">دری</a>
       <a href="#contact" class="btn btn-accent btn-block mm-cta">Book a free call<span class="btn-icon"><svg class="i"><use href="#i-arrow"/></svg></span></a>
     </div>
   </div>
@@ -1047,7 +1048,7 @@
           <a href="#pricing">Pricing</a>
           <a href="#faq">FAQ</a>
           <a href="#contact">Contact</a>
-          <a href="afg/" hreflang="fa-AF" lang="fa-AF" dir="rtl">دری</a>
+          <a href="afg/" hreflang="fa-AF" lang="fa-AF" dir="rtl" data-lang="fa">دری</a>
         </div>
       </div>
 
