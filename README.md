@@ -73,6 +73,7 @@ The content is written to be realistic, but it is **sample content**. Swap it fo
 | What | Where |
 | --- | --- |
 | Contact email (`hello@mavan.app`) | `index.html` and `afg/index.html`: search for `hello@mavan.app` (shown address, mailto link and form fallback). Where form emails go is set by `CONTACT_TO` on Netlify. |
+| Phone (`+93 79 881 9664`) | `index.html` and `afg/index.html`: contact section and footer (search for `tel:+93798819664`) |
 | Form delivery | Handled by `api/contact.js` + Resend (see *Deploy*). `data-endpoint="/api/contact"` on `#contact-form`; clear it to make the form open the visitor's email app instead. |
 | Prices ($250 Starter / $500 Growth / $1,000+ Custom App, care plans from $49/mo) | `index.html` and `afg/index.html`: Pricing section, the "from $…" line under each example design, and the Budget chips in the contact form |
 | Example designs (Bella Napoli, Fade Factory, Glow Studio, Iron Temple, SmileCare, Petal & Stem) | `index.html` → Example designs. These are clearly labelled **concepts**, not clients. When you launch real projects, swap a concept for the real one (with the client's permission) and you can add genuine results and testimonials then. The site deliberately shows no reviews, ratings or client logos until they are real. |
