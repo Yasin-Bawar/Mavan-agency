@@ -40,3 +40,13 @@ All photos are from [Unsplash](https://unsplash.com) and used under the [Unsplas
 | `afghan-palaw.jpg` | Kabuli palaw with lamb (cropped) | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1677599083247-9be34fdca346) |
 | `afghan-kabob.jpg` | Kabob platter with naan | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1672477179695-7276b0602fa9) |
 | `afghan-feast.jpg` | Afghan feast, top-down | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1661994215679-cde7c2c5c060) |
+| `hotel-room.jpg` | Hotel bedroom with garden view | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1611892440504-42a792e24d32) |
+| `hotel-bed.jpg` | Hotel double room | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1618773928121-c32242e63f39) |
+| `hotel-suite.jpg` | Hotel room | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1631049307264-da0ec9d70304) |
+| `hotel-lobby.jpg` | Hotel lobby | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1621293954908-907159247fc8) |
+| `house-villa.jpg` | Modern villa with pool | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1580587771525-78b9dba3b914) |
+| `house-modern.jpg` | Modern white house | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1600596542815-ffad4c1539a9) |
+| `apartment-living.jpg` | Apartment living room | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1522708323590-d24dbb6b0267) |
+| `hospital-building.jpg` | Hospital building | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1586773860418-d37222d8fce3) |
+| `doctor-man.jpg` | Doctor portrait (crop) | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1622253692010-333f2da6031d) |
+| `doctor-woman.jpg` | Doctor portrait (crop) | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1594824476967-48c8b964273f) |

@@ -56,8 +56,14 @@ The website and app examples are built as real HTML/CSS layouts filled with **re
 
 `afg/index.html` is the full website rebuilt in **Dari** for Afghan businesses: right-to-left layout, the Vazirmatn font, Persian digits, and everyday Afghan (Kabuli) Dari rather than formal Persian: ویب‌سایت، ریزرف، فرمایش، مفت، تیلفون، گپ زدن، «می‌تانیم» instead of «می‌توانیم». It is the link to send Afghan prospects: **https://mavan.app/afg/**.
 
-- Everything on it is in Dari, mockups included: the hero concept *Dastarkhan* (دسترخوان), an Afghan restaurant site and ordering app; the six example designs (پیتزا ناپولی، سلمانی استاد، سالون زیبایی نگین، جم پهلوان، کلینیک دندان لبخند، گل‌فروشی گلستان); and the six industry apps (their Dari text is `APP_TEXT.fa` in `main.js`).
-- **Prices on the Dari page are 50% lower** than on the English page: $125 Starter / $250 Growth / $500+ Custom App, care plans from $25/mo.
+- It targets the businesses Mavan builds for in Afghanistan: **restaurants and wedding halls, hotels, real estate agents (رهنمای معاملات), hospitals, clinics (dental, eye, skin…) and large companies**, not small shops like bakeries.
+- Everything on it is in Dari, mockups included: the hero concept *Dastarkhan* (دسترخوان), an Afghan restaurant site and ordering app; the six example designs (پیتزا ناپولی، هوتل سیمرغ، املاک امید، شفاخانهٔ شفا، کلینیک دندان لبخند، شرکت آریا); and the six industry apps: restaurant, hotel, real estate, hospital, clinic and company (`INDUSTRIES_FA` and `APP_TEXT.fa` in `main.js`).
+- **Dari pricing is by business size**, set for the Afghan market:
+  - کاروبار کوچک (small business): $50, a website.
+  - کاروبار بزرگ (big business): $100–200, website and app.
+  - کاروبار کلان (large organisation): from $400, a full system.
+  - Hosting and care from $10/mo.
+  - A second list gives a range per business type: restaurant $50–200, wedding hall $80–200, hotel $100–400, clinic $80–200, real estate $120–300, hospital and companies from $400.
 - In Dari text, separate items with «،» and not «·»: in this font the middle dot looks exactly like the Persian zero «۰», so «۵۲ · دالر» reads as «۵۲۰».
 - It shares `styles.css` and `main.js` with the English page; `afg.css` only adds the font and mirrors left/right. `main.js` switches to Dari automatically when `<html lang="fa-…">` (industry copy in `INDUSTRIES_FA`, form messages, Persian month names and digits).
 - The contact form posts to the same `/api/contact`. Enquiries from this page are marked **Page: Dari page (/afg)** in the email, so you know to reply in Dari.
@@ -77,9 +83,9 @@ The content is written to be realistic, but it is **sample content**. Swap it fo
 | Contact email (`hello@mavan.app`) | `index.html` and `afg/index.html`: search for `hello@mavan.app` (shown address, mailto link and form fallback). Where form emails go is set by `CONTACT_TO` on Netlify. |
 | Phone (`+93 79 881 9664`) | `index.html` and `afg/index.html`: contact section and footer (search for `tel:+93798819664`) |
 | Form delivery | Handled by `api/contact.js` + Resend (see *Deploy*). `data-endpoint="/api/contact"` on `#contact-form`; clear it to make the form open the visitor's email app instead. |
-| Prices ($250 Starter / $500 Growth / $1,000+ Custom App, care plans from $49/mo; half that on the Dari page) | `index.html` and `afg/index.html`: Pricing section, the "from $…" line under each example design, and the Budget chips in the contact form |
+| Prices ($250 Starter / $500 Growth / $1,000+ Custom App, care plans from $49/mo; the Dari page has its own Afghan pricing, see above) | `index.html` and `afg/index.html`: Pricing section, the "from $…" line under each example design, and the Budget chips in the contact form |
 | Example designs (Bella Napoli, Fade Factory, Glow Studio, Iron Temple, SmileCare, Petal & Stem) | `index.html` → Example designs. These are clearly labelled **concepts**, not clients. When you launch real projects, swap a concept for the real one (with the client's permission) and you can add genuine results and testimonials then. The site deliberately shows no reviews, ratings or client logos until they are real. |
-| Industry copy & app previews | `assets/js/main.js` → `INDUSTRIES` (copy), `INDUSTRIES_FA` (Dari copy) and `APP_SCREENS` (one app layout per industry) |
+| Industry copy & app previews | `assets/js/main.js` → `INDUSTRIES` (copy), `INDUSTRIES_FA` (the Dari page's own six industries) and `APP_SCREENS` (one app layout per industry) |
 | Social links | `index.html` footer (`href="#"`) |
 | Domain | `https://mavan.app` is set in `index.html` and `afg/index.html` (canonical and language links, `og:url`, `og:image`, `twitter:image`) |
 

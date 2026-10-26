@@ -99,44 +99,49 @@
   $$('[data-year]').forEach((el) => (el.textContent = now.getFullYear().toLocaleString(locale, { useGrouping: false })));
 
   /* ------------------------------------------------------------------
-     Hero: orange "curtain" stripes
+     Hero: layered paper sheets in the top corner, behind frosted glass
      ------------------------------------------------------------------ */
-  const curtain = $('[data-curtain]');
-  if (curtain) {
-    let seed = 11;
-    const rand = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
-    const tones = [
-      ['#ff5a1f', '#ff7a45'],
-      ['#ff4a0e', '#ff8a5c'],
-      ['#ff6a30', '#ffa47c'],
-      ['#ff7b47', '#ffbb9c'],
-    ];
-    const count = window.innerWidth < 760 ? 16 : 30;
-    const frag = document.createDocumentFragment();
-    for (let k = 0; k < count; k++) {
-      const t = k / (count - 1);
-      const s = document.createElement('span');
-      const [c1, c2] = tones[Math.floor(rand() * tones.length)];
-      s.style.setProperty('--k', k);
-      s.style.setProperty('--h', `${clamp(30 + t * 60 + (rand() * 26 - 12), 22, 100).toFixed(1)}%`);
-      s.style.setProperty('--o', (0.62 + rand() * 0.38).toFixed(2));
-      s.style.setProperty('--c1', c1);
-      s.style.setProperty('--c2', c2);
-      frag.appendChild(s);
-    }
-    curtain.appendChild(frag);
+  const paper = $('[data-paper]');
+  if (paper) {
+    const W = 1000;
+    const H = 860;
+    const tones = ['#fff2e8', '#ffe1cd', '#ffcaa9', '#ffad80', '#ff8f56', '#ff7234', '#ff5a1f'];
+    const sizes = [1.04, 0.9, 0.77, 0.64, 0.52, 0.41, 0.3];
+    // One sheet: everything inside a gently wavy arc around the corner, as a smooth closed path
+    const sheet = (size, k) => {
+      const pts = [];
+      for (let i = 0; i <= 18; i++) {
+        const a = (i / 18) * (Math.PI / 2);
+        const r = size * (1 + 0.06 * Math.sin(3 * a + k * 1.7) + 0.03 * Math.sin(7 * a + k * 0.9));
+        pts.push([Math.cos(a) * r * W, Math.sin(a) * r * H]);
+      }
+      const f = (n) => n.toFixed(1);
+      let d = `M0 0L${f(pts[0][0])} 0`;
+      for (let i = 0; i < pts.length - 1; i++) {
+        const p0 = pts[i - 1] || pts[i];
+        const p1 = pts[i];
+        const p2 = pts[i + 1];
+        const p3 = pts[i + 2] || p2;
+        d += `C${f(p1[0] + (p2[0] - p0[0]) / 6)} ${f(p1[1] + (p2[1] - p0[1]) / 6)} ${f(p2[0] - (p3[0] - p1[0]) / 6)} ${f(p2[1] - (p3[1] - p1[1]) / 6)} ${f(p2[0])} ${f(p2[1])}`;
+      }
+      return `${d}L0 0Z`;
+    };
+    paper.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMinYMin slice" aria-hidden="true">
+      <defs><filter id="paper-shadow" x="-5%" y="-5%" width="120%" height="125%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#8a2c06" flood-opacity="0.2"/></filter></defs>
+      ${sizes.map((size, k) => `<path d="${sheet(size, k)}" fill="${tones[k]}" filter="url(#paper-shadow)" style="--k:${k}"/>`).join('')}
+    </svg>`;
 
     const hero = $('.hero');
     new IntersectionObserver(([entry]) => hero.classList.toggle('is-paused', !entry.isIntersecting)).observe(hero);
 
-    // Gentle parallax: the stripes drift a little with the pointer
+    // Gentle parallax: the sheets drift a little with the pointer
     if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
       hero.addEventListener('pointermove', (e) => {
         const x = e.clientX / window.innerWidth - 0.5;
         const y = e.clientY / window.innerHeight - 0.5;
-        curtain.style.transform = `translate3d(${(x * -18).toFixed(1)}px, ${(y * -10).toFixed(1)}px, 0)`;
+        paper.style.transform = `translate3d(${(x * -14).toFixed(1)}px, ${(y * -10).toFixed(1)}px, 0)`;
       });
-      hero.addEventListener('pointerleave', () => (curtain.style.transform = ''));
+      hero.addEventListener('pointerleave', () => (paper.style.transform = ''));
     }
   }
 
@@ -462,89 +467,101 @@
     },
   ];
 
-  // Dari copy for the industry tabs on /afg/, in everyday Afghan Dari
-  const INDUSTRIES_FA = {
-    restaurants: {
-      name: 'رستورانت و کافه',
-      short: 'رستورانت',
+  // On /afg/ the tabs show the businesses we build for in Afghanistan, in everyday Afghan Dari
+  const INDUSTRIES_FA = [
+    {
+      id: 'restaurants',
+      name: 'رستورانت و تالار',
+      icon: 'i-utensils',
       count: 'فرمایش، ریزرف، منوی QR',
       headline: 'فرمایش بیشتر، میزهای پُر، <em>بدون کمیشن.</em>',
-      desc: 'ویب‌سایتی که اشتهای آدم ره باز می‌کنه، با فرمایش آنلاین و ریزرف میز؛ تا مشتری‌ها مستقیم از خود تان فرمایش بدن، نه از اپ‌های واسطه.',
-      features: ['فرمایش آنلاین برای بردن', 'ریزرف میز', 'منوی QR', 'نظرها و نقشهٔ گوگل'],
+      desc: 'ویب‌سایتی که اشتهای آدم ره باز می‌کنه، با فرمایش آنلاین و ریزرف میز و تالار؛ تا مشتری‌ها مستقیم از خود تان فرمایش بدن، نه از اپ‌های واسطه.',
+      features: ['فرمایش آنلاین و رسانیدن', 'ریزرف میز و تالار', 'منوی QR', 'نظرها و نقشهٔ گوگل'],
       metric: '۰٪',
       metricLabel: 'کمیشن از فرمایش‌های سایت خود تان',
       cta: 'ویب‌سایت رستورانت می‌خوام',
+      app: { color: '#1f3a2e', ink: '#f4ecdf', glow: 'rgba(214, 64, 42, 0.22)' },
       pill: ['i-bag', 'فرمایش نو، ۵۲ دالر', 'ساعت ۷:۱۵ شام می‌برن'],
     },
-    barbershops: {
-      name: 'سلمانی',
-      short: 'سلمانی',
-      count: 'نوبت، پیش‌پرداخت، یادآوری',
-      headline: 'چوکی‌ای که <em>هیچ وقت خالی نمی‌مانه.</em>',
-      desc: 'مشتری‌ها شب و روز سلمانی، کار و وقت دلخواه خوده انتخاب می‌کنن. پیش‌پرداخت و یادآوری خودکار یعنی کمتر کسی نوبت خوده خطا می‌کنه و هر روز کار بیشتر.',
-      features: ['نوبت آنلاین شب و روز', 'پروفایل و تقویم هر سلمانی', 'پیش‌پرداخت تا کسی نوبت خطا نکنه', 'یادآوری با مسیج'],
+    {
+      id: 'hotels',
+      name: 'هوتل و مهمانخانه',
+      icon: 'i-bed',
+      count: 'ریزرف اتاق، پرداخت، مهمان‌ها',
+      headline: 'اتاق‌ها پُر، <em>بدون واسطه.</em>',
+      desc: 'ویب‌سایت و سیستم ریزرف که مهمان‌ها از داخل و خارج کشور خود شان اتاق ریزرف کنن و پیسه بدن؛ شما هم اتاق‌ها، قیمت‌ها و مهمان‌ها ره از یک جای مدیریت کنین.',
+      features: ['ریزرف آنلاین اتاق', 'تقویم اتاق‌ها و قیمت‌ها', 'پرداخت و پیش‌پرداخت', 'ویب‌سایت دو زبانه'],
       metric: '۲۴/۷',
-      metricLabel: 'نوبت گرفتن، حتی وقتی دوکان بسته اس',
-      cta: 'اپ سلمانی می‌خوام',
-      pill: ['i-check', 'نوبت گرفته شد، جاوید', 'چهارشنبه ۳:۳۰، ۱۰ دالر پرداخت شد'],
+      metricLabel: 'ریزرف اتاق، حتی نیمه‌شب',
+      cta: 'ویب‌سایت هوتل می‌خوام',
+      app: { color: '#1d2a3a', ink: '#f3e7d3', glow: 'rgba(201, 161, 91, 0.28)' },
+      pill: ['i-bed', 'اتاق ریزرف شد', 'سویت فامیلی، ۲ شب، ۲۲۰ دالر'],
     },
-    salons: {
-      name: 'آرایشگاه و سالون',
-      short: 'آرایشگاه',
-      count: 'خدمات، کارت تحفه، نوبت دوباره',
-      headline: 'آرامش برای مشتری، <em>آسانی برای شما.</em>',
-      desc: 'ویب‌سایتی شیک با لست کامل خدمات، کارت تحفه و بسته‌ها، و سیستم نوبتی که سلیقهٔ هر مشتری یادش می‌مانه.',
-      features: ['لست خدمات و اضافه‌ها', 'کارت تحفه و بسته‌ها', 'یادداشت و سابقهٔ مشتری', 'نوبت دوبارهٔ خودکار'],
-      metric: '۱ دقیقه',
-      metricLabel: 'تا مشتری آنلاین نوبت بگیره',
-      cta: 'ویب‌سایت آرایشگاه می‌خوام',
-      pill: ['i-gift', 'کارت تحفه فروخته شد', '۱۵۰ دالر، بستهٔ مخصوص'],
+    {
+      id: 'realestate',
+      name: 'رهنمای معاملات',
+      icon: 'i-home',
+      count: 'لست ملک‌ها، جستجو، بازدید',
+      headline: 'ملک تان، <em>جلوی چشم خریدار.</em>',
+      desc: 'ویب‌سایت و اپ با لست حویلی، آپارتمان و زمین برای خرید، کرایه و گروی؛ با عکس، قیمت و نقشه، تا مشتری‌ها خود شان بپالن و وقت بازدید بگیرن.',
+      features: ['لست ملک‌ها با عکس و قیمت', 'خرید، کرایه و گروی', 'جستجو با فلتر', 'گرفتن وقت بازدید'],
+      metric: '۳ کلیک',
+      metricLabel: 'تا مشتری وقت بازدید بگیره',
+      cta: 'ویب‌سایت املاک می‌خوام',
+      app: { color: '#1f5a43', ink: '#ffffff', glow: 'rgba(31, 111, 74, 0.24)' },
+      pill: ['i-home', 'بازدید نو ریزرف شد', 'حویلی کارته پروان، صبا ساعت ۱۰'],
     },
-    fitness: {
-      name: 'جم و کلپ ورزشی',
-      short: 'جم',
-      count: 'کلاس‌ها، عضویت، اپ اعضا',
-      headline: 'کلاس‌ها پُر، <em>عضوها همیشگی.</em>',
-      desc: 'تقسیم اوقات کلاس‌ها، عضویت و پرداخت در یک اپ به نام خود تان؛ عضوها بدون زنگ زدن ریزرف می‌کنن، داخل میشن و عضویت خوده تمدید می‌کنن.',
-      features: ['تقسیم اوقات و لست انتظار', 'عضویت و کارت ورود', 'اپ اعضا به نام تان', 'ورود دیجیتال'],
+    {
+      id: 'hospitals',
+      name: 'شفاخانه',
+      icon: 'i-hospital',
+      count: 'نوبت، بخش‌ها، لابراتوار',
+      headline: 'نوبت منظم، <em>مریض راضی.</em>',
+      desc: 'سیستم نوبت برای همه بخش‌ها، اپ مریض‌ها و نتیجهٔ لابراتوار آنلاین؛ تا صف‌ها کوتاه شوه و داکترها وقت بیشتر برای مریض داشته باشن.',
+      features: ['نوبت آنلاین برای هر بخش', 'نمبر نوبت زنده روی موبایل', 'نتیجهٔ لابراتوار در اپ', 'پنل داکترها و کارمندان'],
       metric: '۱ اپ',
-      metricLabel: 'برای کلاس، عضویت و ورود',
-      cta: 'اپ اعضا می‌خوام',
-      pill: ['i-users', 'عضو نو', 'عضویت بی‌حد، ۵۹ دالر در ماه'],
+      metricLabel: 'برای نوبت، لابراتوار و راپور',
+      cta: 'سیستم شفاخانه می‌خوام',
+      app: { color: '#0f6f73', ink: '#ffffff', glow: 'rgba(15, 139, 141, 0.24)' },
+      pill: ['i-hospital', 'نتیجهٔ لابراتوار آماده اس', 'آزمایش خون، احمد رحیمی'],
     },
-    clinics: {
-      name: 'کلینیک و داکتر دندان',
-      short: 'کلینیک',
-      count: 'نوبت، فورم‌ها، یادآوری',
+    {
+      id: 'clinics',
+      name: 'کلینیک‌ها',
+      icon: 'i-tooth',
+      count: 'دندان، چشم، جلدی و بیشتر',
       headline: 'زنگ کمتر، <em>مریض بیشتر.</em>',
-      desc: 'ویب‌سایتی آرام و قابل اعتماد که مریض‌ها در آن نوبت می‌گیرن، فورم‌ها ره پیش از آمدن پُر می‌کنن و وقت معاینهٔ بعدی به یاد شان داده می‌شه.',
-      features: ['نوبت آنلاین', 'فورم‌های دیجیتال', 'ایمیل یادآوری', 'فورم‌های امن و محرم'],
+      desc: 'برای کلینیک دندان، چشم، جلدی و کلینیک‌های تخصصی: ویب‌سایتی آرام و قابل اعتماد که مریض‌ها در آن نوبت می‌گیرن، فورم‌ها ره پیش از آمدن پُر می‌کنن و وقت معاینهٔ بعدی به یاد شان داده می‌شه.',
+      features: ['نوبت آنلاین', 'فورم‌های دیجیتال', 'یادآوری با مسیج', 'پروفایل داکترها'],
       metric: '۳ کلیک',
       metricLabel: 'تا از هر موبایل نوبت گرفته شوه',
       cta: 'ویب‌سایت کلینیک می‌خوام',
+      app: { color: '#1f5eff', ink: '#ffffff', glow: 'rgba(31, 94, 255, 0.2)' },
       pill: ['i-calendar', 'مریض نو نوبت گرفت', 'پنجشنبه ۹:۳۰، داکتر حمید'],
     },
-    retail: {
-      name: 'دوکان و فروشگاه',
-      short: 'دوکان',
-      count: 'فروشگاه آنلاین، رسانیدن',
-      headline: 'دوکان تان، <em>شب و روز باز.</em>',
-      desc: 'یک فروشگاه آنلاین مثل دوکان خود تان، با فرمایش و تحویل از دوکان، رسانیدن در شهر و امتیاز مشتری که مشتری ره دوباره میاره.',
-      features: ['فروشگاه آنلاین و موجودی', 'فرمایش و تحویل از دوکان', 'رسانیدن در شهر', 'امتیاز مشتری و کارت تحفه'],
-      metric: 'همو روز',
-      metricLabel: 'رسانیدن در شهر و تحویل از دوکان',
-      cta: 'فروشگاه آنلاین می‌خوام',
-      pill: ['i-bag', 'فرمایش در راه اس', 'گل پیونی، رسانیدن در شهر'],
+    {
+      id: 'companies',
+      name: 'شرکت‌ها و کاروبار کلان',
+      icon: 'i-building',
+      count: 'پنل مدیریت، فروش، کارمندان',
+      headline: 'همه کار شرکت، <em>در یک پنل.</em>',
+      desc: 'ویب‌سایت رسمی شرکت همراه با پنل مدیریت: فروش، فرمایش‌ها، گدام و حاضری کارمندان؛ همه آنلاین و از موبایل هم دیده می‌شه.',
+      features: ['ویب‌سایت رسمی شرکت', 'پنل فروش و فرمایش‌ها', 'گدام و موجودی', 'حاضری و راپور کارمندان'],
+      metric: 'هر روز',
+      metricLabel: 'راپور فروش، خودکار روی موبایل',
+      cta: 'سیستم شرکت می‌خوام',
+      app: { color: '#101318', ink: '#34d399', glow: 'rgba(52, 211, 153, 0.24)' },
+      pill: ['i-building', 'فرمایش عمدهٔ نو', '۴۸۰ کارتن، ۲٬۴۰۰ دالر'],
     },
-  };
-  if (isFa) INDUSTRIES.forEach((d) => Object.assign(d, INDUSTRIES_FA[d.id]));
+  ];
+  const INDUSTRY_LIST = isFa ? INDUSTRIES_FA : INDUSTRIES;
 
   const indRoot = $('[data-industries]');
   if (indRoot) {
     const tabList = $('.ind-tabs', indRoot);
     const panel = $('.ind-panel', indRoot);
 
-    tabList.innerHTML = INDUSTRIES.map(
+    tabList.innerHTML = INDUSTRY_LIST.map(
       (d, k) => `
       <button class="ind-tab" type="button" role="tab" id="ind-tab-${d.id}" aria-controls="ind-panel" aria-selected="${k === 0}" tabindex="${k === 0 ? 0 : -1}" data-id="${d.id}">
         <span class="ind-ico">${icon(d.icon)}</span>
@@ -559,7 +576,7 @@
         clock: '9:41',
         restaurants: {
           deliverTo: 'Deliver to', address: 'Via Roma 21', hello: 'Buonasera, Sara', ask: 'What are you <em>craving</em> tonight?',
-          chips: ['Pizza', 'Pasta', 'Antipasti', 'Dolci'], pick: "Chef's pick", dish: 'Margherita DOP', dishMeta: 'Wood-fired · 12"', rating: '4.9', price: '$14',
+          chips: ['Pizza', 'Pasta', 'Antipasti', 'Dolci'], pick: "Chef's pick", photo: 'napoli-pizza', dish: 'Margherita DOP', dishMeta: 'Wood-fired · 12"', rating: '4.9', price: '$14',
           popular: 'Popular', seeAll: 'See all', dishes: [['pizza-diavola', 'Diavola', '$16'], ['pasta-pesto', 'Pesto Genovese', '$15'], ['tiramisu', 'Tiramisù', '$8']],
           cartCount: '2', viewCart: 'View cart', cartTotal: '$30.00',
         },
@@ -602,8 +619,8 @@
         clock: '۹:۴۱',
         restaurants: {
           deliverTo: 'رسانیدن به', address: 'سرک گلبهار ۲۱', hello: 'شام بخیر، مریم', ask: 'امشب دل تان <em>چی</em> می‌خواد؟',
-          chips: ['پیتزا', 'پاستا', 'پیش‌غذا', 'دسر'], pick: 'انتخاب آشپز', dish: 'مارگریتا', dishMeta: 'تنوری، ۱۲ اینچ', rating: '۴٫۹', price: '۱۴ دالر',
-          popular: 'پرطرفدار', seeAll: 'همه', dishes: [['pizza-diavola', 'دیاولا', '۱۶ دالر'], ['pasta-pesto', 'پاستا پستو', '۱۵ دالر'], ['tiramisu', 'تیرامیسو', '۸ دالر']],
+          chips: ['پلو', 'کباب', 'پیتزا', 'شیرینی'], pick: 'انتخاب آشپز', photo: 'afghan-palaw', dish: 'قابلی پلو', dishMeta: 'با گوشت گوسفند', rating: '۴٫۹', price: '۱۶ دالر',
+          popular: 'پرطرفدار', seeAll: 'همه', dishes: [['afghan-kabob', 'کباب چوپان', '۱۸ دالر'], ['afghan-feast', 'دسترخوان فامیلی', '۶۵ دالر'], ['pizza-diavola', 'پیتزای مرغ', '۱۲ دالر']],
           cartCount: '۲', viewCart: 'دیدن فرمایش', cartTotal: '۳۰ دالر',
         },
         barbershops: {
@@ -640,6 +657,30 @@
           items: [['florist-peony', 'گل پیونی', '۶۵ دالر', true], ['florist-tulips', 'لالهٔ گلابی', '۳۸ دالر'], ['florist-dried', 'دسته‌گل خشک', '۴۲ دالر'], ['florist-bouquet', 'دسته‌گل بهاری', '۴۵ دالر']],
           tabs: ['دوکان', 'پالیدن', 'پسندها', 'حساب'],
         },
+        hotels: {
+          name: 'هوتل سیمرغ', place: 'شهر نو، کابل', rating: '۴٫۸',
+          dates: [['ورود', 'پنجشنبه ۱۴'], ['خروج', 'شنبه ۱۶'], ['مهمان', '۲ نفر']], rooms: 'اتاق‌ها', nights: '۲ شب',
+          items: [['hotel-room', 'اتاق لوکس', '۲ نفر، بالکن و باغ', '۸۵ دالر'], ['hotel-suite', 'سویت فامیلی', '۴ نفر، منظرهٔ شهر', '۱۱۰ دالر', true], ['hotel-bed', 'اتاق دبل', '۲ نفر، با صبحانه', '۶۵ دالر']],
+          totalLabel: '۲ شب، مجموع', total: '۲۲۰ دالر', book: 'ریزرف اتاق',
+        },
+        realestate: {
+          kicker: 'رهنمای معاملات', name: 'املاک امید', title: 'خانهٔ دلخواه تانه <em>پیدا کنین</em>', search: 'کارته سه، شهر نو، خیرخانه…',
+          seg: ['خرید', 'کرایه', 'گروی'], segOn: 1, tag: 'نو', home: 'حویلی دو منزله', place: 'کارته پروان', price: '۱٬۲۰۰ دالر', per: 'ماهانه',
+          meta: ['۵ اتاق', '۴۵۰ متر', 'پارکینگ'],
+          rows: [['apartment-living', 'آپارتمان ۳ اتاقه', 'شهر نو، منزل ۵', '۶۵۰ دالر'], ['house-modern', 'حویلی یک منزله', 'خیرخانه، سرک ۴', '۸۰۰ دالر']],
+        },
+        hospitals: {
+          brand: 'شفاخانهٔ شفا', hi: 'سلام، احمد', queue: 'نوبت شما امروز', live: 'زنده', number: '۱۲', doc: 'داکتر فریده احمدی', dep: 'بخش اطفال، اتاق ۳',
+          note: 'حالی نوبت ۹ اس؛ تقریباً ۲۰ دقیقه', deps: 'بخش‌ها', seeAll: 'همه',
+          depList: [['i-heart', 'داخله'], ['i-users', 'اطفال'], ['i-user', 'نسایی و ولادی'], ['i-hospital', 'جراحی'], ['i-tooth', 'دندان'], ['i-flask', 'لابراتوار']],
+          lab: 'نتیجهٔ لابراتوار آماده اس', labMeta: 'آزمایش خون، دیروز', view: 'دیدن',
+        },
+        companies: {
+          kicker: 'پنل مدیریت', name: 'شرکت آریا', initial: 'آ', sales: 'فروش امروز', amount: '۱۲٬۴۸۰ دالر', up: '▲ ۱۸٪',
+          bars: [38, 52, 44, 61, 49, 70, 58, 66, 74, 63, 82, 92],
+          kpis: [['فرمایش‌ها', '۸۶'], ['مشتری نو', '۱۴'], ['حاضر', '۴۲/۴۵']], latest: 'فرمایش‌های تازه', seeAll: 'همه',
+          orders: [['پ', 'شرکت پامیر', '۴۸۰ کارتن، ۲٬۴۰۰ دالر', 'در راه', 'is-way'], ['ک', 'کابل مارکیت', '۱۲۰ کارتن، ۶۵۰ دالر', 'تحویل شد', 'is-done'], ['ه', 'هوتل سیمرغ', '۳۰ کارتن، ۱۸۰ دالر', 'نو', 'is-new']],
+        },
       },
     }[isFa ? 'fa' : 'en'];
 
@@ -658,7 +699,7 @@
         <p class="rest-hello"><small>${t.hello}</small>${t.ask}</p>
         <div class="rest-chips">${t.chips.map((c, k) => `<span${k ? '' : ' class="is-on"'}>${c}</span>`).join('')}</div>
         <div class="rest-feature">
-          <div class="rest-feature-media">${photo('napoli-pizza', '', 900, 900)}<span>${t.pick}</span></div>
+          <div class="rest-feature-media">${photo(t.photo, '', 900, 900)}<span>${t.pick}</span></div>
           <div class="rest-feature-info">
             <span><b>${t.dish}</b><small>${t.dishMeta}${isFa ? '، ' : ' · '}${stars(t.rating)}</small></span>
             <span class="rest-add">${t.price}<i>${icon('i-plus')}</i></span>
@@ -799,6 +840,78 @@
             .join('')}
         </div>
         <div class="shop-tabbar">${['i-home', 'i-search', 'i-heart-o', 'i-user'].map((ic, k) => `<span${k ? '' : ' class="is-on"'}>${icon(ic)}${t.tabs[k]}</span>`).join('')}</div>`,
+
+      // Hotel: room photo, dates, room choice and the booking bar (Dari page only)
+      hotels: (t = APP_TEXT.hotels) => `
+        <div class="hot-hero">${photo('hotel-lobby', '', 1100, 733)}</div>
+        ${statusBar('ph-status--over')}
+        <div class="hot-actions"><span>${icon('i-chev-r')}</span><span>${icon('i-heart-o')}</span></div>
+        <div class="hot-sheet">
+          <div class="hot-head">
+            <span><strong>${t.name}</strong><small>${icon('i-pin')}${t.place}</small></span>
+            <span class="hot-rate">${stars(t.rating)}</span>
+          </div>
+          <div class="hot-dates">${t.dates.map(([k, v]) => `<span><small>${k}</small><b>${v}</b></span>`).join('')}</div>
+          <div class="hot-label"><b>${t.rooms}</b><small>${t.nights}</small></div>
+          <div class="hot-rooms">
+            ${t.items
+              .map(([img, name, meta, price, on]) => `<div class="hot-room${on ? ' is-on' : ''}">${photo(img, '', 480, 320)}<span><b>${name}</b><small>${meta}</small></span><em>${price}</em></div>`)
+              .join('')}
+          </div>
+        </div>
+        <div class="hot-bar"><span><small>${t.totalLabel}</small><b>${t.total}</b></span><em>${t.book}${icon('i-arrow')}</em></div>`,
+
+      // Real estate: search, buy / rent / gerawi, a featured home and more listings
+      realestate: (t = APP_TEXT.realestate) => `
+        ${statusBar()}
+        <div class="re-top">
+          <span><small>${t.kicker}</small><b>${t.name}</b></span>
+          <span class="re-bell">${icon('i-bell')}</span>
+        </div>
+        <p class="re-title">${t.title}</p>
+        <div class="re-search">${icon('i-search')}<span>${t.search}</span><i>${icon('i-sliders')}</i></div>
+        <div class="re-seg">${t.seg.map((x, k) => `<span${k === t.segOn ? ' class="is-on"' : ''}>${x}</span>`).join('')}</div>
+        <div class="re-card">
+          <div class="re-media">${photo('house-villa', '', 1100, 825)}<em class="re-tag">${t.tag}</em><span class="re-fav">${icon('i-heart-o')}</span></div>
+          <div class="re-info"><span><b>${t.home}</b><small>${icon('i-pin')}${t.place}</small></span><em>${t.price}<small> ${t.per}</small></em></div>
+          <div class="re-meta">${t.meta.map((x) => `<span>${x}</span>`).join('')}</div>
+        </div>
+        ${t.rows.map((r) => `<div class="re-row">${photo(r[0], '', 720, 480)}<span><b>${r[1]}</b><small>${r[2]}</small></span><em>${r[3]}</em></div>`).join('')}`,
+
+      // Hospital: live queue number, departments and a lab result
+      hospitals: (t = APP_TEXT.hospitals) => `
+        ${statusBar()}
+        <div class="hos-top">
+          <span><small>${t.brand}</small><b>${t.hi}</b></span>
+          <span class="hos-bell">${icon('i-bell')}<i></i></span>
+        </div>
+        <div class="hos-queue">
+          <div class="hos-q-head"><small>${t.queue}</small><span>${t.live}</span></div>
+          <div class="hos-q-main"><strong>${t.number}</strong><span><b>${t.doc}</b><small>${t.dep}</small></span>${photo('doctor-woman', '', 240, 240)}</div>
+          <div class="hos-q-bar"><i></i></div>
+          <small class="hos-q-note">${t.note}</small>
+        </div>
+        <div class="hos-label"><b>${t.deps}</b><small>${t.seeAll}</small></div>
+        <div class="hos-deps">${t.depList.map(([ic, name]) => `<span><i>${icon(ic)}</i>${name}</span>`).join('')}</div>
+        <div class="hos-lab"><span class="hos-lab-ico">${icon('i-flask')}</span><span><b>${t.lab}</b><small>${t.labMeta}</small></span><em>${t.view}</em></div>`,
+
+      // Company: today's sales, key numbers and the latest orders
+      companies: (t = APP_TEXT.companies) => `
+        ${statusBar()}
+        <div class="co-top">
+          <span><small>${t.kicker}</small><b>${t.name}</b></span>
+          <span class="co-av">${t.initial}</span>
+        </div>
+        <div class="co-hero">
+          <small>${t.sales}</small>
+          <div class="co-hero-row"><strong>${t.amount}</strong><span class="co-up">${t.up}</span></div>
+          <div class="co-chart">${t.bars.map((h, k) => `<i style="height:${h}%"${k === t.bars.length - 1 ? ' class="is-on"' : ''}></i>`).join('')}</div>
+        </div>
+        <div class="co-kpis">${t.kpis.map(([k, v]) => `<span><small>${k}</small><b>${v}</b></span>`).join('')}</div>
+        <div class="co-label"><b>${t.latest}</b><small>${t.seeAll}</small></div>
+        <div class="co-list">
+          ${t.orders.map(([ini, name, meta, state, cls]) => `<div class="co-row"><i>${ini}</i><span><b>${name}</b><small>${meta}</small></span><em class="${cls}">${state}</em></div>`).join('')}
+        </div>`,
     };
 
     const appScreen = (d) => `
@@ -839,7 +952,7 @@
 
     const tabs = $$('.ind-tab', tabList);
     const select = (id, { focus = false } = {}) => {
-      const d = INDUSTRIES.find((x) => x.id === id);
+      const d = INDUSTRY_LIST.find((x) => x.id === id);
       if (!d) return;
       tabs.forEach((t) => {
         const on = t.dataset.id === id;
@@ -870,7 +983,7 @@
       });
     });
 
-    render(INDUSTRIES[0]);
+    render(INDUSTRY_LIST[0]);
     panel.classList.remove('is-switching');
 
     // Footer links can jump straight to an industry

@@ -322,38 +322,39 @@ html.js .reveal.is-in { animation: reveal-up 1s var(--ease) backwards; animation
   -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 70%);
   mask-image: linear-gradient(180deg, #000 0%, transparent 70%);
 }
-.hero-curtain {
-  position: absolute; top: -40px; right: -2%;
-  width: min(66vw, 980px); height: min(78vh, 720px);
-  display: flex;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 32%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 32%);
+/* Layered paper shapes in the top corner, drawn by main.js: flat sheets with a soft paper shadow */
+.hero-paper {
+  position: absolute; top: 0; left: 0;
+  width: min(66vw, 980px); height: min(86vh, 780px);
+  -webkit-mask-image: radial-gradient(125% 120% at 0 0, #000 52%, transparent 80%);
+  mask-image: radial-gradient(125% 120% at 0 0, #000 52%, transparent 80%);
   transition: transform 1.2s var(--ease);
 }
-/* Each stripe is a fluted-glass rib: brand colour, lens-like shading, soft fade at the bottom */
-.hero-curtain span {
-  position: relative; flex: 1 1 0; height: var(--h); opacity: var(--o);
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.34) 30%, rgba(255, 255, 255, 0.06) 56%, rgba(150, 30, 0, 0.14) 100%),
-    linear-gradient(180deg, var(--c1, #ff5a1f) 0%, var(--c2, #ff7a45) 78%);
-  -webkit-mask-image: linear-gradient(180deg, #000 28%, transparent 100%);
-  mask-image: linear-gradient(180deg, #000 28%, transparent 100%);
-  transform-origin: 50% 0;
-  animation: curtain-wave 7.5s var(--ease-io) infinite alternate;
-  animation-delay: calc(var(--k, 0) * -0.24s);
-  will-change: transform;
+.hero-paper svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.hero-paper path {
+  transform-box: view-box; transform-origin: 0 0;
+  animation: paper-drift 11s var(--ease-io) infinite alternate;
+  animation-delay: calc(var(--k, 0) * -1.6s);
 }
-/* A soft light glint that sweeps across the ribs */
-.hero-curtain span::after {
-  content: ""; position: absolute; inset: 0; opacity: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%);
-  animation: curtain-glint 7s ease-in-out infinite;
-  animation-delay: calc(var(--k, 0) * 0.06s);
+/* A faint paper grain over the sheets */
+.hero-paper::after {
+  content: ""; position: absolute; inset: 0; opacity: 0.55; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.3 0 0 0 0 0.2 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.hero.is-paused .hero-curtain span,
-.hero.is-paused .hero-curtain span::after { animation-play-state: paused; }
-@keyframes curtain-wave { from { transform: scaleY(0.8); } to { transform: scaleY(1.05); } }
-@keyframes curtain-glint { 0%, 56%, 100% { opacity: 0; } 66% { opacity: 1; } 86% { opacity: 0; } }
+.hero.is-paused .hero-paper path { animation-play-state: paused; }
+@keyframes paper-drift { from { transform: rotate(-0.9deg) scale(0.985); } to { transform: rotate(0.7deg) scale(1.02); } }
+
+/* Frosted glass in front of the paper: the headline sits on it */
+.hero-glass {
+  position: absolute; top: clamp(84px, 13vh, 132px); left: clamp(24px, 5vw, 84px);
+  width: min(74vw, 1100px); height: min(80vh, 720px);
+  border-radius: 44px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2) 48%, rgba(255, 255, 255, 0.06));
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.85), inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1); backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-mask-image: radial-gradient(120% 115% at 0 0, #000 46%, transparent 78%);
+  mask-image: radial-gradient(120% 115% at 0 0, #000 46%, transparent 78%);
+}
 
 .hero-inner { position: relative; }
 
@@ -1921,7 +1922,8 @@ html.js .svc:not(.is-in) .cal-grid i.on { transform: scale(0.6); opacity: 0; }
   .hero-bottom { grid-template-columns: 1fr; gap: 36px; }
   .hero-stats { grid-column: 1; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 22px 0 0; border-left: 0; border-top: 1px solid var(--line-2); }
   .hero-stat dt { font-size: 28px; }
-  .hero-curtain { width: 120vw; height: 56vh; right: -24%; }
+  .hero-paper { width: 112vw; height: 64vh; }
+  .hero-glass { top: 92px; left: 14px; width: 104vw; height: 62vh; border-radius: 32px; }
   .ipill { width: 1.3em; height: 0.72em; }
   .showcase-inner { aspect-ratio: 4 / 4.6; border-radius: var(--radius-l); }
   .sc-browser { left: 5%; top: 6%; width: 118%; }
@@ -1979,6 +1981,7 @@ html.js .svc:not(.is-in) .cal-grid i.on { transform: scale(0.6); opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-paper path { animation: none; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   .marquee-track { animation: none; }
