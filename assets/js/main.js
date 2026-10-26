@@ -462,73 +462,79 @@
     },
   ];
 
-  // Dari copy for the industry tabs on /afg/ (the app mockups stay as designed)
+  // Dari copy for the industry tabs on /afg/, in everyday Afghan Dari
   const INDUSTRIES_FA = {
     restaurants: {
       name: 'رستورانت و کافه',
       short: 'رستورانت',
-      count: 'سفارش، رزرو، منوی QR',
-      headline: 'سفارش بیشتر، میزهای پُر، <em>بدون کمیشن.</em>',
-      desc: 'وب‌سایتی اشتهاآور با سفارش آنلاین و رزرو میز، تا مشتریان مستقیم از خودتان سفارش بدهند، نه از اپ‌های واسطه.',
-      features: ['سفارش آنلاین برای بردن', 'رزرو میز', 'منوی QR', 'نظرات و نقشهٔ گوگل'],
+      count: 'فرمایش، ریزرف، منوی QR',
+      headline: 'فرمایش بیشتر، میزهای پُر، <em>بدون کمیشن.</em>',
+      desc: 'ویب‌سایتی که اشتهای آدم ره باز می‌کنه، با فرمایش آنلاین و ریزرف میز؛ تا مشتری‌ها مستقیم از خود تان فرمایش بدن، نه از اپ‌های واسطه.',
+      features: ['فرمایش آنلاین برای بردن', 'ریزرف میز', 'منوی QR', 'نظرها و نقشهٔ گوگل'],
       metric: '۰٪',
-      metricLabel: 'کمیشن از سفارش‌های سایت خودتان',
-      cta: 'وب‌سایت رستورانت می‌خواهم',
+      metricLabel: 'کمیشن از فرمایش‌های سایت خود تان',
+      cta: 'ویب‌سایت رستورانت می‌خوام',
+      pill: ['i-bag', 'فرمایش نو، ۵۲ دالر', 'ساعت ۷:۱۵ شام می‌برن'],
     },
     barbershops: {
       name: 'سلمانی',
       short: 'سلمانی',
-      count: 'رزرو، پیش‌پرداخت، یادآوری',
-      headline: 'چوکی‌ای که <em>هیچ‌وقت خالی نمی‌ماند.</em>',
-      desc: 'مشتریان شبانه‌روز سلمان، خدمت و وقت دلخواه خود را انتخاب می‌کنند. پیش‌پرداخت و یادآوری خودکار یعنی نیامدن کمتر و کار بیشتر در هر روز.',
-      features: ['رزرو آنلاین شبانه‌روزی', 'پروفایل و تقویم هر سلمان', 'پیش‌پرداخت برای جلوگیری از نیامدن', 'یادآوری با پیامک'],
+      count: 'نوبت، پیش‌پرداخت، یادآوری',
+      headline: 'چوکی‌ای که <em>هیچ وقت خالی نمی‌مانه.</em>',
+      desc: 'مشتری‌ها شب و روز سلمانی، کار و وقت دلخواه خوده انتخاب می‌کنن. پیش‌پرداخت و یادآوری خودکار یعنی کمتر کسی نوبت خوده خطا می‌کنه و هر روز کار بیشتر.',
+      features: ['نوبت آنلاین شب و روز', 'پروفایل و تقویم هر سلمانی', 'پیش‌پرداخت تا کسی نوبت خطا نکنه', 'یادآوری با مسیج'],
       metric: '۲۴/۷',
-      metricLabel: 'رزرو، حتی بعد از بسته شدن دوکان',
-      cta: 'اپ سلمانی می‌خواهم',
+      metricLabel: 'نوبت گرفتن، حتی وقتی دوکان بسته اس',
+      cta: 'اپ سلمانی می‌خوام',
+      pill: ['i-check', 'نوبت گرفته شد، جاوید', 'چهارشنبه ۳:۳۰، ۱۰ دالر پرداخت شد'],
     },
     salons: {
-      name: 'آرایشگاه و سپا',
+      name: 'آرایشگاه و سالون',
       short: 'آرایشگاه',
-      count: 'خدمات، کارت تحفه، رزرو دوباره',
+      count: 'خدمات، کارت تحفه، نوبت دوباره',
       headline: 'آرامش برای مشتری، <em>آسانی برای شما.</em>',
-      desc: 'وب‌سایتی شیک با فهرست کامل خدمات، کارت تحفه و بسته‌ها، و سیستم رزروی که سلیقهٔ هر مشتری را به یاد دارد.',
-      features: ['فهرست خدمات و افزودنی‌ها', 'کارت تحفه و بسته‌ها', 'یادداشت و سابقهٔ مشتری', 'رزرو دوبارهٔ خودکار'],
+      desc: 'ویب‌سایتی شیک با لست کامل خدمات، کارت تحفه و بسته‌ها، و سیستم نوبتی که سلیقهٔ هر مشتری یادش می‌مانه.',
+      features: ['لست خدمات و اضافه‌ها', 'کارت تحفه و بسته‌ها', 'یادداشت و سابقهٔ مشتری', 'نوبت دوبارهٔ خودکار'],
       metric: '۱ دقیقه',
-      metricLabel: 'تا مشتری آنلاین وقت بگیرد',
-      cta: 'وب‌سایت آرایشگاه می‌خواهم',
+      metricLabel: 'تا مشتری آنلاین نوبت بگیره',
+      cta: 'ویب‌سایت آرایشگاه می‌خوام',
+      pill: ['i-gift', 'کارت تحفه فروخته شد', '۱۵۰ دالر، بستهٔ مخصوص'],
     },
     fitness: {
       name: 'جم و کلپ ورزشی',
       short: 'جم',
       count: 'کلاس‌ها، عضویت، اپ اعضا',
-      headline: 'کلاس‌ها پُر، <em>اعضا همیشگی.</em>',
-      desc: 'تقسیم اوقات کلاس‌ها، عضویت و پرداخت در یک اپ با نام خودتان؛ اعضا بدون زنگ زدن به پذیرش، رزرو، ورود و تمدید می‌کنند.',
-      features: ['تقسیم اوقات و لیست انتظار', 'عضویت و کارت ورود', 'اپ اعضا با نام شما', 'ورود دیجیتال'],
+      headline: 'کلاس‌ها پُر، <em>عضوها همیشگی.</em>',
+      desc: 'تقسیم اوقات کلاس‌ها، عضویت و پرداخت در یک اپ به نام خود تان؛ عضوها بدون زنگ زدن ریزرف می‌کنن، داخل میشن و عضویت خوده تمدید می‌کنن.',
+      features: ['تقسیم اوقات و لست انتظار', 'عضویت و کارت ورود', 'اپ اعضا به نام تان', 'ورود دیجیتال'],
       metric: '۱ اپ',
       metricLabel: 'برای کلاس، عضویت و ورود',
-      cta: 'اپ اعضا می‌خواهم',
+      cta: 'اپ اعضا می‌خوام',
+      pill: ['i-users', 'عضو نو', 'عضویت بی‌حد، ۵۹ دالر در ماه'],
     },
     clinics: {
       name: 'کلینیک و داکتر دندان',
       short: 'کلینیک',
       count: 'نوبت، فورم‌ها، یادآوری',
-      headline: 'تماس تیلفونی کمتر، <em>مریض بیشتر.</em>',
-      desc: 'وب‌سایتی آرام و قابل اعتماد که مریضان در آن نوبت می‌گیرند، فورم‌ها را قبل از آمدن پُر می‌کنند و وقت معاینهٔ بعدی به یادشان آورده می‌شود.',
-      features: ['نوبت‌گیری آنلاین', 'فورم‌های دیجیتال', 'ایمیل یادآوری', 'فورم‌های امن و محرمانه'],
+      headline: 'زنگ کمتر، <em>مریض بیشتر.</em>',
+      desc: 'ویب‌سایتی آرام و قابل اعتماد که مریض‌ها در آن نوبت می‌گیرن، فورم‌ها ره پیش از آمدن پُر می‌کنن و وقت معاینهٔ بعدی به یاد شان داده می‌شه.',
+      features: ['نوبت آنلاین', 'فورم‌های دیجیتال', 'ایمیل یادآوری', 'فورم‌های امن و محرم'],
       metric: '۳ کلیک',
-      metricLabel: 'برای گرفتن نوبت از هر موبایل',
-      cta: 'وب‌سایت کلینیک می‌خواهم',
+      metricLabel: 'تا از هر موبایل نوبت گرفته شوه',
+      cta: 'ویب‌سایت کلینیک می‌خوام',
+      pill: ['i-calendar', 'مریض نو نوبت گرفت', 'پنجشنبه ۹:۳۰، داکتر حمید'],
     },
     retail: {
       name: 'دوکان و فروشگاه',
       short: 'دوکان',
-      count: 'فروشگاه آنلاین، رساندن',
-      headline: 'دوکان شما، <em>شبانه‌روز باز.</em>',
-      desc: 'فروشگاه آنلاینی مثل دوکان خودتان، با سفارش و تحویل از دوکان، رساندن محلی و امتیاز وفاداری که مشتری را دوباره برمی‌گرداند.',
-      features: ['فروشگاه آنلاین و موجودی', 'سفارش و تحویل از دوکان', 'رساندن محلی', 'امتیاز وفاداری و کارت تحفه'],
-      metric: 'همان روز',
-      metricLabel: 'رساندن محلی و تحویل از دوکان',
-      cta: 'فروشگاه آنلاین می‌خواهم',
+      count: 'فروشگاه آنلاین، رسانیدن',
+      headline: 'دوکان تان، <em>شب و روز باز.</em>',
+      desc: 'یک فروشگاه آنلاین مثل دوکان خود تان، با فرمایش و تحویل از دوکان، رسانیدن در شهر و امتیاز مشتری که مشتری ره دوباره میاره.',
+      features: ['فروشگاه آنلاین و موجودی', 'فرمایش و تحویل از دوکان', 'رسانیدن در شهر', 'امتیاز مشتری و کارت تحفه'],
+      metric: 'همو روز',
+      metricLabel: 'رسانیدن در شهر و تحویل از دوکان',
+      cta: 'فروشگاه آنلاین می‌خوام',
+      pill: ['i-bag', 'فرمایش در راه اس', 'گل پیونی، رسانیدن در شهر'],
     },
   };
   if (isFa) INDUSTRIES.forEach((d) => Object.assign(d, INDUSTRIES_FA[d.id]));
@@ -548,73 +554,158 @@
     ).join('');
 
     // Each industry gets its own app, laid out the way that kind of business actually works
+    const APP_TEXT = {
+      en: {
+        clock: '9:41',
+        restaurants: {
+          deliverTo: 'Deliver to', address: 'Via Roma 21', hello: 'Buonasera, Sara', ask: 'What are you <em>craving</em> tonight?',
+          chips: ['Pizza', 'Pasta', 'Antipasti', 'Dolci'], pick: "Chef's pick", dish: 'Margherita DOP', dishMeta: 'Wood-fired · 12"', rating: '4.9', price: '$14',
+          popular: 'Popular', seeAll: 'See all', dishes: [['pizza-diavola', 'Diavola', '$16'], ['pasta-pesto', 'Pesto Genovese', '$15'], ['tiramisu', 'Tiramisù', '$8']],
+          cartCount: '2', viewCart: 'View cart', cartTotal: '$30.00',
+        },
+        barbershops: {
+          title: 'Book appointment', step: 'Step 2/3', choose: 'Choose your barber',
+          team: [['barber-marco', 'Marco', '4.9'], ['barber-leo', 'Leo', '4.8'], ['barber-andre', 'Andre', '4.9']], any: 'Any', anyNote: 'First free',
+          service: 'Skin fade', serviceMeta: '45 min · $35', change: 'Change', month: 'October',
+          days: [['Mon', '12'], ['Tue', '13'], ['Wed', '14'], ['Thu', '15'], ['Fri', '16']], dayOn: 2,
+          afternoon: 'Afternoon', afternoonFree: '4 free', afternoonTimes: [['1:00'], ['2:15', 'is-off'], ['3:30', 'is-on'], ['4:00'], ['4:45', 'is-off'], ['5:30']],
+          evening: 'Evening', eveningFree: '2 free', eveningTimes: [['6:00', 'is-off'], ['6:45'], ['7:30']],
+          confirm: 'Confirm · Wed 3:30 PM', confirmNote: '$10 deposit today · free cancellation up to 24h',
+        },
+        salons: {
+          name: 'Glow Studio', meta: 'Skin · Nails · Massage · 0.8 km', rating: '4.9', tabs: ['All', 'Face', 'Nails', 'Body'],
+          items: [['salon-facial', 'Signature facial', '60 min · with Mia', '$85'], ['salon-nails', 'Gel manicure', '45 min · with Sofia', '$40', true], ['salon-massage', 'Hot stone massage', '90 min · with Ava', '$120']],
+          count: '1 treatment', total: '$40', choose: 'Choose a time',
+        },
+        fitness: {
+          greet: 'Good morning', hi: 'Hi, Alex', ring: '3/4', goal: 'Weekly goal', goalLine: '3 of 4 workouts',
+          stats: ['<b>1,840</b> kcal', '<b>3h 20m</b> active'], today: "Today's classes", schedule: 'Schedule',
+          when: '7:00 AM', feature: 'HIIT Burn', featureMeta: '45 min · Coach Dana · 4 spots left', join: 'Join',
+          rows: [['gym-yoga', 480, 480, 'Power yoga', '12:30 PM · Studio 2', 'Waitlist', 'is-off'], ['gym-boxing', 480, 480, 'Boxing', '6:00 PM · 8 spots', 'Book', ''], ['gym-interior', 1000, 667, 'Open gym', 'Until 11 PM · 32 here now', 'Live', 'is-live']],
+        },
+        clinics: {
+          greet: 'Good morning,', name: 'Emma Wilson', upcoming: 'Upcoming visit', confirmed: 'Confirmed', visit: 'Check-up &amp; clean',
+          doc: 'Dr. James Patel', docMeta: 'General dentist · Room 2', date: 'Thu, Oct 15', time: '9:30 AM',
+          form: 'Intake form', formMeta: '2 of 3 sections done', finish: 'Finish', book: 'Book a visit', month: 'October',
+          week: [['M', '12', 1], ['T', '13', 1], ['W', '14', 0], ['T', '15', 1], ['F', '16', 1], ['S', '17', 0], ['S', '18', 0]], weekOn: 4,
+          services: 'Services', seeAll: 'See all',
+          items: [['dental-smile', 'Teeth whitening', '60 min · from $199'], ['dental-checkup', 'Hygiene clean', '30 min · insurance accepted']], bookItem: 'Book',
+        },
+        retail: {
+          brand: 'Petal <em>&amp;</em> Stem', search: 'Search bouquets, plants…', promoNote: 'Same-day delivery', promo: 'Fresh flowers, <em>at your door today</em>', promoBy: 'Order by 2 PM',
+          chips: ['All', 'Bouquets', 'Plants', 'Dried'],
+          items: [['florist-peony', 'Peony stems', '$65', true], ['florist-tulips', 'Pink tulips', '$38'], ['florist-dried', 'Dried posy', '$42'], ['florist-bouquet', 'Spring bouquet', '$45']],
+          tabs: ['Shop', 'Search', 'Saved', 'Account'],
+        },
+      },
+      fa: {
+        clock: '۹:۴۱',
+        restaurants: {
+          deliverTo: 'رسانیدن به', address: 'سرک گلبهار ۲۱', hello: 'شام بخیر، مریم', ask: 'امشب دل تان <em>چی</em> می‌خواد؟',
+          chips: ['پیتزا', 'پاستا', 'پیش‌غذا', 'دسر'], pick: 'انتخاب آشپز', dish: 'مارگریتا', dishMeta: 'تنوری، ۱۲ اینچ', rating: '۴٫۹', price: '۱۴ دالر',
+          popular: 'پرطرفدار', seeAll: 'همه', dishes: [['pizza-diavola', 'دیاولا', '۱۶ دالر'], ['pasta-pesto', 'پاستا پستو', '۱۵ دالر'], ['tiramisu', 'تیرامیسو', '۸ دالر']],
+          cartCount: '۲', viewCart: 'دیدن فرمایش', cartTotal: '۳۰ دالر',
+        },
+        barbershops: {
+          title: 'گرفتن نوبت', step: 'قدم ۲ از ۳', choose: 'سلمانی تانه انتخاب کنین',
+          team: [['barber-marco', 'جاوید', '۴٫۹'], ['barber-leo', 'فرید', '۴٫۸'], ['barber-andre', 'نوید', '۴٫۹']], any: 'هر کی', anyNote: 'اولین خالی',
+          service: 'فید کوتاه', serviceMeta: '۴۵ دقیقه، ۳۵ دالر', change: 'تغییر', month: 'اکتوبر',
+          days: [['د', '۱۲'], ['س', '۱۳'], ['چ', '۱۴'], ['پ', '۱۵'], ['ج', '۱۶']], dayOn: 2,
+          afternoon: 'بعد از چاشت', afternoonFree: '۴ وقت خالی', afternoonTimes: [['۱:۰۰'], ['۲:۱۵', 'is-off'], ['۳:۳۰', 'is-on'], ['۴:۰۰'], ['۴:۴۵', 'is-off'], ['۵:۳۰']],
+          evening: 'شام', eveningFree: '۲ وقت خالی', eveningTimes: [['۶:۰۰', 'is-off'], ['۶:۴۵'], ['۷:۳۰']],
+          confirm: 'تأیید، چهارشنبه ۳:۳۰', confirmNote: '۱۰ دالر پیش‌پرداخت، لغو مفت تا ۲۴ ساعت پیش',
+        },
+        salons: {
+          name: 'سالون نگین', meta: 'پوست، ناخن، مساژ، ۰٫۸ کیلومتر', rating: '۴٫۹', tabs: ['همه', 'روی', 'ناخن', 'بدن'],
+          items: [['salon-facial', 'فیشل مخصوص', '۶۰ دقیقه، با مینا', '۸۵ دالر'], ['salon-nails', 'مانیکور جل', '۴۵ دقیقه، با سحر', '۴۰ دالر', true], ['salon-massage', 'مساژ با سنگ گرم', '۹۰ دقیقه، با آرزو', '۱۲۰ دالر']],
+          count: '۱ خدمت', total: '۴۰ دالر', choose: 'انتخاب وقت',
+        },
+        fitness: {
+          greet: 'صبح بخیر', hi: 'سلام، احمد', ring: '۳/۴', goal: 'هدف این هفته', goalLine: '۳ از ۴ تمرین',
+          stats: ['<b>۱٬۸۴۰</b> کالوری', '<b>۳:۲۰</b> ساعت فعال'], today: 'کلاس‌های امروز', schedule: 'تقسیم اوقات',
+          when: '۷:۰۰ صبح', feature: 'کاردیو سخت', featureMeta: '۴۵ دقیقه، استاد سمیع، ۴ جای خالی', join: 'شامل شوین',
+          rows: [['gym-yoga', 480, 480, 'یوگا', '۱۲:۳۰، سالون ۲', 'لست انتظار', 'is-off'], ['gym-boxing', 480, 480, 'بوکس', '۶:۰۰ شام، ۸ جای خالی', 'ریزرف', ''], ['gym-interior', 1000, 667, 'جم آزاد', 'تا ۱۱ شب، حالی ۳۲ نفر', 'زنده', 'is-live']],
+        },
+        clinics: {
+          greet: 'صبح بخیر،', name: 'مریم احمدی', upcoming: 'نوبت بعدی', confirmed: 'تأیید شد', visit: 'معاینه و پاک‌کاری',
+          doc: 'داکتر حمید', docMeta: 'داکتر دندان، اتاق ۲', date: 'پنجشنبه، ۱۵ اکتوبر', time: '۹:۳۰ صبح',
+          form: 'فورم معلومات', formMeta: '۲ از ۳ بخش تکمیل شد', finish: 'تکمیل', book: 'گرفتن نوبت', month: 'اکتوبر',
+          week: [['د', '۱۲', 1], ['س', '۱۳', 1], ['چ', '۱۴', 0], ['پ', '۱۵', 1], ['ج', '۱۶', 1], ['ش', '۱۷', 0], ['ی', '۱۸', 0]], weekOn: 4,
+          services: 'خدمات', seeAll: 'همه',
+          items: [['dental-smile', 'سفید کردن دندان', '۶۰ دقیقه، از ۱۹۹ دالر'], ['dental-checkup', 'پاک‌کاری دندان', '۳۰ دقیقه، بیمه قبول اس']], bookItem: 'نوبت',
+        },
+        retail: {
+          brand: 'گلستان', search: 'پالیدن دسته‌گل، گلدان…', promoNote: 'رسانیدن همو روز', promo: 'گل تازه، <em>امروز دم دروازهٔ تان</em>', promoBy: 'تا ساعت ۲ فرمایش بدین',
+          chips: ['همه', 'دسته‌گل', 'گلدان', 'خشک'],
+          items: [['florist-peony', 'گل پیونی', '۶۵ دالر', true], ['florist-tulips', 'لالهٔ گلابی', '۳۸ دالر'], ['florist-dried', 'دسته‌گل خشک', '۴۲ دالر'], ['florist-bouquet', 'دسته‌گل بهاری', '۴۵ دالر']],
+          tabs: ['دوکان', 'پالیدن', 'پسندها', 'حساب'],
+        },
+      },
+    }[isFa ? 'fa' : 'en'];
+
     const statusBar = (cls = '') =>
-      `<div class="ph-status ${cls}"><span>9:41</span><span class="ph-island"></span><span class="ph-sig"><i></i><i></i><i></i></span></div>`;
+      `<div class="ph-status ${cls}"><span>${APP_TEXT.clock}</span><span class="ph-island"></span><span class="ph-sig"><i></i><i></i><i></i></span></div>`;
     const stars = (n) => `${icon('i-star')}${n}`;
 
     const APP_SCREENS = {
       // Food ordering: location, categories, a featured dish and a live cart
-      restaurants: () => `
+      restaurants: (t = APP_TEXT.restaurants) => `
         ${statusBar()}
         <div class="rest-top">
-          <span class="rest-loc"><small>Deliver to</small><b>${icon('i-pin')}Via Roma 21${icon('i-chev-d')}</b></span>
-          <span class="rest-cart">${icon('i-bag')}<i>2</i></span>
+          <span class="rest-loc"><small>${t.deliverTo}</small><b>${icon('i-pin')}${t.address}${icon('i-chev-d')}</b></span>
+          <span class="rest-cart">${icon('i-bag')}<i>${t.cartCount}</i></span>
         </div>
-        <p class="rest-hello"><small>Buonasera, Sara</small>What are you <em>craving</em> tonight?</p>
-        <div class="rest-chips"><span class="is-on">Pizza</span><span>Pasta</span><span>Antipasti</span><span>Dolci</span></div>
+        <p class="rest-hello"><small>${t.hello}</small>${t.ask}</p>
+        <div class="rest-chips">${t.chips.map((c, k) => `<span${k ? '' : ' class="is-on"'}>${c}</span>`).join('')}</div>
         <div class="rest-feature">
-          <div class="rest-feature-media">${photo('napoli-pizza', '', 900, 900)}<span>Chef's pick</span></div>
+          <div class="rest-feature-media">${photo('napoli-pizza', '', 900, 900)}<span>${t.pick}</span></div>
           <div class="rest-feature-info">
-            <span><b>Margherita DOP</b><small>Wood-fired · 12" · ${stars('4.9')}</small></span>
-            <span class="rest-add">$14<i>${icon('i-plus')}</i></span>
+            <span><b>${t.dish}</b><small>${t.dishMeta}${isFa ? '، ' : ' · '}${stars(t.rating)}</small></span>
+            <span class="rest-add">${t.price}<i>${icon('i-plus')}</i></span>
           </div>
         </div>
-        <div class="rest-label"><b>Popular</b><small>See all</small></div>
+        <div class="rest-label"><b>${t.popular}</b><small>${t.seeAll}</small></div>
         <div class="rest-row">
-          ${[['pizza-diavola', 'Diavola', '$16'], ['pasta-pesto', 'Pesto Genovese', '$15'], ['tiramisu', 'Tiramisù', '$8']]
-            .map(([img, name, price]) => `<div class="rest-dish">${photo(img, '', 480, 480)}<b>${name}</b><small>${price}</small></div>`)
-            .join('')}
+          ${t.dishes.map(([img, name, price]) => `<div class="rest-dish">${photo(img, '', 480, 480)}<b>${name}</b><small>${price}</small></div>`).join('')}
         </div>
-        <div class="rest-bar"><i>2</i><span>View cart</span><b>$30.00</b></div>`,
+        <div class="rest-bar"><i>${t.cartCount}</i><span>${t.viewCart}</span><b>${t.cartTotal}</b></div>`,
 
       // Booking flow: pick a barber, a service, a day and a time
-      barbershops: () => `
+      barbershops: (t = APP_TEXT.barbershops) => `
         ${statusBar()}
-        <div class="barb-nav"><span class="barb-back">${icon('i-chev-l')}</span><b>Book appointment</b><small>Step 2/3</small></div>
+        <div class="barb-nav"><span class="barb-back">${icon('i-chev-l')}</span><b>${t.title}</b><small>${t.step}</small></div>
         <div class="barb-steps"><i class="is-on"></i><i class="is-on"></i><i></i></div>
-        <div class="barb-label"><b>Choose your barber</b></div>
+        <div class="barb-label"><b>${t.choose}</b></div>
         <div class="barb-team">
-          ${[['barber-marco', 'Marco', '4.9', true], ['barber-leo', 'Leo', '4.8'], ['barber-andre', 'Andre', '4.9']]
-            .map(([img, name, rating, on]) => `<span class="${on ? 'is-on' : ''}"><span class="barb-face">${photo(img, '', 360, 360)}${on ? `<i>${icon('i-check')}</i>` : ''}</span><b>${name}</b><small>${stars(rating)}</small></span>`)
+          ${t.team
+            .map(([img, name, rating], k) => `<span class="${k ? '' : 'is-on'}"><span class="barb-face">${photo(img, '', 360, 360)}${k ? '' : `<i>${icon('i-check')}</i>`}</span><b>${name}</b><small>${stars(rating)}</small></span>`)
             .join('')}
-          <span><span class="barb-face barb-any">${icon('i-users')}</span><b>Any</b><small>First free</small></span>
+          <span><span class="barb-face barb-any">${icon('i-users')}</span><b>${t.any}</b><small>${t.anyNote}</small></span>
         </div>
-        <div class="barb-service">${photo('barber-fade', '', 480, 480)}<span><b>Skin fade</b><small>45 min · $35</small></span><em>Change</em></div>
-        <div class="barb-label"><b>October</b><small>${icon('i-chev-l')}${icon('i-chev-r')}</small></div>
+        <div class="barb-service">${photo('barber-fade', '', 480, 480)}<span><b>${t.service}</b><small>${t.serviceMeta}</small></span><em>${t.change}</em></div>
+        <div class="barb-label"><b>${t.month}</b><small>${icon('i-chev-l')}${icon('i-chev-r')}</small></div>
         <div class="barb-days">
-          ${[['Mon', 12], ['Tue', 13], ['Wed', 14], ['Thu', 15], ['Fri', 16]]
-            .map(([day, n]) => `<span class="${n === 14 ? 'is-on' : ''}"><small>${day}</small><b>${n}</b></span>`)
-            .join('')}
+          ${t.days.map(([day, n], k) => `<span class="${k === t.dayOn ? 'is-on' : ''}"><small>${day}</small><b>${n}</b></span>`).join('')}
         </div>
-        <div class="barb-label"><b>Afternoon</b><small>4 free</small></div>
-        <div class="barb-times"><span>1:00</span><span class="is-off">2:15</span><span class="is-on">3:30</span><span>4:00</span><span class="is-off">4:45</span><span>5:30</span></div>
-        <div class="barb-label"><b>Evening</b><small>2 free</small></div>
-        <div class="barb-times"><span class="is-off">6:00</span><span>6:45</span><span>7:30</span></div>
-        <div class="barb-cta"><b>Confirm · Wed 3:30 PM</b><small>$10 deposit today · free cancellation up to 24h</small></div>`,
+        <div class="barb-label"><b>${t.afternoon}</b><small>${t.afternoonFree}</small></div>
+        <div class="barb-times">${t.afternoonTimes.map(([time, cls]) => `<span${cls ? ` class="${cls}"` : ''}>${time}</span>`).join('')}</div>
+        <div class="barb-label"><b>${t.evening}</b><small>${t.eveningFree}</small></div>
+        <div class="barb-times">${t.eveningTimes.map(([time, cls]) => `<span${cls ? ` class="${cls}"` : ''}>${time}</span>`).join('')}</div>
+        <div class="barb-cta"><b>${t.confirm}</b><small>${t.confirmNote}</small></div>`,
 
       // Spa menu: full-bleed photo, treatment list, sticky booking bar
-      salons: () => `
+      salons: (t = APP_TEXT.salons) => `
         <div class="spa-hero">${photo('salon-facial-hero', '', 1100, 917)}</div>
         ${statusBar('ph-status--over')}
         <div class="spa-actions"><span>${icon('i-chev-l')}</span><span>${icon('i-heart-o')}</span></div>
         <div class="spa-sheet">
           <div class="spa-head">
-            <span><strong>Glow Studio</strong><small>Skin · Nails · Massage · 0.8 km</small></span>
-            <span class="spa-rate">${stars('4.9')}</span>
+            <span><strong>${t.name}</strong><small>${t.meta}</small></span>
+            <span class="spa-rate">${stars(t.rating)}</span>
           </div>
-          <div class="spa-tabs"><span class="is-on">All</span><span>Face</span><span>Nails</span><span>Body</span></div>
+          <div class="spa-tabs">${t.tabs.map((c, k) => `<span${k ? '' : ' class="is-on"'}>${c}</span>`).join('')}</div>
           <div class="spa-list">
-            ${[['salon-facial', 'Signature facial', '60 min · with Mia', '$85'], ['salon-nails', 'Gel manicure', '45 min · with Sofia', '$40', true], ['salon-massage', 'Hot stone massage', '90 min · with Ava', '$120']]
+            ${t.items
               .map(([img, name, meta, price, on]) => `
               <div class="spa-item${on ? ' is-on' : ''}">
                 ${photo(img, '', 480, 480)}
@@ -624,85 +715,82 @@
               .join('')}
           </div>
         </div>
-        <div class="spa-bar"><span><small>1 treatment</small><b>$40</b></span><em>Choose a time${icon('i-arrow')}</em></div>`,
+        <div class="spa-bar"><span><small>${t.count}</small><b>${t.total}</b></span><em>${t.choose}${icon('i-arrow')}</em></div>`,
 
       // Member app: weekly goal, today's classes, scan-to-check-in
-      fitness: () => `
+      fitness: (t = APP_TEXT.fitness) => `
         ${statusBar()}
         <div class="gym-top">
-          <span><small>Good morning</small><b>Hi, Alex</b></span>
+          <span><small>${t.greet}</small><b>${t.hi}</b></span>
           <span class="gym-bell">${icon('i-bell')}<i></i></span>
         </div>
         <div class="gym-goal">
           <span class="gym-ring">
             <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16"/><circle class="on" cx="20" cy="20" r="16" pathLength="100" stroke-dasharray="75 100"/></svg>
-            <b>3/4</b>
+            <b>${t.ring}</b>
           </span>
           <span class="gym-goal-txt">
-            <small>Weekly goal</small><b>3 of 4 workouts</b>
-            <span class="gym-stats"><span><b>1,840</b> kcal</span><span><b>3h 20m</b> active</span></span>
+            <small>${t.goal}</small><b>${t.goalLine}</b>
+            <span class="gym-stats">${t.stats.map((x) => `<span>${x}</span>`).join('')}</span>
           </span>
         </div>
-        <div class="gym-label"><b>Today's classes</b><small>Schedule</small></div>
+        <div class="gym-label"><b>${t.today}</b><small>${t.schedule}</small></div>
         <div class="gym-feature">
           ${photo('gym-hiit', '', 480, 480)}
-          <span class="gym-when">${icon('i-clock')}7:00 AM</span>
-          <div class="gym-feature-info"><span><b>HIIT Burn</b><small>45 min · Coach Dana · 4 spots left</small></span><em>Join</em></div>
+          <span class="gym-when">${icon('i-clock')}${t.when}</span>
+          <div class="gym-feature-info"><span><b>${t.feature}</b><small>${t.featureMeta}</small></span><em>${t.join}</em></div>
         </div>
         <div class="gym-list">
-          <div class="gym-row">${photo('gym-yoga', '', 480, 480)}<span><b>Power yoga</b><small>12:30 PM · Studio 2</small></span><em class="is-off">Waitlist</em></div>
-          <div class="gym-row">${photo('gym-boxing', '', 480, 480)}<span><b>Boxing</b><small>6:00 PM · 8 spots</small></span><em>Book</em></div>
-          <div class="gym-row">${photo('gym-interior', '', 1000, 667)}<span><b>Open gym</b><small>Until 11 PM · 32 here now</small></span><em class="is-live"><i></i>Live</em></div>
+          ${t.rows
+            .map(([img, w, h, name, meta, action, cls]) => `<div class="gym-row">${photo(img, '', w, h)}<span><b>${name}</b><small>${meta}</small></span><em${cls ? ` class="${cls}"` : ''}>${cls === 'is-live' ? '<i></i>' : ''}${action}</em></div>`)
+            .join('')}
         </div>
         <div class="gym-tabbar"><span class="is-on">${icon('i-home')}</span><span>${icon('i-calendar')}</span><span class="gym-scan">${icon('i-qr')}</span><span>${icon('i-trend')}</span><span>${icon('i-user')}</span></div>`,
 
       // Patient app: confirmed visit with the dentist, availability, services
-      clinics: () => `
+      clinics: (t = APP_TEXT.clinics) => `
         ${statusBar()}
         <div class="dent-top">
-          <span><small>Good morning,</small><b>Emma Wilson</b></span>
+          <span><small>${t.greet}</small><b>${t.name}</b></span>
           <span class="dent-bell">${icon('i-bell')}<i></i></span>
         </div>
         <div class="dent-next">
-          <div class="dent-next-head"><small>Upcoming visit</small><span>${icon('i-check')}Confirmed</span></div>
-          <strong>Check-up &amp; clean</strong>
-          <div class="dent-doc">${photo('dentist-patel', '', 240, 240)}<span><b>Dr. James Patel</b><small>General dentist · Room 2</small></span></div>
-          <div class="dent-when"><span>${icon('i-calendar')}Thu, Oct 15</span><span>${icon('i-clock')}9:30 AM</span></div>
+          <div class="dent-next-head"><small>${t.upcoming}</small><span>${icon('i-check')}${t.confirmed}</span></div>
+          <strong>${t.visit}</strong>
+          <div class="dent-doc">${photo('dentist-patel', '', 240, 240)}<span><b>${t.doc}</b><small>${t.docMeta}</small></span></div>
+          <div class="dent-when"><span>${icon('i-calendar')}${t.date}</span><span>${icon('i-clock')}${t.time}</span></div>
         </div>
         <div class="dent-form">
           <span class="dent-form-ico">${icon('i-pen')}</span>
-          <span><b>Intake form</b><small>2 of 3 sections done</small><span class="dent-prog"><i></i></span></span>
-          <em>Finish</em>
+          <span><b>${t.form}</b><small>${t.formMeta}</small><span class="dent-prog"><i></i></span></span>
+          <em>${t.finish}</em>
         </div>
-        <div class="dent-label"><b>Book a visit</b><small>October</small></div>
+        <div class="dent-label"><b>${t.book}</b><small>${t.month}</small></div>
         <div class="dent-week">
-          ${[['M', 12, 1], ['T', 13, 1], ['W', 14, 0], ['T', 15, 1], ['F', 16, 1], ['S', 17, 0], ['S', 18, 0]]
-            .map(([day, n, open]) => `<span class="${n === 16 ? 'is-on' : open ? 'is-open' : ''}"><small>${day}</small><b>${n}</b></span>`)
-            .join('')}
+          ${t.week.map(([day, n, open], k) => `<span class="${k === t.weekOn ? 'is-on' : open ? 'is-open' : ''}"><small>${day}</small><b>${n}</b></span>`).join('')}
         </div>
-        <div class="dent-label"><b>Services</b><small>See all</small></div>
+        <div class="dent-label"><b>${t.services}</b><small>${t.seeAll}</small></div>
         <div class="dent-list">
-          <div class="dent-item">${photo('dental-smile', '', 480, 480)}<span><b>Teeth whitening</b><small>60 min · from $199</small></span><em>Book</em></div>
-          <div class="dent-item">${photo('dental-checkup', '', 480, 480)}<span><b>Hygiene clean</b><small>30 min · insurance accepted</small></span><em>Book</em></div>
+          ${t.items.map(([img, name, meta]) => `<div class="dent-item">${photo(img, '', 480, 480)}<span><b>${name}</b><small>${meta}</small></span><em>${t.bookItem}</em></div>`).join('')}
         </div>
         <div class="dent-tabbar"><span class="is-on">${icon('i-home')}</span><span>${icon('i-calendar')}</span><span>${icon('i-chat')}</span><span>${icon('i-user')}</span></div>`,
 
       // Online store: search, delivery promo, product grid
-      retail: () => `
+      retail: (t = APP_TEXT.retail) => `
         ${statusBar()}
         <div class="shop-top">
           <span class="shop-btn">${icon('i-menu')}</span>
-          <strong>Petal <em>&amp;</em> Stem</strong>
-          <span class="shop-btn">${icon('i-bag')}<i>1</i></span>
+          <strong>${t.brand}</strong>
+          <span class="shop-btn">${icon('i-bag')}<i>${isFa ? '۱' : '1'}</i></span>
         </div>
-        <div class="shop-search">${icon('i-search')}<span>Search bouquets, plants…</span><i>${icon('i-sliders')}</i></div>
+        <div class="shop-search">${icon('i-search')}<span>${t.search}</span><i>${icon('i-sliders')}</i></div>
         <div class="shop-promo">
-          <span class="shop-promo-txt"><small>Same-day delivery</small><strong>Fresh flowers, <em>at your door today</em></strong><span>Order by 2 PM</span></span>
+          <span class="shop-promo-txt"><small>${t.promoNote}</small><strong>${t.promo}</strong><span>${t.promoBy}</span></span>
           ${photo('florist-shop', '', 1000, 667)}
         </div>
-        <div class="shop-chips"><span class="is-on">All</span><span>Bouquets</span><span>Plants</span><span>Dried</span></div>
+        <div class="shop-chips">${t.chips.map((c, k) => `<span${k ? '' : ' class="is-on"'}>${c}</span>`).join('')}</div>
         <div class="shop-grid">
-          ${[['florist-peony', 'Peony stems', '$65', true], ['florist-tulips', 'Pink tulips', '$38'], ['florist-dried', 'Dried posy', '$42'], ['florist-bouquet', 'Spring bouquet', '$45']]
+          ${t.items
             .map(([img, name, price, saved]) => `
             <div class="shop-item">
               <span class="shop-media">${photo(img, '', 480, 480)}<i class="${saved ? 'is-on' : ''}">${icon('i-heart-o')}</i></span>
@@ -710,7 +798,7 @@
             </div>`)
             .join('')}
         </div>
-        <div class="shop-tabbar"><span class="is-on">${icon('i-home')}Shop</span><span>${icon('i-search')}Search</span><span>${icon('i-heart-o')}Saved</span><span>${icon('i-user')}Account</span></div>`,
+        <div class="shop-tabbar">${['i-home', 'i-search', 'i-heart-o', 'i-user'].map((ic, k) => `<span${k ? '' : ' class="is-on"'}>${icon(ic)}${t.tabs[k]}</span>`).join('')}</div>`,
     };
 
     const appScreen = (d) => `
@@ -722,6 +810,7 @@
 
     const render = (d) => {
       const a = d.app;
+      const pill = d.pill || a.pill;
       panel.setAttribute('aria-labelledby', `ind-tab-${d.id}`);
       panel.innerHTML = `
         <div class="ind-copy">
@@ -736,11 +825,11 @@
             <a href="#contact" class="btn btn-dark btn-sm">${d.cta}<span class="btn-icon">${icon('i-arrow')}</span></a>
           </div>
         </div>
-        <div class="ind-visual" dir="ltr" style="--b:${a.color};--bt:${a.ink};--glow:${a.glow};" aria-hidden="true">
+        <div class="ind-visual" style="--b:${a.color};--bt:${a.ink};--glow:${a.glow};" aria-hidden="true">
           ${appScreen(d)}
           <div class="float-pill">
-            <span class="fp-ico">${icon(a.pill[0])}</span>
-            <span><b>${a.pill[1]}</b><small>${a.pill[2]}</small></span>
+            <span class="fp-ico">${icon(pill[0])}</span>
+            <span><b>${pill[1]}</b><small>${pill[2]}</small></span>
           </div>
         </div>`;
       panel.classList.remove('is-switching');
@@ -826,13 +915,13 @@
 
     const T = isFa
       ? {
-          name: 'لطفاً نام خود را بنویسید.',
-          email: 'لطفاً یک ایمیل درست بنویسید.',
-          sending: 'در حال ارسال…',
-          sent: 'در ۲۴ ساعت با ایده‌ها و قدم‌های بعدی با شما تماس می‌گیریم.',
-          mailto: (e) => `برنامهٔ ایمیل شما باید با پیام آماده باز شود. اگر باز نشد، به ${e} ایمیل بفرستید.`,
-          failed: 'ارسال پیام شما ممکن نشد.',
-          retry: 'لطفاً دوباره کوشش کنید یا به این آدرس ایمیل بفرستید: ',
+          name: 'لطفاً نام تانه بنویسین.',
+          email: 'لطفاً یک ایمیل درست بنویسین.',
+          sending: 'روان می‌شه…',
+          sent: 'در ۲۴ ساعت با ایده‌ها و قدم‌های بعدی به تان تماس می‌گیریم.',
+          mailto: (e) => `برنامهٔ ایمیل تان باید با پیام آماده باز شوه. اگه باز نشد، به ${e} ایمیل روان کنین.`,
+          failed: 'پیام تان روان نشد.',
+          retry: 'لطفاً دوباره کوشش کنین یا به این آدرس ایمیل روان کنین: ',
         }
       : {
           name: 'Please tell us your name.',

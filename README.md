@@ -54,13 +54,15 @@ The website and app examples are built as real HTML/CSS layouts filled with **re
 
 ## Dari page (`/afg/`)
 
-`afg/index.html` is the full website rebuilt in **Dari** for Afghan businesses: right-to-left layout, the Vazirmatn font, Persian digits and Afghan wording (کاروبار، دوکان، تیلفون، مشوره). It is the link to send Afghan prospects: **https://mavan.app/afg/**.
+`afg/index.html` is the full website rebuilt in **Dari** for Afghan businesses: right-to-left layout, the Vazirmatn font, Persian digits, and everyday Afghan (Kabuli) Dari rather than formal Persian: ویب‌سایت، ریزرف، فرمایش، مفت، تیلفون، گپ زدن، «می‌تانیم» instead of «می‌توانیم». It is the link to send Afghan prospects: **https://mavan.app/afg/**.
 
-- The hero shows its own concept, *Dastarkhan* (دسترخوان), an Afghan restaurant website and ordering app written in Dari. The example designs and industry apps below it stay in English on purpose, so prospects see we build in both languages.
+- Everything on it is in Dari, mockups included: the hero concept *Dastarkhan* (دسترخوان), an Afghan restaurant site and ordering app; the six example designs (پیتزا ناپولی، سلمانی استاد، سالون زیبایی نگین، جم پهلوان، کلینیک دندان لبخند، گل‌فروشی گلستان); and the six industry apps (their Dari text is `APP_TEXT.fa` in `main.js`).
+- **Prices on the Dari page are 50% lower** than on the English page: $125 Starter / $250 Growth / $500+ Custom App, care plans from $25/mo.
+- In Dari text, separate items with «،» and not «·»: in this font the middle dot looks exactly like the Persian zero «۰», so «۵۲ · دالر» reads as «۵۲۰».
 - It shares `styles.css` and `main.js` with the English page; `afg.css` only adds the font and mirrors left/right. `main.js` switches to Dari automatically when `<html lang="fa-…">` (industry copy in `INDUSTRIES_FA`, form messages, Persian month names and digits).
 - The contact form posts to the same `/api/contact`. Enquiries from this page are marked **Page: Dari page (/afg)** in the email, so you know to reply in Dari.
 - The **EN | دری** switch in the nav (on every screen size) moves between the two pages. The choice is remembered in the browser: someone who picked Dari is sent straight to `/afg/` the next time they open mavan.app, until they switch back to EN.
-- Change prices or the email in **both** `index.html` and `afg/index.html`.
+- Change the email or phone in **both** `index.html` and `afg/index.html`. Prices differ on purpose (see above).
 
 ## Brand
 
@@ -75,7 +77,7 @@ The content is written to be realistic, but it is **sample content**. Swap it fo
 | Contact email (`hello@mavan.app`) | `index.html` and `afg/index.html`: search for `hello@mavan.app` (shown address, mailto link and form fallback). Where form emails go is set by `CONTACT_TO` on Netlify. |
 | Phone (`+93 79 881 9664`) | `index.html` and `afg/index.html`: contact section and footer (search for `tel:+93798819664`) |
 | Form delivery | Handled by `api/contact.js` + Resend (see *Deploy*). `data-endpoint="/api/contact"` on `#contact-form`; clear it to make the form open the visitor's email app instead. |
-| Prices ($250 Starter / $500 Growth / $1,000+ Custom App, care plans from $49/mo) | `index.html` and `afg/index.html`: Pricing section, the "from $…" line under each example design, and the Budget chips in the contact form |
+| Prices ($250 Starter / $500 Growth / $1,000+ Custom App, care plans from $49/mo; half that on the Dari page) | `index.html` and `afg/index.html`: Pricing section, the "from $…" line under each example design, and the Budget chips in the contact form |
 | Example designs (Bella Napoli, Fade Factory, Glow Studio, Iron Temple, SmileCare, Petal & Stem) | `index.html` → Example designs. These are clearly labelled **concepts**, not clients. When you launch real projects, swap a concept for the real one (with the client's permission) and you can add genuine results and testimonials then. The site deliberately shows no reviews, ratings or client logos until they are real. |
 | Industry copy & app previews | `assets/js/main.js` → `INDUSTRIES` (copy), `INDUSTRIES_FA` (Dari copy) and `APP_SCREENS` (one app layout per industry) |
 | Social links | `index.html` footer (`href="#"`) |

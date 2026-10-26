@@ -92,6 +92,25 @@ html[dir="rtl"] .ind-tab .ind-go { margin-left: 0; margin-right: auto; transform
 html[dir="rtl"] .ind-tab[aria-selected="true"] .ind-go { transform: none; }
 html[dir="rtl"] .contact-mail { background-position: 100% 100%; }
 
+/* Example designs and industry apps are written in Dari too: Dari letters, no slanted text,
+   and mirror whatever the English layout places with left/right */
+html[dir="rtl"] :is(.case-media, .ind-visual) { --font-serif: "Vazirmatn", ui-serif, serif; }
+html[dir="rtl"] :is(.case-media, .ind-visual) * { font-style: normal; }
+html[dir="rtl"] :is(.case-media--napoli, .case-media--smile) .cm-browser { left: auto; right: 8%; }
+html[dir="rtl"] :is(.case-media--glow, .case-media--petal) .cm-browser { left: auto; right: 7%; }
+html[dir="rtl"] .sno-cart { border-left: 0; border-right: 1px solid rgba(31, 58, 46, 0.08); }
+html[dir="rtl"] .ffc-card { text-align: right; }
+html[dir="rtl"] :is(.gs-photo, .scd-photo) { right: auto; left: 0; }
+html[dir="rtl"] .gs-widget { left: auto; right: 0; }
+html[dir="rtl"] .scd-doc { left: auto; right: 0; padding: 0.8cqw 0.8cqw 0.8cqw 1.6cqw; }
+html[dir="rtl"] .scd-widget { left: auto; right: -2%; }
+html[dir="rtl"] .it-tag { margin-left: 0; margin-right: auto; }
+html[dir="rtl"] .it-qr { right: auto; left: 6%; }
+html[dir="rtl"] .it-feature > span { left: auto; right: 4cqw; }
+html[dir="rtl"] .it-class { padding: 2.2cqw 2.2cqw 2.2cqw 3cqw; }
+html[dir="rtl"] .pss-heart { right: auto; left: 0.9cqw; }
+html[dir="rtl"] .pss-bag b { right: auto; left: -0.9cqw; }
+
 /* The hero's fluted stripes sit on the left, opposite the headline */
 html[dir="rtl"] .hero-curtain {
   right: auto; left: -2%;
