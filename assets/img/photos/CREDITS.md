@@ -54,3 +54,17 @@ All photos are from [Unsplash](https://unsplash.com) and used under the [Unsplas
 | `wedding-table.jpg` | Wedding table with flowers | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1511795409834-ef04bbd61622) |
 | `doctor-eye.jpg` | Doctor portrait (crop) | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1559839734-2b71ea197ec2) |
 | `doctor-heart.jpg` | Doctor portrait (crop) | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1612349317150-e413f6a5b16d) |
+| `travel-wing.jpg` | Airplane wing above clouds | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1436491865332-7a61a109cc05) |
+| `dest-istanbul.jpg` | Istanbul, Galata Tower | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1524231757912-21f4fe3a7200) |
+| `dest-dubai.jpg` | Dubai skyline | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1512453979798-5ea266f8880c) |
+| `dest-delhi.jpg` | Taj Mahal, India | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1524492412937-b28074a5d7da) |
+| `school-computer.jpg` | Students at computers | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1531482615713-2afd69097998) |
+| `school-room.jpg` | Classroom with teacher | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1509062522246-3755977927d7) |
+| `furn-sofa.jpg` | Green velvet sofa | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1555041469-a586c61ea9bc) |
+| `furn-bed.jpg` | Bedroom set | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1505693416388-ac5ce068fe85) |
+| `furn-living.jpg` | Living room with armchair | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1586023492125-27b2c045efd7) |
+| `furn-dining.jpg` | Dining table and chairs | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1617806118233-18e1de247200) |
+| `ff-burger.jpg` | Cheeseburger | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1568901346375-23c9450c58cd) |
+| `ff-combo.jpg` | Burger and fries | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1561758033-d89a9ad46330) |
+| `ff-fries.jpg` | Fries (crop) | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1573080496219-bb080dd4f877) |
+| `ff-sandwich.jpg` | Toasted sandwich | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1528735602780-2552fd46c7af) |

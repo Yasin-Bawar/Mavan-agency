@@ -457,6 +457,20 @@
       pill: ['i-bed', 'اتاق ریزرف شد', 'سویت فامیلی، ۲ شب، ۲۲۰ دالر'],
     },
     {
+      id: 'travel',
+      name: 'آژانس سفر و توریستی',
+      icon: 'i-plane',
+      count: 'تکت، ویزا، سفر صحی',
+      headline: 'تکت و ویزا، <em>بدون صف و زنگ.</em>',
+      desc: 'ویب‌سایت و برنامه که مسافرها خود شان پروازها و قیمت‌ها ره ببینن، درخواست تکت و ویزا روان کنن و جواب سوال‌های همیشگی ره پیدا کنن؛ شما هم همه درخواست‌ها ره از یک جای پیش می‌برین.',
+      features: ['جستجو و درخواست تکت', 'درخواست ویزا با اسناد', 'سفرهای صحی و زیارتی', 'سوال‌های متداول'],
+      metric: '۲۴/۷',
+      metricLabel: 'درخواست تکت، حتی وقتی دفتر بسته اس',
+      cta: 'ویب‌سایت آژانس سفر می‌خوام',
+      app: { color: '#0b3b5c', ink: '#ffffff', glow: 'rgba(56, 152, 236, 0.26)' },
+      pill: ['i-plane', 'درخواست تکت نو', 'هرات به استانبول، ۲ نفر'],
+    },
+    {
       id: 'realestate',
       name: 'رهنمای معاملات',
       icon: 'i-home',
@@ -497,6 +511,34 @@
       cta: 'ویب‌سایت کلینیک می‌خوام',
       app: { color: '#1f5eff', ink: '#ffffff', glow: 'rgba(31, 94, 255, 0.2)' },
       pill: ['i-calendar', 'مریض نو نوبت گرفت', 'پنجشنبه ۹:۳۰، داکتر حمید'],
+    },
+    {
+      id: 'schools',
+      name: 'کورس زبان و کمپیوتر',
+      icon: 'i-cap',
+      count: 'تقسیم اوقات، فیس، ثبت‌نام',
+      headline: 'ثبت‌نام آسان، <em>صنف‌های پُر.</em>',
+      desc: 'ویب‌سایت و برنامه با لست کورس‌ها، تقسیم اوقات، فیس و ثبت‌نام آنلاین برای بخش ذکور و اناث؛ تا شاگردها پیش از آمدن همه چیز ره بفامن و جای خوده در صنف بگیرن.',
+      features: ['لست کورس‌ها و سطح‌ها', 'تقسیم اوقات ذکور و اناث', 'ثبت‌نام و فیس آنلاین', 'اعلان صنف‌های نو'],
+      metric: '۲ دقیقه',
+      metricLabel: 'تا شاگرد آنلاین ثبت‌نام کنه',
+      cta: 'ویب‌سایت کورس می‌خوام',
+      app: { color: '#3b2a8f', ink: '#ffffff', glow: 'rgba(124, 92, 255, 0.26)' },
+      pill: ['i-cap', 'ثبت‌نام نو', 'انگلیسی سطح ۲، صنف ۴ عصر'],
+    },
+    {
+      id: 'furniture',
+      name: 'فرنیچر و مبلمان',
+      icon: 'i-sofa',
+      count: 'کاتالوگ، اندازه، درخواست قیمت',
+      headline: 'فرنیچر تان، <em>پیش از آمدن دیده شوه.</em>',
+      desc: 'کاتالوگ آنلاین با عکس، اندازه، جنس و رنگ هر جنس؛ مشتری‌ها از خانه انتخاب می‌کنن، قیمت می‌پرسن و سفارش کار مخصوص روان می‌کنن.',
+      features: ['کاتالوگ با عکس و اندازه', 'انتخاب رنگ و جنس', 'درخواست قیمت و سفارش', 'نمونهٔ کارهای مخصوص'],
+      metric: '۵۰+',
+      metricLabel: 'جنس در کاتالوگ، با عکس و قیمت',
+      cta: 'کاتالوگ فرنیچر می‌خوام',
+      app: { color: '#3a2a1e', ink: '#f5e9da', glow: 'rgba(196, 140, 84, 0.26)' },
+      pill: ['i-sofa', 'درخواست قیمت نو', 'ست مبل ۳ نفره، رنگ سبز'],
     },
     {
       id: 'companies',
@@ -621,6 +663,26 @@
           dates: [['ورود', 'پنجشنبه ۱۴'], ['خروج', 'شنبه ۱۶'], ['مهمان', '۲ نفر']], rooms: 'اتاق‌ها', nights: '۲ شب',
           items: [['hotel-room', 'اتاق لوکس', '۲ نفر، بالکن و باغ', '۸۵ دالر'], ['hotel-suite', 'سویت فامیلی', '۴ نفر، منظرهٔ شهر', '۱۱۰ دالر', true], ['hotel-bed', 'اتاق دبل', '۲ نفر، با صبحانه', '۶۵ دالر']],
           totalLabel: '۲ شب، مجموع', total: '۲۲۰ دالر', book: 'ریزرف اتاق',
+        },
+        travel: {
+          brand: 'آژانس سفر آسمان', title: 'کجا می‌رین؟',
+          from: ['از', 'هرات', 'HEA'], to: ['به', 'استانبول', 'IST'], date: ['تاریخ', '۱۲ قوس'], pax: ['مسافر', '۲ نفر'],
+          search: 'جستجوی پرواز', label: 'پروازهای این هفته', seeAll: 'همه',
+          flights: [['۰۸:۳۰', 'هرات، استانبول', 'یک توقف', '۳۴۰ دالر', true], ['۱۱:۰۰', 'هرات، دبی', 'مستقیم', '۲۹۰ دالر'], ['۱۵:۲۰', 'هرات، دهلی', 'مستقیم', '۲۶۰ دالر']],
+          visa: 'درخواست ویزای ترکیه', visaMeta: '۵ تا ۷ روز کاری، اسناد آنلاین', visaGo: 'روان کنین',
+        },
+        schools: {
+          brand: 'آکادمی پیشرو', hi: 'سلام، مریم', initial: 'م',
+          next: 'صنف بعدی شما', course: 'انگلیسی، سطح ۲', time: 'امروز ۴:۰۰ عصر', room: 'صنف ۳، استاد احمدی',
+          tabs: ['ذکور', 'اناث'], tabOn: 1, label: 'کورس‌ها', seeAll: 'همه',
+          courses: [['i-chat', 'انگلیسی عمومی', '۶ سطح، هر سطح ۳ ماه', '۱٬۲۰۰ افغانی'], ['i-code', 'کمپیوتر و آفیس', 'ICDL، ۲ ماه', '۱٬۵۰۰ افغانی'], ['i-cap', 'آمادگی TOEFL', 'شام‌ها، ۸ هفته', '۲٬۵۰۰ افغانی']],
+          register: 'ثبت‌نام آنلاین',
+        },
+        furniture: {
+          brand: 'فرنیچر سرو', title: 'خانه تانه <em>زیبا بسازین</em>', search: 'مبل، تخت، میز غذاخوری…',
+          cats: ['همه', 'مبل', 'خواب', 'غذاخوری'], catOn: 1,
+          items: [['furn-sofa', 'ست مبل مخمل', '۳ نفره، ۲۲۰ سانتی', '۳۸٬۰۰۰ افغانی'], ['furn-living', 'چوکی راحتی', 'پارچهٔ کتان', '۹٬۵۰۰ افغانی'], ['furn-dining', 'میز غذاخوری', '۶ نفره، چوب', '۴۵٬۰۰۰ افغانی'], ['furn-bed', 'سرویس خواب', 'دو نفره، کامل', '۷۲٬۰۰۰ افغانی']],
+          quote: 'درخواست قیمت', custom: 'کار مخصوص',
         },
         realestate: {
           kicker: 'رهنمای معاملات', name: 'املاک امید', title: 'خانهٔ دلخواه تانه <em>پیدا کنین</em>', search: 'کارته سه، شهر نو، خیرخانه…',
@@ -819,6 +881,56 @@
           </div>
         </div>
         <div class="hot-bar"><span><small>${t.totalLabel}</small><b>${t.total}</b></span><em>${t.book}${icon('i-arrow')}</em></div>`,
+
+      // Travel agency: route search, this week's flights and a visa request (Dari page only)
+      travel: (t = APP_TEXT.travel) => `
+        ${statusBar()}
+        <div class="tr-top"><span><small>${t.brand}</small><b>${t.title}</b></span><span class="tr-av">${icon('i-plane')}</span></div>
+        <div class="tr-card">
+          <div class="tr-route">
+            <span><small>${t.from[0]}</small><b>${t.from[1]}</b><i>${t.from[2]}</i></span>
+            <span class="tr-swap">${icon('i-plane')}</span>
+            <span><small>${t.to[0]}</small><b>${t.to[1]}</b><i>${t.to[2]}</i></span>
+          </div>
+          <div class="tr-row">${[t.date, t.pax].map(([k, v]) => `<span><small>${k}</small><b>${v}</b></span>`).join('')}</div>
+          <div class="tr-btn">${icon('i-search')}${t.search}</div>
+        </div>
+        <div class="tr-label"><b>${t.label}</b><small>${t.seeAll}</small></div>
+        <div class="tr-list">
+          ${t.flights
+            .map(([time, route, stops, price, on]) => `<div class="tr-flight${on ? ' is-on' : ''}"><i>${icon('i-plane')}</i><span><b>${route}</b><small>${time}، ${stops}</small></span><em>${price}</em></div>`)
+            .join('')}
+        </div>
+        <div class="tr-visa"><span class="tr-visa-ico">${icon('i-shield')}</span><span><b>${t.visa}</b><small>${t.visaMeta}</small></span><em>${t.visaGo}</em></div>`,
+
+      // Language and computer school: next class, male/female timetable and courses with fees (Dari page only)
+      schools: (t = APP_TEXT.schools) => `
+        ${statusBar()}
+        <div class="sc-top"><span><small>${t.brand}</small><b>${t.hi}</b></span><span class="sc-av">${t.initial}</span></div>
+        <div class="sc-next">
+          <small>${t.next}</small>
+          <b>${t.course}</b>
+          <span class="sc-next-row"><i>${icon('i-clock')}${t.time}</i><i>${icon('i-pin')}${t.room}</i></span>
+        </div>
+        <div class="sc-seg">${t.tabs.map((x, k) => `<span${k === t.tabOn ? ' class="is-on"' : ''}>${x}</span>`).join('')}</div>
+        <div class="sc-label"><b>${t.label}</b><small>${t.seeAll}</small></div>
+        <div class="sc-list">
+          ${t.courses.map(([ic, name, meta, fee]) => `<div class="sc-course"><i>${icon(ic)}</i><span><b>${name}</b><small>${meta}</small></span><em>${fee}</em></div>`).join('')}
+        </div>
+        <div class="sc-cta">${t.register}${icon('i-arrow')}</div>`,
+
+      // Furniture: search, categories and a catalogue grid with prices (Dari page only)
+      furniture: (t = APP_TEXT.furniture) => `
+        ${statusBar()}
+        <div class="fu-top"><span><small>${t.brand}</small><b>${t.title}</b></span><span class="fu-bag">${icon('i-bag')}</span></div>
+        <div class="fu-search">${icon('i-search')}<span>${t.search}</span></div>
+        <div class="fu-cats">${t.cats.map((x, k) => `<span${k === t.catOn ? ' class="is-on"' : ''}>${x}</span>`).join('')}</div>
+        <div class="fu-grid">
+          ${t.items
+            .map(([img, name, meta, price]) => `<div class="fu-item"><span class="fu-media">${photo(img, '', 720, 480)}<i>${icon('i-heart-o')}</i></span><b>${name}</b><small>${meta}</small><em>${price}</em></div>`)
+            .join('')}
+        </div>
+        <div class="fu-bar"><span>${t.custom}</span><em>${t.quote}${icon('i-arrow')}</em></div>`,
 
       // Real estate: search, buy / rent / gerawi, a featured home and more listings
       realestate: (t = APP_TEXT.realestate) => `

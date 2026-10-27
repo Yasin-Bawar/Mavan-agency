@@ -56,11 +56,11 @@ The website and app examples are built as real HTML/CSS layouts filled with **re
 
 `afg/index.html` is the full website rebuilt in **Dari** for Afghan businesses: right-to-left layout, the Vazirmatn font, Persian digits, and everyday Afghan (Kabuli) Dari rather than formal Persian: ویب‌سایت، ریزرف، فرمایش، مفت، تیلفون، گپ زدن، «می‌تانیم» instead of «می‌توانیم». It is the link to send Afghan prospects: **https://mavan.app/afg/**.
 
-- It targets the businesses Mavan builds for in Afghanistan: **restaurants and wedding halls, hotels, real estate agents (رهنمای معاملات), hospitals, clinics (dental, eye, skin…) and large companies**, not small shops like bakeries.
+- It targets the businesses Mavan builds for in Afghanistan: **restaurants, fast food, wedding halls, hotels, travel agencies, hospitals, clinics (dental, eye, skin…), language & computer schools, real estate agents (رهنمای معاملات), furniture showrooms and large companies**, not small shops like bakeries.
 - Everything on it is in Dari, mockups included:
   - The hero concept *Dastarkhan* (دسترخوان): an Afghan restaurant site and ordering app.
-  - Eight example designs, one for each business type in the strip under the hero: پیتزا ناپولی (restaurant), تالار مهتاب (wedding hall), هوتل سیمرغ (hotel), شفاخانهٔ شفا (hospital), کلینیک دندان لبخند (dental clinic), کلینیک تخصصی مهر (specialist clinic), املاک امید (real estate) and شرکت آریا (company).
-  - Six industry apps: restaurant, hotel, real estate, hospital, clinic and company (`INDUSTRIES_FA` and `APP_TEXT.fa` in `main.js`).
+  - Twelve example designs, one for each business type in the strip under the hero: پیتزا ناپولی (restaurant), فست فود نارنج (fast food), تالار مهتاب (wedding hall), هوتل سیمرغ (hotel), آژانس سفر آسمان (travel agency), شفاخانهٔ شفا (hospital), کلینیک دندان لبخند (dental clinic), کلینیک تخصصی مهر (specialist clinic), آکادمی پیشرو (language & computer school), املاک امید (real estate), فرنیچر سرو (furniture) and شرکت آریا (company).
+  - Nine industry apps: restaurant, hotel, travel agency, real estate, hospital, clinic, school, furniture and company (`INDUSTRIES_FA` and `APP_TEXT.fa` in `main.js`).
 - Dari wording: an app is «برنامه», never «اپ» (برنامهٔ موبایل، ویب‌سایت و برنامه), and a business is «تجارت», never «کاروبار» (تجارت تان، تجارت‌ها).
 - The Dari page has no "Why Mavan" (چرا ماوان) section; the English page still does.
 - **Dari pricing is by business size**, set for the Afghan market:
@@ -68,7 +68,7 @@ The website and app examples are built as real HTML/CSS layouts filled with **re
   - تجارت بزرگ (big business): $100–200, website and app.
   - تجارت کلان (large organisation): from $400, a full system.
   - Hosting and care from $10/mo.
-  - A second list gives a range per business type: restaurant $50–200, wedding hall $80–200, hotel $100–400, clinic $80–200, real estate $120–300, hospital and companies from $400.
+  - A second list gives a range per business type: restaurant $50–200, fast food $50–150, wedding hall $80–200, hotel $100–400, travel agency $80–200, clinic $80–200, language & computer school $50–150, real estate $120–300, furniture $50–200, hospital and companies from $400.
 - In Dari text, separate items with «،» and not «·»: in this font the middle dot looks exactly like the Persian zero «۰», so «۵۲ · دالر» reads as «۵۲۰».
 - It shares `styles.css` and `main.js` with the English page; `afg.css` only adds the font and mirrors left/right. `main.js` switches to Dari automatically when `<html lang="fa-…">` (industry copy in `INDUSTRIES_FA`, form messages, Persian month names and digits).
 - The contact form posts to the same `/api/contact`. Enquiries from this page are marked **Page: Dari page (/afg)** in the email, so you know to reply in Dari.
