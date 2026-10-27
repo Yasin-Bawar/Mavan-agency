@@ -61,12 +61,12 @@ The website and app examples are built as real HTML/CSS layouts filled with **re
   - The hero concept *Dastarkhan* (دسترخوان): an Afghan restaurant site and ordering app.
   - Eight example designs, one for each business type in the strip under the hero: پیتزا ناپولی (restaurant), تالار مهتاب (wedding hall), هوتل سیمرغ (hotel), شفاخانهٔ شفا (hospital), کلینیک دندان لبخند (dental clinic), کلینیک تخصصی مهر (specialist clinic), املاک امید (real estate) and شرکت آریا (company).
   - Six industry apps: restaurant, hotel, real estate, hospital, clinic and company (`INDUSTRIES_FA` and `APP_TEXT.fa` in `main.js`).
-- In Dari, an app is «برنامه», never «اپ» (برنامهٔ موبایل، ویب‌سایت و برنامه).
+- Dari wording: an app is «برنامه», never «اپ» (برنامهٔ موبایل، ویب‌سایت و برنامه), and a business is «تجارت», never «کاروبار» (تجارت تان، تجارت‌ها).
 - The Dari page has no "Why Mavan" (چرا ماوان) section; the English page still does.
 - **Dari pricing is by business size**, set for the Afghan market:
-  - کاروبار کوچک (small business): $50, a website.
-  - کاروبار بزرگ (big business): $100–200, website and app.
-  - کاروبار کلان (large organisation): from $400, a full system.
+  - تجارت کوچک (small business): $50, a website.
+  - تجارت بزرگ (big business): $100–200, website and app.
+  - تجارت کلان (large organisation): from $400, a full system.
   - Hosting and care from $10/mo.
   - A second list gives a range per business type: restaurant $50–200, wedding hall $80–200, hotel $100–400, clinic $80–200, real estate $120–300, hospital and companies from $400.
 - In Dari text, separate items with «،» and not «·»: in this font the middle dot looks exactly like the Persian zero «۰», so «۵۲ · دالر» reads as «۵۲۰».
