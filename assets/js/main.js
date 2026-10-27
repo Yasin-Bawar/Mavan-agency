@@ -99,51 +99,10 @@
   $$('[data-year]').forEach((el) => (el.textContent = now.getFullYear().toLocaleString(locale, { useGrouping: false })));
 
   /* ------------------------------------------------------------------
-     Hero: layered paper sheets in the top corner, behind frosted glass
+     Hero: the light streaks drift slowly; pause them while the hero is off screen
      ------------------------------------------------------------------ */
-  const paper = $('[data-paper]');
-  if (paper) {
-    const W = 1000;
-    const H = 860;
-    const tones = ['#fff2e8', '#ffe1cd', '#ffcaa9', '#ffad80', '#ff8f56', '#ff7234', '#ff5a1f'];
-    const sizes = [1.04, 0.9, 0.77, 0.64, 0.52, 0.41, 0.3];
-    // One sheet: everything inside a gently wavy arc around the corner, as a smooth closed path
-    const sheet = (size, k) => {
-      const pts = [];
-      for (let i = 0; i <= 18; i++) {
-        const a = (i / 18) * (Math.PI / 2);
-        const r = size * (1 + 0.06 * Math.sin(3 * a + k * 1.7) + 0.03 * Math.sin(7 * a + k * 0.9));
-        pts.push([Math.cos(a) * r * W, Math.sin(a) * r * H]);
-      }
-      const f = (n) => n.toFixed(1);
-      let d = `M0 0L${f(pts[0][0])} 0`;
-      for (let i = 0; i < pts.length - 1; i++) {
-        const p0 = pts[i - 1] || pts[i];
-        const p1 = pts[i];
-        const p2 = pts[i + 1];
-        const p3 = pts[i + 2] || p2;
-        d += `C${f(p1[0] + (p2[0] - p0[0]) / 6)} ${f(p1[1] + (p2[1] - p0[1]) / 6)} ${f(p2[0] - (p3[0] - p1[0]) / 6)} ${f(p2[1] - (p3[1] - p1[1]) / 6)} ${f(p2[0])} ${f(p2[1])}`;
-      }
-      return `${d}L0 0Z`;
-    };
-    paper.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMinYMin slice" aria-hidden="true">
-      <defs><filter id="paper-shadow" x="-5%" y="-5%" width="120%" height="125%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#8a2c06" flood-opacity="0.2"/></filter></defs>
-      ${sizes.map((size, k) => `<path d="${sheet(size, k)}" fill="${tones[k]}" filter="url(#paper-shadow)" style="--k:${k}"/>`).join('')}
-    </svg>`;
-
-    const hero = $('.hero');
-    new IntersectionObserver(([entry]) => hero.classList.toggle('is-paused', !entry.isIntersecting)).observe(hero);
-
-    // Gentle parallax: the sheets drift a little with the pointer
-    if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
-      hero.addEventListener('pointermove', (e) => {
-        const x = e.clientX / window.innerWidth - 0.5;
-        const y = e.clientY / window.innerHeight - 0.5;
-        paper.style.transform = `translate3d(${(x * -14).toFixed(1)}px, ${(y * -10).toFixed(1)}px, 0)`;
-      });
-      hero.addEventListener('pointerleave', () => (paper.style.transform = ''));
-    }
-  }
+  const hero = $('.hero');
+  if (hero) new IntersectionObserver(([entry]) => hero.classList.toggle('is-paused', !entry.isIntersecting)).observe(hero);
 
   /* ------------------------------------------------------------------
      Hero: rotating industry word
@@ -475,7 +434,7 @@
       icon: 'i-utensils',
       count: 'فرمایش، ریزرف، منوی QR',
       headline: 'فرمایش بیشتر، میزهای پُر، <em>بدون کمیشن.</em>',
-      desc: 'ویب‌سایتی که اشتهای آدم ره باز می‌کنه، با فرمایش آنلاین و ریزرف میز و تالار؛ تا مشتری‌ها مستقیم از خود تان فرمایش بدن، نه از اپ‌های واسطه.',
+      desc: 'ویب‌سایتی که اشتهای آدم ره باز می‌کنه، با فرمایش آنلاین و ریزرف میز و تالار؛ تا مشتری‌ها مستقیم از خود تان فرمایش بدن، نه از برنامه‌های واسطه.',
       features: ['فرمایش آنلاین و رسانیدن', 'ریزرف میز و تالار', 'منوی QR', 'نظرها و نقشهٔ گوگل'],
       metric: '۰٪',
       metricLabel: 'کمیشن از فرمایش‌های سایت خود تان',
@@ -503,7 +462,7 @@
       icon: 'i-home',
       count: 'لست ملک‌ها، جستجو، بازدید',
       headline: 'ملک تان، <em>جلوی چشم خریدار.</em>',
-      desc: 'ویب‌سایت و اپ با لست حویلی، آپارتمان و زمین برای خرید، کرایه و گروی؛ با عکس، قیمت و نقشه، تا مشتری‌ها خود شان بپالن و وقت بازدید بگیرن.',
+      desc: 'ویب‌سایت و برنامه با لست حویلی، آپارتمان و زمین برای خرید، کرایه و گروی؛ با عکس، قیمت و نقشه، تا مشتری‌ها خود شان بپالن و وقت بازدید بگیرن.',
       features: ['لست ملک‌ها با عکس و قیمت', 'خرید، کرایه و گروی', 'جستجو با فلتر', 'گرفتن وقت بازدید'],
       metric: '۳ کلیک',
       metricLabel: 'تا مشتری وقت بازدید بگیره',
@@ -517,9 +476,9 @@
       icon: 'i-hospital',
       count: 'نوبت، بخش‌ها، لابراتوار',
       headline: 'نوبت منظم، <em>مریض راضی.</em>',
-      desc: 'سیستم نوبت برای همه بخش‌ها، اپ مریض‌ها و نتیجهٔ لابراتوار آنلاین؛ تا صف‌ها کوتاه شوه و داکترها وقت بیشتر برای مریض داشته باشن.',
-      features: ['نوبت آنلاین برای هر بخش', 'نمبر نوبت زنده روی موبایل', 'نتیجهٔ لابراتوار در اپ', 'پنل داکترها و کارمندان'],
-      metric: '۱ اپ',
+      desc: 'سیستم نوبت برای همه بخش‌ها، برنامهٔ مریض‌ها و نتیجهٔ لابراتوار آنلاین؛ تا صف‌ها کوتاه شوه و داکترها وقت بیشتر برای مریض داشته باشن.',
+      features: ['نوبت آنلاین برای هر بخش', 'نمبر نوبت زنده روی موبایل', 'نتیجهٔ لابراتوار در برنامه', 'پنل داکترها و کارمندان'],
+      metric: '۱ برنامه',
       metricLabel: 'برای نوبت، لابراتوار و راپور',
       cta: 'سیستم شفاخانه می‌خوام',
       app: { color: '#0f6f73', ink: '#ffffff', glow: 'rgba(15, 139, 141, 0.24)' },

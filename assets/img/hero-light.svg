@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1000" preserveAspectRatio="xMaxYMin slice">
+  <!-- Soft light streaks for the hero background: silky bands of light that sweep in from the top corner -->
+  <defs>
+    <filter id="b44" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="44"/></filter>
+    <filter id="b20" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="20"/></filter>
+    <filter id="b7" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+    <filter id="b2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.2"/></filter>
+  </defs>
+  <g fill="none" stroke-linecap="round">
+    <!-- warm folds between the light, for depth -->
+    <g filter="url(#b20)">
+      <path d="M1185 -90C1010 160 1000 470 590 1090" stroke="#ff7d3f" stroke-width="64" opacity=".2"/>
+      <path d="M1330 30C1140 260 1120 560 800 1090" stroke="#ff8a4f" stroke-width="80" opacity=".17"/>
+      <path d="M1060 -90C920 140 860 430 330 1090" stroke="#ff8a4f" stroke-width="52" opacity=".14"/>
+    </g>
+    <!-- broad glow -->
+    <g filter="url(#b44)" stroke="#fff">
+      <path d="M1300 -90C1090 170 1060 470 690 1090" stroke-width="200" opacity=".46"/>
+      <path d="M1110 -90C960 150 880 440 410 1090" stroke-width="130" opacity=".34"/>
+      <path d="M940 -90C860 120 700 380 120 1050" stroke-width="110" opacity=".2"/>
+    </g>
+    <!-- soft bands -->
+    <g filter="url(#b20)" stroke="#fff">
+      <path d="M1225 -90C1045 175 1030 470 630 1090" stroke-width="58" opacity=".6"/>
+      <path d="M1345 70C1175 290 1150 580 880 1090" stroke-width="74" opacity=".42"/>
+      <path d="M1075 -90C945 150 870 430 360 1090" stroke-width="44" opacity=".42"/>
+      <path d="M965 -90C870 120 730 380 190 1060" stroke-width="34" opacity=".3"/>
+    </g>
+    <!-- light edges -->
+    <g filter="url(#b7)" stroke="#fff">
+      <path d="M1262 -70C1072 190 1052 474 660 1090" stroke-width="18" opacity=".7"/>
+      <path d="M1352 150C1196 360 1170 610 940 1090" stroke-width="13" opacity=".55"/>
+      <path d="M1098 -70C964 160 884 436 392 1090" stroke-width="12" opacity=".5"/>
+    </g>
+    <g filter="url(#b2)" stroke="#fff">
+      <path d="M1248 -70C1062 186 1042 472 648 1090" stroke-width="4" opacity=".85"/>
+      <path d="M1352 156C1192 366 1166 612 950 1090" stroke-width="3" opacity=".6"/>
+      <path d="M1088 -70C956 158 876 434 380 1090" stroke-width="3" opacity=".6"/>
+      <path d="M982 -70C886 126 742 386 214 1060" stroke-width="2.5" opacity=".45"/>
+    </g>
+  </g>
+</svg>

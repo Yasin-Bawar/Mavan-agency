@@ -50,3 +50,7 @@ All photos are from [Unsplash](https://unsplash.com) and used under the [Unsplas
 | `hospital-building.jpg` | Hospital building | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1586773860418-d37222d8fce3) |
 | `doctor-man.jpg` | Doctor portrait (crop) | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1622253692010-333f2da6031d) |
 | `doctor-woman.jpg` | Doctor portrait (crop) | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1594824476967-48c8b964273f) |
+| `wedding-hall.jpg` | Banquet hall with chandeliers | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1519167758481-83f550bb49b3) |
+| `wedding-table.jpg` | Wedding table with flowers | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1511795409834-ef04bbd61622) |
+| `doctor-eye.jpg` | Doctor portrait (crop) | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1559839734-2b71ea197ec2) |
+| `doctor-heart.jpg` | Doctor portrait (crop) | Unsplash contributor | [Unsplash](https://unsplash.com/photos/photo-1612349317150-e413f6a5b16d) |

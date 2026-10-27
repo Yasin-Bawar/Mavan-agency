@@ -312,48 +312,28 @@ html.js .reveal.is-in { animation: reveal-up 1s var(--ease) backwards; animation
   position: relative;
   padding-top: clamp(140px, 19vh, 200px);
   padding-bottom: clamp(64px, 8vw, 104px);
-  background: linear-gradient(180deg, #f2f2f0 0%, #f6f6f4 55%, #fff 100%);
+  /* A warm wash: deepest in the top corner, fading to white before the next section */
+  background:
+    radial-gradient(48% 620px at 0% 0%, #ffb084, rgba(255, 176, 132, 0)),
+    radial-gradient(60% 720px at 100% 0%, #ffc7a6, rgba(255, 199, 166, 0)),
+    radial-gradient(50% 420px at 18% 1000px, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0)),
+    linear-gradient(180deg, #ffd2b8 0, #ffe0cf 380px, #ffece2 700px, #fff6f1 960px, #fff 1300px);
 }
 .hero-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
-.hero-grid {
-  position: absolute; inset: 0;
-  background-image: linear-gradient(90deg, rgba(13, 13, 13, 0.045) 1px, transparent 1px);
-  background-size: 128px 100%; background-position: center top;
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 70%);
-  mask-image: linear-gradient(180deg, #000 0%, transparent 70%);
+/* Soft light streaks sweeping in from the top corner, like light on silk */
+.hero-light {
+  position: absolute; top: 0; right: 0;
+  width: min(1180px, 82vw); height: 1040px;
+  background: url("../img/hero-light.svg") right top / cover no-repeat;
+  -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+  transform-origin: 100% 0;
+  animation: light-drift 14s var(--ease-io) infinite alternate;
 }
-/* Layered paper shapes in the top corner, drawn by main.js: flat sheets with a soft paper shadow */
-.hero-paper {
-  position: absolute; top: 0; left: 0;
-  width: min(66vw, 980px); height: min(86vh, 780px);
-  -webkit-mask-image: radial-gradient(125% 120% at 0 0, #000 52%, transparent 80%);
-  mask-image: radial-gradient(125% 120% at 0 0, #000 52%, transparent 80%);
-  transition: transform 1.2s var(--ease);
-}
-.hero-paper svg { display: block; width: 100%; height: 100%; overflow: visible; }
-.hero-paper path {
-  transform-box: view-box; transform-origin: 0 0;
-  animation: paper-drift 11s var(--ease-io) infinite alternate;
-  animation-delay: calc(var(--k, 0) * -1.6s);
-}
-/* A faint paper grain over the sheets */
-.hero-paper::after {
-  content: ""; position: absolute; inset: 0; opacity: 0.55; mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.3 0 0 0 0 0.2 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-.hero.is-paused .hero-paper path { animation-play-state: paused; }
-@keyframes paper-drift { from { transform: rotate(-0.9deg) scale(0.985); } to { transform: rotate(0.7deg) scale(1.02); } }
-
-/* Frosted glass in front of the paper: the headline sits on it */
-.hero-glass {
-  position: absolute; top: clamp(84px, 13vh, 132px); left: clamp(24px, 5vw, 84px);
-  width: min(74vw, 1100px); height: min(80vh, 720px);
-  border-radius: 44px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2) 48%, rgba(255, 255, 255, 0.06));
-  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.85), inset 0 0 0 1px rgba(255, 255, 255, 0.35);
-  -webkit-backdrop-filter: blur(14px) saturate(1.1); backdrop-filter: blur(14px) saturate(1.1);
-  -webkit-mask-image: radial-gradient(120% 115% at 0 0, #000 46%, transparent 78%);
-  mask-image: radial-gradient(120% 115% at 0 0, #000 46%, transparent 78%);
+.hero.is-paused .hero-light { animation-play-state: paused; }
+@keyframes light-drift {
+  from { transform: translate3d(0, 0, 0) scale(1); opacity: 0.88; }
+  to { transform: translate3d(-2.5%, 1.5%, 0) scale(1.04); opacity: 1; }
 }
 
 .hero-inner { position: relative; }
@@ -1922,8 +1902,7 @@ html.js .svc:not(.is-in) .cal-grid i.on { transform: scale(0.6); opacity: 0; }
   .hero-bottom { grid-template-columns: 1fr; gap: 36px; }
   .hero-stats { grid-column: 1; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 22px 0 0; border-left: 0; border-top: 1px solid var(--line-2); }
   .hero-stat dt { font-size: 28px; }
-  .hero-paper { width: 112vw; height: 64vh; }
-  .hero-glass { top: 92px; left: 14px; width: 104vw; height: 62vh; border-radius: 32px; }
+  .hero-light { width: 150vw; height: 860px; right: -22vw; }
   .ipill { width: 1.3em; height: 0.72em; }
   .showcase-inner { aspect-ratio: 4 / 4.6; border-radius: var(--radius-l); }
   .sc-browser { left: 5%; top: 6%; width: 118%; }
@@ -1981,7 +1960,7 @@ html.js .svc:not(.is-in) .cal-grid i.on { transform: scale(0.6); opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-paper path { animation: none; }
+  .hero-light { animation: none; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   .marquee-track { animation: none; }

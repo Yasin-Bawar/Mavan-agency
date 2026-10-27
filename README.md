@@ -48,7 +48,7 @@ The site is hosted on **Netlify**. `netlify.toml` already tells Netlify what to 
 
 ## Sections
 
-Sticky glass nav · hero with animated fluted-glass stripes and a rotating industry word · scroll-tilt product showcase · "built for" industry marquee · intro statement that lights up on scroll · services (dark bento) · interactive industries tabs, each with its own app design (food ordering, barber booking, spa menu, gym member app, patient app, florist store) · six concept example designs · process timeline · "Why Mavan" promises · pricing · FAQ accordion · big CTA whose giant word keeps sliding through "booked. / online. / packed. / digital." · contact form · footer.
+Sticky glass nav · hero on a warm orange wash with soft light streaks (`assets/img/hero-light.svg`, mirrored on the Dari page) and a rotating industry word · scroll-tilt product showcase · "built for" industry marquee · intro statement that lights up on scroll · services (dark bento) · interactive industries tabs, each with its own app design (food ordering, barber booking, spa menu, gym member app, patient app, florist store) · six concept example designs · process timeline · "Why Mavan" promises · pricing · FAQ accordion · big CTA whose giant word keeps sliding through "booked. / online. / packed. / digital." · contact form · footer.
 
 The website and app examples are built as real HTML/CSS layouts filled with **real photography** (food, barbershop, salon, gym, dental and florist photos) stored in `assets/img/photos/`. Photos are from Unsplash (free for commercial use under the Unsplash License); photographers are credited in `assets/img/photos/CREDITS.md`. Swap in photos of your real clients' work whenever you have them; just keep the same file names.
 
@@ -57,7 +57,12 @@ The website and app examples are built as real HTML/CSS layouts filled with **re
 `afg/index.html` is the full website rebuilt in **Dari** for Afghan businesses: right-to-left layout, the Vazirmatn font, Persian digits, and everyday Afghan (Kabuli) Dari rather than formal Persian: ویب‌سایت، ریزرف، فرمایش، مفت، تیلفون، گپ زدن، «می‌تانیم» instead of «می‌توانیم». It is the link to send Afghan prospects: **https://mavan.app/afg/**.
 
 - It targets the businesses Mavan builds for in Afghanistan: **restaurants and wedding halls, hotels, real estate agents (رهنمای معاملات), hospitals, clinics (dental, eye, skin…) and large companies**, not small shops like bakeries.
-- Everything on it is in Dari, mockups included: the hero concept *Dastarkhan* (دسترخوان), an Afghan restaurant site and ordering app; the six example designs (پیتزا ناپولی، هوتل سیمرغ، املاک امید، شفاخانهٔ شفا، کلینیک دندان لبخند، شرکت آریا); and the six industry apps: restaurant, hotel, real estate, hospital, clinic and company (`INDUSTRIES_FA` and `APP_TEXT.fa` in `main.js`).
+- Everything on it is in Dari, mockups included:
+  - The hero concept *Dastarkhan* (دسترخوان): an Afghan restaurant site and ordering app.
+  - Eight example designs, one for each business type in the strip under the hero: پیتزا ناپولی (restaurant), تالار مهتاب (wedding hall), هوتل سیمرغ (hotel), شفاخانهٔ شفا (hospital), کلینیک دندان لبخند (dental clinic), کلینیک تخصصی مهر (specialist clinic), املاک امید (real estate) and شرکت آریا (company).
+  - Six industry apps: restaurant, hotel, real estate, hospital, clinic and company (`INDUSTRIES_FA` and `APP_TEXT.fa` in `main.js`).
+- In Dari, an app is «برنامه», never «اپ» (برنامهٔ موبایل، ویب‌سایت و برنامه).
+- The Dari page has no "Why Mavan" (چرا ماوان) section; the English page still does.
 - **Dari pricing is by business size**, set for the Afghan market:
   - کاروبار کوچک (small business): $50, a website.
   - کاروبار بزرگ (big business): $100–200, website and app.
