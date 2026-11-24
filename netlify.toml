@@ -1,6 +1,6 @@
-# Netlify: publish only the website itself (not README or source files)
+# Netlify: publish only the website itself (not README, tools/ or source files)
 # and deploy the contact form function from netlify/functions/.
 [build]
-  command = "rm -rf dist && mkdir dist && cp -R index.html afg assets dist/"
+  command = "rm -rf dist && mkdir dist && cp -R index.html afg industries assets robots.txt sitemap.xml dist/"
   publish = "dist"
   functions = "netlify/functions"

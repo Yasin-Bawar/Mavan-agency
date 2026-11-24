@@ -7,15 +7,20 @@ Live at **https://mavan.app**. Plain HTML, CSS and JavaScript with no build step
 ```
 index.html              → all page content (English)
 afg/index.html          → the same site in Dari, right-to-left (mavan.app/afg/)
+industries/             → one landing page per industry + the hub (mavan.app/industries/), generated
 assets/css/styles.css   → design system, layout, device mockups
 assets/css/afg.css      → Dari page only: Vazirmatn font, RTL mirroring, Dastarkhan mockup
+assets/css/niche.css    → industry pages only: their hero, calculator, SEO and playbook sections
 assets/js/main.js       → animations, industries tabs, FAQ, contact form
-assets/img/             → favicon + social share image
+assets/js/niche.js      → industry pages only: the savings calculators
+assets/img/             → favicon + social share image (assets/img/og/ has one per industry page)
 assets/img/photos/      → real photos used in the website & app examples
 lib/contact.js          → contact form logic (validates, then emails via Resend)
 netlify/functions/      → contact form endpoint on Netlify (POST /api/contact)
 api/contact.js          → same endpoint for Vercel, if you ever move hosts
-netlify.toml            → Netlify build: publishes only index.html, afg/ and assets/
+tools/                  → generators for the industry pages, sitemap and share images (not published)
+sitemap.xml, robots.txt → for Google
+netlify.toml            → Netlify build: publishes the pages, assets/, robots.txt and sitemap.xml
 ```
 
 ## Run locally
@@ -75,6 +80,34 @@ The website and app examples are built as real HTML/CSS layouts filled with **re
 - The **EN | دری** switch in the nav (on every screen size) moves between the two pages. The choice is remembered in the browser: someone who picked Dari is sent straight to `/afg/` the next time they open mavan.app, until they switch back to EN.
 - Change the email or phone in **both** `index.html` and `afg/index.html`. Prices differ on purpose (see above).
 
+## Industry landing pages (`/industries/`)
+
+Every industry has its own page, so a barbershop owner sees barbershop features, a barbershop app and barbershop marketing instead of a general pitch. Visitors get there from the **I run a…** picker in the homepage hero, the button in each Industries tab, the footer, or straight from Google.
+
+| Page | URL |
+| --- | --- |
+| Hub (all industries) | `/industries/` |
+| Restaurants & cafés | `/industries/restaurants/` |
+| Barbershops | `/industries/barbershops/` |
+| Salons & spas | `/industries/salons-spas/` |
+| Dental & health clinics | `/industries/dental-clinics/` |
+| Contractors & trades | `/industries/contractors/` |
+| Gyms & fitness studios | `/industries/fitness-studios/` |
+| Retail & boutiques | `/industries/retail-shops/` |
+
+Each page has its own colours (same fonts, buttons and layout as the homepage), its industry's app on a phone in the hero, the three problems that industry has and how we fix them, six features, an **interactive calculator** (no-shows for barbers, delivery-app commission for restaurants, missed calls for clinics, won jobs for contractors…), a **Marketing & SEO** section with a Google-search illustration, target searches and a six-channel marketing playbook, a 90-day plan, the matching concept design, pricing, its own FAQ, links to the other industries and the contact form with the business type already chosen. Enquiries from these pages arrive marked **Page: Barbershops landing page** (and so on).
+
+SEO on every page: its own title and description, canonical URL, Open Graph/Twitter tags with its own share image, breadcrumbs, and structured data (Service, FAQPage, BreadcrumbList, Organization). `sitemap.xml` lists every page and `robots.txt` points Google to it.
+
+**The pages are generated.** Edit the copy in `tools/niches.mjs`, then run:
+
+```bash
+node tools/build-industries.mjs   # rewrites industries/**/index.html and sitemap.xml
+node tools/og-images.mjs          # only if titles or colours changed (needs Playwright)
+```
+
+The build copies the icon sprite, the concept designs and the contact form from `index.html`, so run it again after changing those on the homepage. Prices on the industry pages come from `PRICES` at the top of `tools/build-industries.mjs`: change them there and in `index.html` together, then rebuild. Don't hand-edit `industries/**/index.html`; the next build overwrites it.
+
 ## Brand
 
 **Mavan** uses a lowercase wordmark (`mavan`, Inter Tight 600) next to an app-icon mark: a geometric "m" with the orange notification badge, the "new booking" moment the studio sells. The mark is inline SVG in `index.html` (dark version in the nav, light version in the footer) and in `assets/img/favicon.svg`. The giant footer wordmark repeats the orange badge.
@@ -88,9 +121,9 @@ The content is written to be realistic, but it is **sample content**. Swap it fo
 | Contact email (`hello@mavan.app`) | `index.html` and `afg/index.html`: search for `hello@mavan.app` (shown address, mailto link and form fallback). Where form emails go is set by `CONTACT_TO` on Netlify. |
 | Phone (`+93 79 881 9664`) | `index.html` and `afg/index.html`: contact section and footer (search for `tel:+93798819664`) |
 | Form delivery | Handled by `api/contact.js` + Resend (see *Deploy*). `data-endpoint="/api/contact"` on `#contact-form`; clear it to make the form open the visitor's email app instead. |
-| Prices ($250 Starter / $500 Growth / $1,000+ Custom App, care plans from $49/mo; the Dari page has its own Afghan pricing, see above) | `index.html` and `afg/index.html`: Pricing section, the "from $…" line under each example design, and the Budget chips in the contact form |
+| Prices ($250 Starter / $500 Growth / $1,000+ Custom App, care plans from $49/mo; the Dari page has its own Afghan pricing, see above) | `index.html` and `afg/index.html`: Pricing section, the "from $…" line under each example design, and the Budget chips in the contact form. The industry pages read them from `PRICES` in `tools/build-industries.mjs` (rebuild after changing). |
 | Example designs (Bella Napoli, Fade Factory, Glow Studio, Iron Temple, SmileCare, Petal & Stem) | `index.html` → Example designs. These are clearly labelled **concepts**, not clients. When you launch real projects, swap a concept for the real one (with the client's permission) and you can add genuine results and testimonials then. The site deliberately shows no reviews, ratings or client logos until they are real. |
-| Industry copy & app previews | `assets/js/main.js` → `INDUSTRIES` (copy), `INDUSTRIES_FA` (the Dari page's own six industries) and `APP_SCREENS` (one app layout per industry) |
+| Industry copy & app previews | `assets/js/main.js` → `INDUSTRIES` (homepage tabs), `INDUSTRIES_FA` (the Dari page's own industries) and `APP_SCREENS` (one app layout per industry, also used on the industry pages). The industry pages' own copy is in `tools/niches.mjs`. |
 | Social links | `index.html` footer (`href="#"`) |
 | Domain | `https://mavan.app` is set in `index.html` and `afg/index.html` (canonical and language links, `og:url`, `og:image`, `twitter:image`) |
 

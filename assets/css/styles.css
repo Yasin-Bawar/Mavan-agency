@@ -427,6 +427,23 @@ html.js .ht-in { animation: blur-in 1.2s var(--ease) backwards; animation-delay:
 }
 .hero-promise .i { stroke-width: 3; }
 
+/* "I run a…" picker: opens each industry's own page */
+.niche-pick { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; margin-top: 30px; max-width: 640px; }
+.np-label { font-size: 14px; font-weight: 500; color: var(--muted); }
+.niche-pick ul { display: flex; flex-wrap: wrap; gap: 8px; }
+.niche-pick a {
+  display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 14px; border-radius: 99px;
+  background: rgba(255, 255, 255, 0.72); border: 1px solid var(--line); font-size: 14px; font-weight: 500;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transition: background-color 0.3s, color 0.3s, transform 0.3s var(--ease);
+}
+.niche-pick a .i { font-size: 15px; color: var(--accent); transition: color 0.3s; }
+.niche-pick a:hover { background: var(--ink); color: #fff; transform: translateY(-1px); }
+.niche-pick a:hover .i { color: #fff; }
+.niche-pick .np-all { background: var(--ink); color: #fff; border-color: var(--ink); }
+.niche-pick .np-all .i { color: #fff; }
+.niche-pick .np-all:hover { background: var(--accent); border-color: var(--accent); }
+
 .hero-stats {
   grid-column: 3; display: grid; gap: 22px;
   padding-left: 28px; border-left: 1px solid var(--line-2);
@@ -983,6 +1000,37 @@ html.js .ht-in { animation: blur-in 1.2s var(--ease) backwards; animation-delay:
 .shop-tabbar span { display: flex; flex-direction: column; align-items: center; gap: 1cqw; }
 .shop-tabbar .i { font-size: 4.6cqw; }
 .shop-tabbar .is-on { color: var(--leaf); font-weight: 600; }
+
+/* Contractors: quote requests and site visits */
+.ap--contractors { --amber: #f5b800; background: #131922; color: #f2f4f7; }
+.job-top { display: flex; align-items: center; justify-content: space-between; padding: 2cqw 5.5cqw 0; }
+.job-top small { display: block; font-size: 2.6cqw; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(242, 244, 247, 0.5); }
+.job-top b { display: block; margin-top: 0.6cqw; font-family: var(--font-display); font-size: 5.2cqw; font-weight: 600; letter-spacing: -0.02em; }
+.job-av { display: grid; place-items: center; width: 10cqw; height: 10cqw; border-radius: 3cqw; background: var(--amber); color: #131922; font-weight: 700; font-size: 4.4cqw; }
+.job-seg { display: flex; gap: 1.4cqw; margin: 4.4cqw 5.5cqw 0; padding: 1cqw; border-radius: 99px; background: rgba(255, 255, 255, 0.06); }
+.job-seg span { flex: 1; padding: 1.8cqw 0; border-radius: 99px; text-align: center; font-size: 2.7cqw; color: rgba(242, 244, 247, 0.55); }
+.job-seg .is-on { background: var(--amber); color: #131922; font-weight: 700; }
+.job-label { display: flex; align-items: baseline; justify-content: space-between; padding: 4.6cqw 5.5cqw 0; }
+.job-label b { font-size: 3.4cqw; }
+.job-label small { font-size: 2.6cqw; color: rgba(242, 244, 247, 0.5); }
+.job-list { display: grid; gap: 2.4cqw; padding: 2.8cqw 5.5cqw 0; }
+.job-card { display: flex; gap: 3cqw; padding: 2.4cqw; border-radius: 4cqw; background: rgba(255, 255, 255, 0.05); box-shadow: inset 0 0 0 0.25cqw rgba(255, 255, 255, 0.06); }
+.job-card.is-new { box-shadow: inset 0 0 0 0.35cqw var(--amber); background: rgba(245, 184, 0, 0.08); }
+.job-media { flex-shrink: 0; width: 15cqw; height: 15cqw; overflow: hidden; border-radius: 3cqw; }
+.job-media img { width: 100%; height: 100%; }
+.job-info { display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.job-info b { font-size: 3.2cqw; }
+.job-info small { margin-top: 0.6cqw; font-size: 2.5cqw; color: rgba(242, 244, 247, 0.6); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.job-info em { margin-top: 0.8cqw; font-size: 2.3cqw; color: var(--amber); }
+.job-actions { display: flex; gap: 2cqw; padding: 3cqw 5.5cqw 0; }
+.job-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 1.6cqw; padding: 2.8cqw 0; border-radius: 99px; background: var(--amber); color: #131922; font-size: 2.9cqw; font-weight: 700; }
+.job-btn .i { font-size: 3.4cqw; }
+.job-btn--ghost { background: transparent; color: #f2f4f7; box-shadow: inset 0 0 0 0.3cqw rgba(255, 255, 255, 0.2); }
+.job-visits { display: grid; gap: 1.8cqw; padding: 2.6cqw 5.5cqw 0; }
+.job-visits span { display: grid; grid-template-columns: 9cqw 10cqw 1fr; align-items: center; padding: 2.4cqw 3cqw; border-radius: 3.4cqw; background: rgba(255, 255, 255, 0.05); font-size: 2.7cqw; }
+.job-visits b { color: var(--amber); }
+.job-visits small { color: rgba(242, 244, 247, 0.6); font-size: 2.6cqw; }
+.job-visits em { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 /* ==========================================================================
    01 — INTRO

@@ -33,6 +33,7 @@
   <script>document.documentElement.classList.add('js');</script>
   <script src="assets/js/main.js" defer></script>
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mavan.app/#organization","name":"Mavan","url":"https://mavan.app/","logo":"https://mavan.app/assets/img/favicon.svg","email":"hello@mavan.app","telephone":"+93 79 881 9664"},{"@type":"WebSite","@id":"https://mavan.app/#website","url":"https://mavan.app/","name":"Mavan","publisher":{"@id":"https://mavan.app/#organization"}}]}</script>
 </head>
 <body>
   <!-- Icon sprite -->
@@ -86,6 +87,15 @@
       <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h10"/></symbol>
       <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></symbol>
       <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3M21 14v.01M14 21h.01M17.5 21H21v-3.5"/></symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+      <symbol id="i-x-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></symbol>
+      <symbol id="i-hardhat" viewBox="0 0 24 24"><path d="M2 18h20M4 18v-2a8 8 0 0 1 16 0v2"/><path d="M10 8.3V5h4v3.3M8 9.5V12M16 9.5V12"/></symbol>
+      <symbol id="i-tooth" viewBox="0 0 24 24"><path d="M12 5.5C10.5 4 8.5 3 6.5 3.5 4 4.1 3 6.5 3.5 9c.4 2 1.2 3.5 1.5 5.5.4 2.5.6 6.5 2.5 6.5s2-4.5 3-6.5c.5-1 1.5-1 2 0 1 2 1 6.5 3 6.5s2.1-4 2.5-6.5c.3-2 1.1-3.5 1.5-5.5.5-2.5-.5-4.9-3-5.5-2-.5-4 .5-5.5 2Z"/></symbol>
+      <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h3l6 4V6L7 10H4a1 1 0 0 0-1 1Z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19.5 5.5a9 9 0 0 1 0 13"/></symbol>
+      <symbol id="i-video" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="3"/><path d="m22 8-6 4 6 4Z"/></symbol>
+      <symbol id="i-repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
+      <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3ZM9 3v15M15 6v15"/></symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><circle cx="12" cy="13" r="4"/></symbol>
       <symbol id="i-dribbble" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32M8.56 2.75c4.37 6 6 9.42 8 17.72"/></symbol>
     </defs>
   </svg>
@@ -170,6 +180,19 @@
               <li><span><svg class="i"><use href="#i-check"/></svg></span>Live in as little as 7 days</li>
               <li><span><svg class="i"><use href="#i-check"/></svg></span>No commission</li>
             </ul>
+            <nav class="niche-pick reveal" style="--i:6" aria-label="Choose your industry">
+              <span class="np-label">I run a</span>
+              <ul>
+                <li><a href="industries/restaurants/"><svg class="i"><use href="#i-utensils"/></svg>Restaurant</a></li>
+                <li><a href="industries/barbershops/"><svg class="i"><use href="#i-scissors"/></svg>Barbershop</a></li>
+                <li><a href="industries/salons-spas/"><svg class="i"><use href="#i-flower"/></svg>Salon or spa</a></li>
+                <li><a href="industries/dental-clinics/"><svg class="i"><use href="#i-tooth"/></svg>Clinic</a></li>
+                <li><a href="industries/contractors/"><svg class="i"><use href="#i-hardhat"/></svg>Contracting business</a></li>
+                <li><a href="industries/fitness-studios/"><svg class="i"><use href="#i-dumbbell"/></svg>Gym or studio</a></li>
+                <li><a href="industries/retail-shops/"><svg class="i"><use href="#i-store"/></svg>Shop</a></li>
+                <li><a href="industries/" class="np-all">All industries<svg class="i"><use href="#i-arrow"/></svg></a></li>
+              </ul>
+            </nav>
           </div>
 
           <dl class="hero-stats reveal" style="--i:6">
@@ -420,7 +443,7 @@
             <span class="section-label reveal"><b>3</b>Industries</span>
             <h2 class="h2 reveal">Built for businesses that run on <em>bookings &amp; orders.</em></h2>
           </div>
-          <p class="section-sub reveal">Every industry works differently. We bring the features yours needs, then tailor every detail to your brand.</p>
+          <p class="section-sub reveal">Every industry works differently. We bring the features yours needs, then tailor every detail to your brand. <a class="link-arrow" href="industries/">See every industry page<svg class="i"><use href="#i-arrow"/></svg></a></p>
         </div>
 
         <div class="ind reveal" data-industries>
@@ -979,6 +1002,7 @@
                   <option>Gym / fitness studio</option>
                   <option>Clinic / dentist</option>
                   <option>Retail / boutique</option>
+                  <option>Construction / trades</option>
                   <option>Other</option>
                 </select>
               </div>
@@ -1040,14 +1064,17 @@
         </div>
         <div class="footer-col">
           <h4>Industries</h4>
-          <a href="#industries" data-goto-industry="restaurants">Restaurants &amp; cafés</a>
-          <a href="#industries" data-goto-industry="barbershops">Barbershops</a>
-          <a href="#industries" data-goto-industry="salons">Salons &amp; spas</a>
-          <a href="#industries" data-goto-industry="fitness">Gyms &amp; studios</a>
-          <a href="#industries" data-goto-industry="clinics">Clinics &amp; dentists</a>
+          <a href="industries/restaurants/">Restaurants &amp; cafés</a>
+          <a href="industries/barbershops/">Barbershops</a>
+          <a href="industries/salons-spas/">Salons &amp; spas</a>
+          <a href="industries/dental-clinics/">Dental &amp; health clinics</a>
+          <a href="industries/contractors/">Contractors &amp; trades</a>
+          <a href="industries/fitness-studios/">Gyms &amp; studios</a>
+          <a href="industries/retail-shops/">Retail &amp; boutiques</a>
         </div>
         <div class="footer-col">
           <h4>Studio</h4>
+          <a href="industries/">All industries</a>
           <a href="#work">Example designs</a>
           <a href="#process">Process</a>
           <a href="#pricing">Pricing</a>

@@ -324,6 +324,7 @@
   const INDUSTRIES = [
     {
       id: 'restaurants',
+      page: 'restaurants',
       name: 'Restaurants & cafés',
       short: 'Restaurants',
       icon: 'i-utensils',
@@ -341,6 +342,7 @@
     },
     {
       id: 'barbershops',
+      page: 'barbershops',
       name: 'Barbershops',
       short: 'Barbershops',
       icon: 'i-scissors',
@@ -358,6 +360,7 @@
     },
     {
       id: 'salons',
+      page: 'salons-spas',
       name: 'Salons & spas',
       short: 'Salons',
       icon: 'i-flower',
@@ -375,6 +378,7 @@
     },
     {
       id: 'fitness',
+      page: 'fitness-studios',
       name: 'Gyms & studios',
       short: 'Fitness',
       icon: 'i-dumbbell',
@@ -392,6 +396,7 @@
     },
     {
       id: 'clinics',
+      page: 'dental-clinics',
       name: 'Clinics & dentists',
       short: 'Clinics',
       icon: 'i-heart',
@@ -408,7 +413,26 @@
       },
     },
     {
+      id: 'contractors',
+      page: 'contractors',
+      name: 'Contractors & trades',
+      short: 'Contractors',
+      icon: 'i-hardhat',
+      count: 'Quote requests, job pipeline, gallery',
+      headline: 'Quote requests, <em>even at midnight.</em>',
+      desc: 'A site that shows off your finished projects and turns visitors into detailed quote requests with photos, addresses and budgets, while you are still on the job.',
+      features: ['Quote form with photos', 'Project gallery', 'Job pipeline app', 'Service-area pages for Google'],
+      metric: '24/7',
+      metricLabel: 'quote requests captured while you work',
+      cta: 'Get a contractor site',
+      app: {
+        color: '#1c2430', ink: '#f5b800', glow: 'rgba(245, 184, 0, 0.26)',
+        pill: ['i-chat', 'New quote request', 'Kitchen reno · 3 photos'],
+      },
+    },
+    {
       id: 'retail',
+      page: 'retail-shops',
       name: 'Retail & boutiques',
       short: 'Retail',
       icon: 'i-store',
@@ -558,11 +582,13 @@
   const INDUSTRY_LIST = isFa ? INDUSTRIES_FA : INDUSTRIES;
 
   const indRoot = $('[data-industries]');
-  if (indRoot) {
-    const tabList = $('.ind-tabs', indRoot);
-    const panel = $('.ind-panel', indRoot);
+  // Niche landing pages (industries/<slug>/) show the same app designs in [data-app="<id>"] slots
+  const appSlots = $$('[data-app]');
+  if (indRoot || appSlots.length) {
+    const tabList = indRoot && $('.ind-tabs', indRoot);
+    const panel = indRoot && $('.ind-panel', indRoot);
 
-    tabList.innerHTML = INDUSTRY_LIST.map(
+    if (tabList) tabList.innerHTML = INDUSTRY_LIST.map(
       (d, k) => `
       <button class="ind-tab" type="button" role="tab" id="ind-tab-${d.id}" aria-controls="ind-panel" aria-selected="${k === 0}" tabindex="${k === 0 ? 0 : -1}" data-id="${d.id}">
         <span class="ind-ico">${icon(d.icon)}</span>
@@ -608,6 +634,19 @@
           week: [['M', '12', 1], ['T', '13', 1], ['W', '14', 0], ['T', '15', 1], ['F', '16', 1], ['S', '17', 0], ['S', '18', 0]], weekOn: 4,
           services: 'Services', seeAll: 'See all',
           items: [['dental-smile', 'Teeth whitening', '60 min · from $199'], ['dental-checkup', 'Hygiene clean', '30 min · insurance accepted']], bookItem: 'Book',
+        },
+        contractors: {
+          kicker: 'Jobs', name: 'Northline Renovations', initial: 'N',
+          seg: ['New · 3', 'Quoted · 5', 'Booked · 8'],
+          label: 'New quote requests', seeAll: 'See all',
+          jobs: [
+            ['furn-dining', 'Kitchen renovation', 'Oakridge · 3 photos · $25–40k', '12 min ago', true],
+            ['house-modern', 'Deck &amp; fence repair', 'Westview · 2 photos · $3–6k', '1 h ago'],
+            ['apartment-living', 'Basement finishing', 'Riverdale · 4 photos · $30k+', 'Yesterday'],
+          ],
+          quote: 'Send quote', call: 'Call back',
+          week: 'This week', weekMeta: '4 site visits',
+          visits: [['Tue', '9:00', 'Measure · Oakridge'], ['Thu', '2:30', 'Estimate · Riverdale']],
         },
         retail: {
           brand: 'Petal <em>&amp;</em> Stem', search: 'Search bouquets, plants…', promoNote: 'Same-day delivery', promo: 'Fresh flowers, <em>at your door today</em>', promoBy: 'Order by 2 PM',
@@ -862,6 +901,28 @@
         </div>
         <div class="shop-tabbar">${['i-home', 'i-search', 'i-heart-o', 'i-user'].map((ic, k) => `<span${k ? '' : ' class="is-on"'}>${icon(ic)}${t.tabs[k]}</span>`).join('')}</div>`,
 
+      // Contractors: incoming quote requests with photos and budgets, plus this week's site visits
+      contractors: (t = APP_TEXT.contractors) => `
+        ${statusBar()}
+        <div class="job-top">
+          <span><small>${t.kicker}</small><b>${t.name}</b></span>
+          <span class="job-av">${t.initial}</span>
+        </div>
+        <div class="job-seg">${t.seg.map((x, k) => `<span${k ? '' : ' class="is-on"'}>${x}</span>`).join('')}</div>
+        <div class="job-label"><b>${t.label}</b><small>${t.seeAll}</small></div>
+        <div class="job-list">
+          ${t.jobs
+            .map(([img, title, meta, when, isNew]) => `
+            <div class="job-card${isNew ? ' is-new' : ''}">
+              <span class="job-media">${photo(img, '', 480, 480)}</span>
+              <span class="job-info"><b>${title}</b><small>${meta}</small><em>${when}</em></span>
+            </div>`)
+            .join('')}
+        </div>
+        <div class="job-actions"><span class="job-btn">${icon('i-pen')}${t.quote}</span><span class="job-btn job-btn--ghost">${icon('i-call')}${t.call}</span></div>
+        <div class="job-label"><b>${t.week}</b><small>${t.weekMeta}</small></div>
+        <div class="job-visits">${t.visits.map(([d, h, what]) => `<span><b>${d}</b><small>${h}</small><em>${what}</em></span>`).join('')}</div>`,
+
       // Hotel: room photo, dates, room choice and the booking bar (Dari page only)
       hotels: (t = APP_TEXT.hotels) => `
         <div class="hot-hero">${photo('hotel-lobby', '', 1100, 733)}</div>
@@ -992,6 +1053,11 @@
         </div>
       </div>`;
 
+    appSlots.forEach((slot) => {
+      if (APP_SCREENS[slot.dataset.app]) slot.innerHTML = appScreen({ id: slot.dataset.app });
+    });
+
+    if (indRoot) {
     const render = (d) => {
       const a = d.app;
       const pill = d.pill || a.pill;
@@ -1006,7 +1072,7 @@
           </ul>
           <div class="ind-foot">
             <div class="ind-metric"><b>${d.metric}</b><span>${d.metricLabel}</span></div>
-            <a href="#contact" class="btn btn-dark btn-sm">${d.cta}<span class="btn-icon">${icon('i-arrow')}</span></a>
+            <a href="${d.page ? `${base}industries/${d.page}/` : '#contact'}" class="btn btn-dark btn-sm">${d.cta}<span class="btn-icon">${icon('i-arrow')}</span></a>
           </div>
         </div>
         <div class="ind-visual" style="--b:${a.color};--bt:${a.ink};--glow:${a.glow};" aria-hidden="true">
@@ -1061,6 +1127,7 @@
     $$('[data-goto-industry]').forEach((link) =>
       link.addEventListener('click', () => select(link.dataset.gotoIndustry))
     );
+    }
   }
 
   /* ------------------------------------------------------------------
