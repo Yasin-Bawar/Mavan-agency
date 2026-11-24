@@ -21,6 +21,7 @@ api/contact.js          → same endpoint for Vercel, if you ever move hosts
 tools/                  → generators for the industry pages, sitemap and share images (not published)
 sitemap.xml, robots.txt → for Google
 netlify.toml            → Netlify build: publishes the pages, assets/, robots.txt and sitemap.xml
+vercel.json             → the same build for Vercel (where mavan.app is hosted now)
 ```
 
 ## Run locally
