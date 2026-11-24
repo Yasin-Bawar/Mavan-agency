@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { NICHES } from './niches.mjs';
+import { SIGNATURES, TICKERS } from './signatures.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://mavan.app';
@@ -389,6 +390,10 @@ ${nav({ base, links, cta: 'Get a free demo' })}
       </div>
     </section>
 
+    <div class="nticker" aria-hidden="true">
+      <div class="nticker-track">${[0, 1].map(() => `<span class="nticker-group">${TICKERS[n.slug].map((w) => `<span>${w}</span><i>${icon(n.icon)}</i>`).join('')}</span>`).join('')}</div>
+    </div>
+
     <!-- ============ 01 PROBLEMS ============ -->
     <section class="section pains-sec" id="problems">
       <div class="container">
@@ -436,6 +441,12 @@ ${nav({ base, links, cta: 'Get a free demo' })}
               .join('\n            ')}
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ SIGNATURE (unique to this industry) ============ -->
+    <section class="section sig sig--${n.slug}" id="showcase">
+      <div class="container">${SIGNATURES[n.slug](base)}
       </div>
     </section>
 

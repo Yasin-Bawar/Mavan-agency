@@ -112,4 +112,34 @@
     inputs.forEach((input) => input.addEventListener('input', update));
     update();
   });
+
+  // Before/after slider (contractors)
+  document.querySelectorAll('[data-ba]').forEach((ba) => {
+    const range = ba.querySelector('.ba-range');
+    if (!range) return;
+    const set = () => ba.style.setProperty('--pos', `${range.value}%`);
+    range.addEventListener('input', set);
+    set();
+  });
+
+  // Gift card tilt (salons & spas)
+  const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!calm) {
+    document.querySelectorAll('[data-tilt-card]').forEach((card) => {
+      card.addEventListener('pointermove', (e) => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width;
+        const y = (e.clientY - r.top) / r.height;
+        card.style.setProperty('--ry', `${(x - 0.5) * 16}deg`);
+        card.style.setProperty('--rx', `${(0.5 - y) * 12}deg`);
+        card.style.setProperty('--gx', `${x * 100}%`);
+        card.style.setProperty('--gy', `${y * 100}%`);
+      });
+      card.addEventListener('pointerleave', () => {
+        ['--rx', '--ry'].forEach((k) => card.style.setProperty(k, '0deg'));
+        card.style.setProperty('--gx', '50%');
+        card.style.setProperty('--gy', '50%');
+      });
+    });
+  }
 })();
